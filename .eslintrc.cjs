@@ -10,7 +10,21 @@ module.exports = {
   ],
   ignorePatterns: ['dist', '.eslintrc.cjs'],
   parserOptions: { ecmaVersion: 'latest', sourceType: 'module' },
-  settings: { react: { version: '18.2' } },
+  settings: {
+    react: { version: '18.2' },
+    'import/resolver': {
+      alias: {
+        map: [
+          ['@', './src'],
+          ['@components', './src/components'],
+          ['@pages', './src/pages'],
+          ['@utils', './src/utils'],
+          ['@images', './src/assets/images'],
+        ],
+        extensions: ['.js', '.jsx', '.ts', '.tsx'],
+      },
+    },
+  },
   plugins: ['react', 'react-refresh'],
   rules: {
     'react/jsx-no-target-blank': 'off',
