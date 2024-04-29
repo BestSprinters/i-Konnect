@@ -1,4 +1,3 @@
-/* eslint-disable react/button-has-type */
 import './index.css';
 
 function App() {
