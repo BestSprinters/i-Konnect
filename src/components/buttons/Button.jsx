@@ -1,10 +1,9 @@
 import React from 'react';
 
 function Button(props) {
-  const {
-    isDisabled, children, onClick, type,
-  } = props;
-  const baseButtonStyle = 'flex items-center justify-center text-[13px] font-bold px-[16px]';
+  const { isDisabled, children, onClick, type } = props;
+  const baseButtonStyle =
+    'flex items-center justify-center text-[13px] font-bold px-[16px]';
   const buttonValid = {
     disabled:
       'bg-grayMedium cursor-not-allowed rounded-[3px] h-[40px] w-[295px]',
