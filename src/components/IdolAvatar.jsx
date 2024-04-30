@@ -1,11 +1,8 @@
-// ! TEST : 테스트용 이미지입니다
-import Minji from '../assets/images/test.png';
-
 /**
  * * size는 s, m, l로 나누었습니다.
  * TODO : 모바일에서 98x98 사이즈가 있는데 추가해야될지 100x100으로 유지 할 지 모르겠습니다.
  */
-function IdolAvatar({ size }) {
+function IdolAvatar({ alt, src, size }) {
   // * tailwind에서 className={`size-${size}`} 같이 동적으로 사용할 수 없어
   // * 따로 변수를 만들어 관리하였습니다.
   // * 참조 : https://tailwindcss.com/docs/content-configuration#dynamic-class-names
@@ -20,8 +17,8 @@ function IdolAvatar({ size }) {
       className={`rounded-full border-2 ${sizes[size]} border-avatarBorders`}
     >
       <img
-        src={Minji}
-        alt="idol avatar"
+        src={src}
+        alt={alt}
         className="size-full rounded-full object-cover p-[6px]"
       />
     </div>
