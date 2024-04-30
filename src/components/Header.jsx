@@ -7,7 +7,7 @@ import myProfile from '../assets/imgs/loopy.png';
 function Header() {
   return (
     <div className="fixed left-0 top-0 flex w-full items-center justify-center bg-blackPrimary">
-      <div className="justify-centfeater container flex h-[80px] items-center">
+      <div className="container flex h-[80px] items-center justify-center">
         <Link to="/list">
           <img src={imgLogo} alt="로고" className="w-[200px] cursor-pointer" />
         </Link>
