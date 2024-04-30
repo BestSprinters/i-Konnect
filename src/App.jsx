@@ -1,4 +1,3 @@
-/* eslint-disable react/self-closing-comp */
 import { useState } from 'react';
 
 import Button from './components/buttons/Button';

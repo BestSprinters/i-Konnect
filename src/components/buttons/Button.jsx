@@ -1,15 +1,9 @@
-/* eslint-disable object-curly-newline */
-
-/* eslint-disable quotes */
-
-/* eslint-disable react/jsx-curly-brace-presence */
-
-/* eslint-disable react/jsx-no-useless-fragment */
-
-/* eslint-disable react/button-has-type */
 import React from 'react';
 
-function Button({ isDisabled, children, onClick, type }) {
+function Button(props) {
+  const {
+    isDisabled, children, onClick, type,
+  } = props;
   const baseButtonStyle = 'flex items-center justify-center text-[13px] font-bold px-[16px]';
   const buttonValid = {
     disabled:
@@ -27,15 +21,14 @@ function Button({ isDisabled, children, onClick, type }) {
   const buttonTypeName = type ? buttonType[type] : '';
 
   return (
-    <>
-      <button
-        onClick={onClick}
-        disabled={isDisabled}
-        className={`${baseButtonStyle} ${buttonValidName} ${buttonTypeName}`}
-      >
-        {children}
-      </button>
-    </>
+    <button
+      type="button"
+      onClick={onClick}
+      disabled={isDisabled}
+      className={`${baseButtonStyle} ${buttonValidName} ${buttonTypeName}`}
+    >
+      {children}
+    </button>
   );
 }
 
