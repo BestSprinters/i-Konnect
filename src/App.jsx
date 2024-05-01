@@ -9,7 +9,7 @@ function App() {
       <div className="absolute -left-[100px] -top-[135px] h-[270px] w-[200px] bg-gradient-radial from-cornerBlue to-blackPrimary opacity-20 blur-2xl" />
       <div className="text-2xl font-bold text-white">
         <section className="relative flex h-dvh flex-col items-center">
-          <div className="mt-[100px] text-center md:mt-[120px] lg:mt-[140px]">
+          <div className="mt-[100px] text-center md:mt-[120px] xl:mt-[140px]">
             <h1>
               내가 좋아하는 아이돌을
               <br />
