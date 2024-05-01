@@ -24,6 +24,8 @@ export default {
 
         pointOrange: '#F96D69',
         pointPink: '#FE5493',
+
+        pointOrangePink: '#F96868',
       },
       fontFamily: {
         sans: ['Pretendard'],

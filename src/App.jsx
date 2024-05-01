@@ -1,7 +1,7 @@
 import LandingPreviewImage from './assets/imgs/landingPreviewImage1.svg';
-import MainLogo from './assets/imgs/mainLogo.png';
+import MainLogo from './assets/imgs/main_logo.png';
 import NewJeansBackground from './assets/imgs/newjeans.svg';
-import LandingSection from './components/landing/LandingSection';
+import LandingSection from './components/LandingSection';
 
 function App() {
   return (
