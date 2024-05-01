@@ -1,6 +1,8 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
 import React from 'react';
 
+import Button from '../components/buttons/Button';
+
 function AddSponsor() {
   return (
     <div className="container mx-auto mt-[80px] flex w-full max-w-[1200px] items-center justify-center">
@@ -68,18 +70,18 @@ function AddSponsor() {
         </div>
 
         <div className="mt-6 flex items-center justify-end gap-x-6">
-          <button
-            type="button"
+          <Button
+            type="cancel"
             className="text-sm font-semibold leading-6 text-gray-900"
           >
             취소
-          </button>
-          <button
-            type="submit"
+          </Button>
+          <Button
+            type="smallSquare"
             className="rounded-md px-3 py-2 text-sm font-semibold text-white shadow-sm"
           >
             등록
-          </button>
+          </Button>
         </div>
       </form>
     </div>
