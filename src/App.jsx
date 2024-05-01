@@ -5,9 +5,9 @@ import IdolAvatar from './components/IdolAvatar';
 function App() {
   return (
     <div>
-      <IdolAvatar alt="민지" src={Minji} size="s" />
-      <IdolAvatar alt="항상" src={Minji} size="m" />
-      <IdolAvatar alt="화이팅" src={Minji} size="l" />
+      <IdolAvatar alt="민지" src={Minji} size="small" />
+      <IdolAvatar alt="항상" src={Minji} size="medium" />
+      <IdolAvatar alt="화이팅" src={Minji} size="large" />
     </div>
   );
 }
