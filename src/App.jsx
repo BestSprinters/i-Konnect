@@ -7,32 +7,53 @@ import './index.css';
 function App() {
   const [isDisabled, setIsDisabled] = useState(false);
 
-  const onClickBtn = () => {
-    setIsDisabled(isDisabled);
+  const onClick = () => {
+    setIsDisabled(false);
   };
 
   return (
     <>
-      <Button type="smallSquare">smallSquare</Button>
-      <Button type="smallSquare">등록</Button>
+      <Button type="smallSquare" isDisabled={isDisabled}>
+        등록
+      </Button>
+      <Button type="smallSquare" isDisabled={!isDisabled} onClick={onClick}>
+        등록
+      </Button>
 
-      <Button type="smallSquare">mediumSquare</Button>
-      <Button type="smallSquare">차트 투표하기</Button>
+      <Button type="smallSquare" isDisabled={isDisabled}>
+        차트 투표하기
+      </Button>
+      <Button type="smallSquare" isDisabled={!isDisabled}>
+        차트 투표하기
+      </Button>
 
-      <Button type="largeSquare" onClick={onClickBtn}>
+      <Button type="largeSquare" isDisabled={isDisabled}>
         largeSquare
       </Button>
       <Button type="largeSquare" isDisabled={!isDisabled}>
         largeSquare
       </Button>
 
-      <Button type="round">round</Button>
+      <Button type="round" isDisabled={isDisabled}>
+        round
+      </Button>
+      <Button type="round" isDisabled={!isDisabled}>
+        round
+      </Button>
 
-      <Button type="cancel">cancel</Button>
-      <Button type="cancel">취소</Button>
+      <Button type="cancel" isDisabled={isDisabled}>
+        취소
+      </Button>
+      <Button type="cancel" isDisabled={!isDisabled}>
+        취소
+      </Button>
 
-      <Button type="more">more</Button>
-      <Button type="more">더보기</Button>
+      <Button type="more" isDisabled={isDisabled}>
+        더보기
+      </Button>
+      <Button type="more" isDisabled={!isDisabled}>
+        더보기
+      </Button>
     </>
   );
 }

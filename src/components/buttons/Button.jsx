@@ -2,23 +2,15 @@ import React from 'react';
 
 function Button(props) {
   const { isDisabled, children, onClick, type } = props;
-  const buttonValidStyle = {
-    disabled:
-      'bg-grayMedium cursor-not-allowed rounded-[3px] h-[40px] w-[295px]',
-    abled: 'bg-gradient-to-r from-pointOrange to-pointPink',
-  };
 
   const buttonTypeStyle = {
-    smallSquare: 'rounded-[5px] py-2 h-[32px] rounded-[2px]',
-    largeSquare: 'h-[40px] w-[295px] rounded-[3px]',
-    round: 'rounded-3xl h-[48px] w-[255px] text-[16px]',
-    cancel: `rounded-[5px] py-2 bg-gradient-to-r from-grayMedium to-grayMedium`,
-    more: 'h-[40px] w-[295px] bg-gradient-to-r from-blackSecondary to-blackSecondary rounded-[3px] border border-whiteSecondary-500',
+    smallSquare: `h-[32px] rounded-[2px] rounded-[5px] py-2 ${!isDisabled ? 'bg-gradient-to-r from-pointOrange to-pointPink' : 'cursor-not-allowed bg-grayMedium'}`,
+    largeSquare: `h-[40px] w-[295px] rounded-[3px] ${!isDisabled ? 'cursor-point bg-gradient-to-r from-pointOrange to-pointPink' : 'cursor-not-allowed bg-grayMedium'}`,
+    round: `h-[48px] w-[255px] rounded-3xl text-[16px] ${!isDisabled ? 'bg-gradient-to-r from-pointOrange to-pointPink' : 'cursor-not-allowed bg-grayMedium'}`,
+    cancel: `rounded-[5px] bg-grayMedium py-2 ${!isDisabled ? '' : 'cursor-not-allowed'}`,
+    more: `border-whiteSecondary-500 h-[40px] w-[295px] rounded-[3px] border bg-blackSecondary ${!isDisabled ? '' : 'cursor-not-allowed'}`,
   };
 
-  const buttonValidName = isDisabled
-    ? buttonValidStyle.disabled
-    : buttonValidStyle.abled;
   const buttonTypeName = type ? buttonTypeStyle[type] : '';
 
   return (
@@ -26,7 +18,7 @@ function Button(props) {
       type="button"
       onClick={onClick}
       disabled={isDisabled}
-      className={`flex items-center justify-center px-[16px] text-[13px] font-bold ${buttonValidName} ${buttonTypeName}`}
+      className={`cursor-point flex items-center justify-center px-[16px] text-[13px] font-bold ${buttonTypeName}`}
     >
       {children}
     </button>
