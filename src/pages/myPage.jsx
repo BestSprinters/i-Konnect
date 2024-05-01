@@ -1,5 +1,11 @@
-function myPage() {
-  return <div>myPage</div>;
+import MyPageIdol from '../components/MyPageIdol';
+
+function MyPage() {
+  return (
+    <div className="mx-auto mt-[80px] max-w-screen-xl">
+      <MyPageIdol />
+    </div>
+  );
 }
 
-export default myPage;
+export default MyPage;
