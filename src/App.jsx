@@ -15,8 +15,8 @@ function App() {
       <Button type="smallSquare">smallSquare</Button>
       <Button type="smallSquare">등록</Button>
 
-      <Button type="mediumSquare">mediumSquare</Button>
-      <Button type="mediumSquare">차트 투표하기</Button>
+      <Button type="smallSquare">mediumSquare</Button>
+      <Button type="smallSquare">차트 투표하기</Button>
 
       <Button type="largeSquare" onClick={onClickBtn}>
         largeSquare

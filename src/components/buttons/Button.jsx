@@ -11,8 +11,7 @@ function Button(props) {
   };
 
   const buttonTypeStyle = {
-    smallSquare: 'rounded-[5px] py-2',
-    mediumSquare: 'h-[32px] w-[128px] rounded-[3px]',
+    smallSquare: 'rounded-[5px] py-2 h-[32px] rounded-[2px]',
     largeSquare: 'h-[40px] w-[295px] rounded-[3px]',
     round: 'rounded-3xl h-[48px] w-[255px] text-[16px]',
     cancel: `rounded-[5px] py-2 bg-gradient-to-r from-grayMedium to-grayMedium`,
