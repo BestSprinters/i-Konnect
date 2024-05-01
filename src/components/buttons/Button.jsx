@@ -1,7 +1,7 @@
 import React from 'react';
 
 function Button(props) {
-  const { isDisabled, children, onClick, type } = props;
+  const { isDisabled = false, children, onClick, type } = props;
 
   const buttonTypeStyle = {
     smallSquare: `h-[32px] rounded-[2px] rounded-[5px] py-2 ${!isDisabled ? 'bg-gradient-to-r from-pointOrange to-pointPink' : 'cursor-not-allowed bg-grayMedium'}`,
