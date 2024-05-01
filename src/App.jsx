@@ -1,40 +1,36 @@
-// ! TEST : 테스트용 이미지입니다
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
-import Minji from './assets/images/test.png';
-import IdolAvatar from './components/IdolAvatar';
-import Button from './components/buttons/Button';
+import getCharts from './apis/charts/getChartApi';
+import getDonations from './apis/donations/getDonationsApi';
+import getIdols from './apis/idols/getIdolsApi';
 import './index.css';
 
 function App() {
-  const [isDisabled, setIsDisabled] = useState(false);
-  const types = {
-    largeSquare: 'largeSquare',
-    smallSquare: 'smallSquare',
-    round: 'round',
+  const [idolsData, setIdolsData] = useState([]);
+
+  const loadIdolsData = async () => {
+    const result = await getIdols();
+    return setIdolsData(result);
   };
 
-  const onClickBtn = () => {
-    setIsDisabled(isDisabled);
-  };
+  useEffect(() => {
+    loadIdolsData();
+    getDonations();
+    getCharts();
+  }, []);
 
   return (
-    <>
-      <Button onClick={onClickBtn} type={types.largeSquare}>
-        버튼활성화
-      </Button>
-      <Button onClick={onClickBtn} isDisabled={!isDisabled}>
-        버튼비활성화
-      </Button>
-      <Button type={types.smallSquare}>차트 투표하기</Button>
-      <Button type={types.round}>추가하기</Button>
-
-      <div>
-        <IdolAvatar alt="민지" src={Minji} size="small" />
-        <IdolAvatar alt="항상" src={Minji} size="medium" />
-        <IdolAvatar alt="화이팅" src={Minji} size="large" />
-      </div>
-    </>
+    <div className="flex items-center justify-center">
+      <h1>Hello World!</h1>
+      {idolsData?.map((idol) => (
+        <img
+          className="flex h-14 w-14"
+          alt="idols"
+          src={idol.profilePicture}
+          key={idol.id}
+        />
+      ))}
+    </div>
   );
 }
 
