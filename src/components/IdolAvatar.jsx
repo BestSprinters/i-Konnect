@@ -7,14 +7,14 @@ function IdolAvatar({ alt, src, size }) {
   // * 따로 변수를 만들어 관리하였습니다.
   // * 참조 : https://tailwindcss.com/docs/content-configuration#dynamic-class-names
   const sizes = {
-    s: 'size-[70px]',
-    m: 'size-[100px]',
-    l: 'size-[128px]',
+    small: 'size-[70px]',
+    medium: 'size-[100px]',
+    large: 'size-[128px]',
   };
 
   return (
     <div
-      className={`rounded-full border-2 ${sizes[size]} border-avatarBorders`}
+      className={`rounded-full border-2 ${sizes[size]} border-pointOrangePink`}
     >
       <img
         src={src}
