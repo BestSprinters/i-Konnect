@@ -2,8 +2,6 @@ import React from 'react';
 
 function Button(props) {
   const { isDisabled, children, onClick, type } = props;
-  const baseButtonStyle =
-    'flex items-center justify-center text-[13px] font-bold px-[16px]';
   const buttonValidStyle = {
     disabled:
       'bg-grayMedium cursor-not-allowed rounded-[3px] h-[40px] w-[295px]',
@@ -28,7 +26,7 @@ function Button(props) {
       type="button"
       onClick={onClick}
       disabled={isDisabled}
-      className={`${baseButtonStyle} ${buttonValidName} ${buttonTypeName}`}
+      className={`flex items-center justify-center px-[16px] text-[13px] font-bold ${buttonValidName} ${buttonTypeName}`}
     >
       {children}
     </button>
