@@ -1,41 +1,25 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 
-import getIdols from '../apis/idols/getIdolsApi';
+import insertLocalStorage from '../utils/insertLocalStorage';
 import IdolThumbnail from './IdolThumbnail';
 import Button from './buttons/Button';
 
-function MyPageIdol() {
-  const [idols, setIdols] = useState([]);
-  const [favoriteIdols, setFavoriteIdols] = useState([]);
-
-  const getIdolList = async () => {
-    const { list } = await getIdols({ pageSize: 16 });
-    // favoriteIdols에 있는 id는 list에서 제외하고 돌려하대
-    const faovorite = JSON.parse(localStorage.getItem('dataList'));
-    const filteredList = list.filter((idol) => !faovorite.includes(idol.id));
-    setIdols(filteredList);
-  };
+function MyPageIdol({ idols, onChange }) {
+  const [IsFavorite, setIsFavorite] = useState([]);
 
   const handleIdolToggle = (id) => {
-    if (!favoriteIdols.includes(id)) {
-      setFavoriteIdols([...favoriteIdols, id]);
+    if (!IsFavorite.includes(id)) {
+      setIsFavorite([...IsFavorite, id]);
     } else {
-      setFavoriteIdols(favoriteIdols.filter((idol) => idol !== id));
+      setIsFavorite(IsFavorite.filter((idol) => idol !== id));
     }
   };
 
   const addFavoriteIdol = () => {
-    let dataArray = JSON.parse(localStorage.getItem('dataList')) || [];
-    dataArray.push(...favoriteIdols);
-    dataArray = new Set(dataArray);
-    dataArray = [...dataArray].sort();
-    localStorage.setItem('dataList', JSON.stringify(dataArray));
-    setFavoriteIdols([]);
+    const localDate = insertLocalStorage('Mypage_FavoriteIdol', IsFavorite);
+    onChange(localDate);
+    setIsFavorite([]);
   };
-
-  useEffect(() => {
-    getIdolList();
-  }, [favoriteIdols]);
 
   return (
     <div>
@@ -43,7 +27,7 @@ function MyPageIdol() {
         관심있는 아이돌을 추가해보세요.
       </h2>
       <ul className="flex flex-wrap gap-6">
-        {idols.map((idol) => (
+        {idols?.map((idol) => (
           <li key={idol.id}>
             <button
               type="button"
@@ -51,7 +35,8 @@ function MyPageIdol() {
               aria-label={`${idol.name} 썸네일`}
             >
               <IdolThumbnail
-                checked={favoriteIdols.includes(idol.id)}
+                size="large"
+                checked={IsFavorite.includes(idol.id)}
                 name={idol.name}
                 group={idol.group}
                 src={idol.profilePicture}

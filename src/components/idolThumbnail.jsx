@@ -1,13 +1,13 @@
 import CheckedIdolAvatar from './CheckedIdolAvatar';
 import IdolAvatar from './IdolAvatar';
 
-function IdolThumbnail({ checked, group, name, src }) {
+function IdolThumbnail({ checked = false, group, name, src, size }) {
   return (
     <>
       {checked ? (
-        <CheckedIdolAvatar alt={name} src={src} size="large" />
+        <CheckedIdolAvatar alt={name} src={src} size={size} />
       ) : (
-        <IdolAvatar alt={name} src={src} size="large" />
+        <IdolAvatar alt={name} src={src} size={size} />
       )}
 
       <dl className="mt-1.5 text-center">
