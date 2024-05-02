@@ -6,17 +6,33 @@ import Button from './buttons/Button';
 
 function MyPageIdol() {
   const [idols, setIdols] = useState([]);
-  const [cursor, setCursor] = useState(null);
+  const [favoriteIdols, setFavoriteIdols] = useState([]);
 
-  const getIdolList = async (next) => {
-    const { list, nextCursor } = await getIdols(next);
+  const getIdolList = async () => {
+    const { list } = await getIdols();
+
     setIdols(list);
-    setCursor(nextCursor);
+  };
+
+  const handleIdolToggle = (id) => {
+    if (!favoriteIdols.includes(id)) {
+      setFavoriteIdols([...favoriteIdols, id]);
+    } else {
+      setFavoriteIdols(favoriteIdols.filter((idol) => idol !== id));
+    }
+  };
+
+  const addFavoriteIdol = () => {
+    let dataArray = JSON.parse(localStorage.getItem('dataList')) || [];
+    dataArray.push(...favoriteIdols);
+    dataArray = new Set(dataArray);
+    dataArray = [...dataArray];
+    localStorage.setItem('dataList', JSON.stringify(dataArray));
   };
 
   useEffect(() => {
-    getIdolList(cursor);
-  }, [idols, cursor]);
+    getIdolList();
+  }, []);
 
   return (
     <div>
@@ -24,24 +40,28 @@ function MyPageIdol() {
         관심있는 아이돌을 추가해보세요.
       </h2>
       <ul className="flex flex-wrap gap-6">
-        {idols.length === 0 ? (
-          <li className="w-full py-[100px] text-center">
-            <span>[ Loading ]</span>
-          </li>
-        ) : (
-          idols.map((idol) => (
-            <li key={idol.id}>
+        {idols.map((idol) => (
+          <li key={idol.id}>
+            <button
+              type="button"
+              onClick={() => handleIdolToggle(idol.id)}
+              aria-label={`${idol.name} 썸네일`}
+            >
               <IdolThumbnail
+                checked={favoriteIdols.includes(idol.id)}
                 name={idol.name}
                 group={idol.group}
                 src={idol.profilePicture}
               />
-            </li>
-          ))
-        )}
+            </button>
+          </li>
+        ))}
       </ul>
       <div className="mt-[32px] flex justify-center">
-        <Button type="round"> + 추가하기 </Button>
+        <Button type="round" onClick={addFavoriteIdol}>
+          {' '}
+          + 추가하기{' '}
+        </Button>
       </div>
     </div>
   );
