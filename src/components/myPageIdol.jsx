@@ -9,8 +9,11 @@ function MyPageIdol() {
   const [favoriteIdols, setFavoriteIdols] = useState([]);
 
   const getIdolList = async () => {
-    const { list } = await getIdols();
-    setIdols(list);
+    const { list } = await getIdols({ pageSize: 16 });
+    // favoriteIdols에 있는 id는 list에서 제외하고 돌려하대
+    const faovorite = JSON.parse(localStorage.getItem('dataList'));
+    const filteredList = list.filter((idol) => !faovorite.includes(idol.id));
+    setIdols(filteredList);
   };
 
   const handleIdolToggle = (id) => {
@@ -25,13 +28,14 @@ function MyPageIdol() {
     let dataArray = JSON.parse(localStorage.getItem('dataList')) || [];
     dataArray.push(...favoriteIdols);
     dataArray = new Set(dataArray);
-    dataArray = [...dataArray];
+    dataArray = [...dataArray].sort();
     localStorage.setItem('dataList', JSON.stringify(dataArray));
+    setFavoriteIdols([]);
   };
 
   useEffect(() => {
     getIdolList();
-  }, []);
+  }, [favoriteIdols]);
 
   return (
     <div>

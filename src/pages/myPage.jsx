@@ -3,7 +3,7 @@ import MyPageIdol from '../components/MyPageIdol';
 
 function Mypage() {
   return (
-    <div>
+    <div className="mx-auto max-w-7xl">
       <FavoriteIdol />
       <MyPageIdol />
     </div>
