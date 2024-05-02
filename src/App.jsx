@@ -1,40 +1,22 @@
-// ! TEST : 테스트용 이미지입니다
-import { useState } from 'react';
+import { Route, Routes } from 'react-router-dom';
 
-import Minji from './assets/images/test.png';
-import IdolAvatar from './components/IdolAvatar';
-import Button from './components/buttons/Button';
+import PAGES from './constants/paths';
 import './index.css';
+import AddSponsorPage from './pages/AddSponsorPage';
+import LandingPage from './pages/LandingPage';
+import ListPage from './pages/ListPage';
+import Mypage from './pages/Mypage';
+import NotFound from './pages/NotFound';
 
 function App() {
-  const [isDisabled, setIsDisabled] = useState(false);
-  const types = {
-    largeSquare: 'largeSquare',
-    smallSquare: 'smallSquare',
-    round: 'round',
-  };
-
-  const onClickBtn = () => {
-    setIsDisabled(isDisabled);
-  };
-
   return (
-    <>
-      <Button onClick={onClickBtn} type={types.largeSquare}>
-        버튼활성화
-      </Button>
-      <Button onClick={onClickBtn} isDisabled={!isDisabled}>
-        버튼비활성화
-      </Button>
-      <Button type={types.smallSquare}>차트 투표하기</Button>
-      <Button type={types.round}>추가하기</Button>
-
-      <div>
-        <IdolAvatar alt="민지" src={Minji} size="small" />
-        <IdolAvatar alt="항상" src={Minji} size="medium" />
-        <IdolAvatar alt="화이팅" src={Minji} size="large" />
-      </div>
-    </>
+    <Routes>
+      <Route path={PAGES.home.link} element={<LandingPage />} />
+      <Route path={PAGES.list.link} element={<ListPage />} />
+      <Route path={PAGES.myPage.link} element={<Mypage />} />
+      <Route path={PAGES.addSponsor.link} element={<AddSponsorPage />} />
+      <Route path={PAGES.notFound.link} element={<NotFound />} />
+    </Routes>
   );
 }
 

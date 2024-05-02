@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 
 import imgLogo from '../assets/imgs/img_logo.png';
 import myProfile from '../assets/imgs/loopy.png';
+import PAGES from '../constants/paths';
 
 function Header() {
   const [scrollPosition, setScrollPosition] = useState(0);
@@ -33,12 +34,12 @@ function Header() {
       className={`transition-all duration-300 ${baseHeaderStyle} ${headerScrollValid}`}
     >
       <div className="container flex h-[80px] items-center justify-center">
-        <Link to="/list">
+        <Link to={PAGES.list.link}>
           <img src={imgLogo} alt="로고" className="w-[200px] cursor-pointer" />
         </Link>
       </div>
       <div>
-        <Link to="/my">
+        <Link to={PAGES.myPage.link}>
           <img
             src={myProfile}
             alt="프로필"
