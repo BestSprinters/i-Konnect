@@ -20,7 +20,7 @@ export default {
         whitePrimary: '#FFF',
         whiteSecondary: '#F7F7F8',
 
-        cornerBlue: '#14C3FE',
+        pointBlue: '#14C3FE',
 
         pointOrange: '#F96D69',
         pointPink: '#FE5493',
