@@ -1,18 +1,20 @@
 import createQueryParams from '../../utils/createQueryParams';
 import axiosInstance from '../axiosInstance';
 
-const getCharts = async (gender = 'female') => {
-  const chartsObj = {
-    gender: `${gender}`,
+const getCharts = async (option = {}) => {
+  const defaultOption = {
+    gender: 'female',
+    cursor: '',
+    pageSize: 10,
   };
-  const chartsParams = createQueryParams(chartsObj);
+  const chartOption = { ...defaultOption, ...option };
+  const chartsParams = createQueryParams(chartOption);
 
   try {
     const response = await axiosInstance.get(
       `/charts/{gender}?${chartsParams}`,
     );
-    const charts = response.data;
-    return charts;
+    return response.data;
   } catch (error) {
     throw new Error(error.message);
   }
