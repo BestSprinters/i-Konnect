@@ -9,7 +9,7 @@ function Mypage() {
   const [favoriteIdols, setFavoriteIdols] = useState([]);
   // 이름 확인
   const [changeIdols, setChangeIdols] = useState(
-    JSON.parse(localStorage.getItem('dataList')) || [],
+    JSON.parse(localStorage.getItem('Mypage_FavoriteIdol')) || [],
   );
 
   const getIdolList = async () => {
