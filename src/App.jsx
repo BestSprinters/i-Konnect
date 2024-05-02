@@ -5,7 +5,7 @@ import './index.css';
 import AddSponsorPage from './pages/AddSponsorPage';
 import LandingPage from './pages/LandingPage';
 import ListPage from './pages/ListPage';
-import Mypage from './pages/Mypage';
+import Mypage from './pages/MyPage';
 import NotFound from './pages/NotFound';
 
 function App() {
