@@ -1,6 +1,12 @@
+import { Link } from 'react-router-dom';
+
+import GirlsGenerationBackground from '../assets/imgs/girls_generation.png';
 import LandingPreviewImage from '../assets/imgs/landingPreviewImage1.svg';
 import MainLogo from '../assets/imgs/main_logo.png';
 import NewJeansBackground from '../assets/imgs/newjeans.svg';
+import RedVelvetBackground from '../assets/imgs/red_velvet.png';
+// TODO : 누구..신지...아시는분 알려주세요..
+import WhoAreTheyBackground from '../assets/imgs/who_are_they.png';
 import LandingSection from '../components/LandingSection';
 import Button from '../components/buttons/Button';
 
@@ -23,16 +29,21 @@ function LandingPage() {
             className="h-[100px] w-[500px] object-cover"
           />
           <div className="absolute bottom-[100px] md:bottom-[120px]">
-            <Button type="largeSquare">지금 시작하기</Button>
+            {/* Todo : 다른 분들은 Link + Button 어떻게 쓰시는 지 궁금합니다. */}
+            <Link to="/list">
+              <Button type="largeSquare">지금 시작하기</Button>
+            </Link>
           </div>
+          {/* TODO : 레드벨벳 제공된 사진이 배경화면과 맞지 않는 이슈가 있습니다. */}
+          {/* 최대한 피그마에 있는 이미지를 사용하여 만들려고 했습니다. */}
           <img
-            src={NewJeansBackground}
-            alt="new jeans"
-            className="absolute top-1/2 -z-50 max-w-full -translate-y-1/2 rounded-full object-cover opacity-70"
+            src={RedVelvetBackground}
+            alt="main background"
+            className="absolute top-1/2 -z-50 h-[80%] -translate-y-1/2 object-cover opacity-70"
           />
         </section>
         <LandingSection
-          backgroundImageAlt="뉴진스"
+          backgroundImageAlt="first section background"
           backgroundImage={NewJeansBackground}
           previewImageAlt="first preview image"
           previewImage={LandingPreviewImage}
@@ -45,8 +56,8 @@ function LandingPage() {
           </h1>
         </LandingSection>
         <LandingSection
-          backgroundImageAlt="뉴진스"
-          backgroundImage={NewJeansBackground}
+          backgroundImageAlt="second section background"
+          backgroundImage={WhoAreTheyBackground}
           previewImageAlt="second preview image"
           previewImage={LandingPreviewImage}
           title="이달의 아티스트"
@@ -58,8 +69,8 @@ function LandingPage() {
           </h1>
         </LandingSection>
         <LandingSection
-          backgroundImageAlt="뉴진스"
-          backgroundImage={NewJeansBackground}
+          backgroundImageAlt="third section background"
+          backgroundImage={GirlsGenerationBackground}
           previewImageAlt="third preview image"
           previewImage={LandingPreviewImage}
           title="나만의 아티스트"
