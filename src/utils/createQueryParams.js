@@ -3,7 +3,7 @@ const createQueryParams = (params) => {
   const entParams = Object.entries(params);
 
   entParams.forEach(([key, value]) => {
-    if (value !== undefined && value !== null) {
+    if (value) {
       searchParams.append(key, value);
     }
   });
