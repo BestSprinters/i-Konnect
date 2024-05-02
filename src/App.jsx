@@ -2,6 +2,7 @@ import LandingPreviewImage from './assets/imgs/landingPreviewImage1.svg';
 import MainLogo from './assets/imgs/main_logo.png';
 import NewJeansBackground from './assets/imgs/newjeans.svg';
 import LandingSection from './components/LandingSection';
+import Button from './components/buttons/Button';
 
 function App() {
   return (
@@ -21,6 +22,9 @@ function App() {
             alt="main logo"
             className="h-[100px] w-[500px] object-cover"
           />
+          <div className="absolute bottom-[100px] md:bottom-[120px]">
+            <Button type="largeSquare">지금 시작하기</Button>
+          </div>
           <img
             src={NewJeansBackground}
             alt="new jeans"
