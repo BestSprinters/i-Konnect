@@ -1,13 +1,13 @@
 import FavoriteIdol from '../components/FavoriteIdol';
 import MyPageIdol from '../components/MyPageIdol';
 
-function MyPage() {
+function Mypage() {
   return (
-    <div className="mx-auto mt-[80px] max-w-screen-xl">
+    <div>
       <FavoriteIdol />
       <MyPageIdol />
     </div>
   );
 }
 
-export default MyPage;
+export default Mypage;

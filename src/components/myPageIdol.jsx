@@ -10,7 +10,6 @@ function MyPageIdol() {
 
   const getIdolList = async () => {
     const { list } = await getIdols();
-
     setIdols(list);
   };
 
