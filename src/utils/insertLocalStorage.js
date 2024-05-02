@@ -3,7 +3,7 @@ const insertLocalStorage = (localName, localValue) => {
   let dataArray = JSON.parse(localStorage.getItem(localName)) || [];
   dataArray.push(...localValue);
   dataArray = new Set(dataArray);
-  dataArray = [...dataArray].sort();
+  dataArray = [...dataArray];
   localStorage.setItem(localName, JSON.stringify(dataArray));
 
   return dataArray;
