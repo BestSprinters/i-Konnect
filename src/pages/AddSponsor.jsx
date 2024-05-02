@@ -8,27 +8,12 @@ function AddSponsor() {
   const [min, setMin] = useState(0);
   const [max, setMax] = useState(1000);
 
-  const onChangeInput = () => {
-    const inputElements = document.querySelectorAll('.inputRange');
-
-    inputElements.forEach((element) => {
-      const input = element.getElementsByTagName('input')[0];
-      const output = element.getElementsByTagName('output')[0];
-
-      if (!input || !output) return;
-
-      const val = parseFloat(input.value);
-      const minVal = parseFloat(input.min) || 0;
-      const maxVal = parseFloat(input.max) || 1000;
-      setMin(minVal);
-      setMax(maxVal);
-      setValue(val);
-    });
-
-    // output.textContent = val;
-    // const inputStyle = 'bg-gradient-to-r from-pointOrange to-pointPink';
+  const onChangeInput = (e) => {
+    const val = e.target.value;
+    setValue(val);
+    setMin(e.target.min || 0);
+    setMax(e.target.max || 1000);
   };
-  const inputStyle = 'bg-gradient-to-r from-pointOrange to-pointPink';
 
   return (
     <div className="container mx-auto mt-[80px] flex w-full max-w-[1200px] items-center justify-center">
@@ -113,17 +98,17 @@ function AddSponsor() {
           <label className="block text-sm font-medium leading-6 text-whitePrimary">
             필요한 크레딧
           </label>
-          <div className="flex w-full items-center justify-center">
+          <div className="mt-2 flex w-full items-center justify-center">
             <input
               onChange={onChangeInput}
               type="range"
               name="credit"
               id="credit"
-              value="0"
+              value={value}
               min={min}
               step="1"
               max={max}
-              className={`${inputStyle} m-0 h-1 w-full appearance-none rounded-full p-0 shadow-none outline-none [&::-webkit-slider-thumb]:h-5 [&::-webkit-slider-thumb]:w-5 [&::-webkit-slider-thumb]:cursor-grab [&::-webkit-slider-thumb]:appearance-none [&::-webkit-slider-thumb]:rounded-full [&::-webkit-slider-thumb]:bg-pointOrange`}
+              className="m-0 h-1 w-full appearance-none rounded-full bg-gradient-to-r from-white via-pointOrange to-pointPink p-0 shadow-none outline-none [&::-webkit-slider-thumb]:h-5 [&::-webkit-slider-thumb]:w-5 [&::-webkit-slider-thumb]:cursor-grab [&::-webkit-slider-thumb]:appearance-none [&::-webkit-slider-thumb]:rounded-full [&::-webkit-slider-thumb]:bg-pointOrange"
             />
             <output className="pointer-events-none relative ml-1 w-6 text-center text-sm font-medium text-white">
               {value}
