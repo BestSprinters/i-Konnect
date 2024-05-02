@@ -1,12 +1,27 @@
+import { useRef } from 'react';
+
 import closeIcon from '../assets/imgs/ic_close.svg';
 
 function Modal({ title, type, open, onClose, children }) {
+  const modalBackdropRef = useRef(null);
+
   if (!open) return null;
+
+  const handleModalBackdropClick = (e) => {
+    if (modalBackdropRef.current === e.target) {
+      onClose();
+    }
+  };
 
   const modalStyle = type === 'wide' ? 'w-[524px]' : 'w-[344px]';
 
   return (
-    <div className="fixed inset-0 flex h-full w-full items-center justify-center bg-blackPrimary/80">
+    <div
+      className="fixed inset-0 flex h-full w-full items-center justify-center bg-blackPrimary/80"
+      ref={modalBackdropRef}
+      onClick={(e) => handleModalBackdropClick(e)}
+      aria-hidden="true"
+    >
       <div
         className={`${modalStyle} relative rounded-xl bg-blackSecondary p-5`}
       >
