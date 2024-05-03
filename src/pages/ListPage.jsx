@@ -1,5 +1,11 @@
+import Chart from '../components/Chart';
+
 function ListPage() {
-  return <div>ListPage 입니다</div>;
+  return (
+    <div>
+      <Chart />
+    </div>
+  );
 }
 
 export default ListPage;
