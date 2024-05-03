@@ -1,9 +1,17 @@
-import { useRef } from 'react';
+import { useEffect, useRef } from 'react';
 import { createPortal } from 'react-dom';
 
 import closeIcon from '../assets/imgs/ic_close.svg';
 
 function Modal({ title, type, open, onClose, children }) {
+  useEffect(() => {
+    if (open) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'unset';
+    }
+  }, [open]);
+
   const modalBackdropRef = useRef(null);
 
   if (!open) return null;
