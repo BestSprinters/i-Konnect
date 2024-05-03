@@ -50,7 +50,9 @@ function Modal({ title, type, open, onClose, children }) {
                 {title}
               </h2>
             )}
-            <div>{children}</div>
+            <div className="flex flex-col items-center justify-center">
+              {children}
+            </div>
           </div>
         </div>,
         document.getElementById('modal-root'),
