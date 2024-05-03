@@ -11,31 +11,35 @@ function Mypage() {
   const [changeIdols, setChangeIdols] = useState(
     JSON.parse(localStorage.getItem('Mypage_FavoriteIdol')) || [],
   );
-
-  const getIdolList = async () => {
-    const { list } = await getIdols({ pageSize: 16 });
-
-    const filteredIdolList = list.filter(
-      (idol) => !changeIdols.includes(idol.id),
-    );
-    const filteredFavoriteIdols = list.filter((idol) =>
-      changeIdols.includes(idol.id),
-    );
-    setIdols(filteredIdolList);
-    setFavoriteIdols(filteredFavoriteIdols);
-  };
+  const [pageSizeChange, setPageSizeChange] = useState();
 
   const handleChangeFavorite = (idol) => {
     setChangeIdols(idol);
   };
 
   useEffect(() => {
+    const getIdolList = async () => {
+      const { list } = await getIdols({ pageSize: 16 + pageSizeChange });
+
+      // 로컬 스토리지의 있는 아이돌들의 id만 추출해서 배열로 만듦
+      const changeIdolIds = changeIdols.map((idol) => idol.id);
+      // 관심있는 아이돌을 제외하고 아이돌 리스트 출력
+      const filteredIdolList = list.filter(
+        (idol) => !changeIdolIds.includes(idol.id),
+      );
+
+      setIdols(filteredIdolList);
+
+      // 관심있는 아이돌의 배열 길이만큼 pageSize에 추가
+      setPageSizeChange(changeIdolIds.length);
+    };
+
+    setFavoriteIdols(changeIdols);
     getIdolList();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [changeIdols]);
+  }, [changeIdols, pageSizeChange]);
   return (
     <div className="mx-auto mt-[80px] max-w-7xl">
-      <FavoriteIdol idols={favoriteIdols} />
+      <FavoriteIdol idols={favoriteIdols} onChange={handleChangeFavorite} />
       <MyPageIdol idols={idols} onChange={handleChangeFavorite} />
     </div>
   );

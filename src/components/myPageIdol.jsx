@@ -7,20 +7,25 @@ import Button from './buttons/Button';
 function MyPageIdol({ idols, onChange }) {
   const [IsFavorite, setIsFavorite] = useState([]);
 
-  const handleIdolToggle = (id) => {
-    if (!IsFavorite.includes(id)) {
-      setIsFavorite([...IsFavorite, id]);
+  const handleIdolToggle = (idol) => {
+    // 아이돌이 선택된건지 선택 해제하는건지 확인
+    if (IsFavorite.includes(idol)) {
+      // 이미 선택된 아이돌을 다시 선택했으면 선택 해제이므로 IsFavorite에서 해당 아이돌을 제외
+      setIsFavorite(IsFavorite.filter((data) => data.id !== idol.id));
     } else {
-      setIsFavorite(IsFavorite.filter((idol) => idol !== id));
+      // 한 번 선택된 아이돌은 IsFavorite에 추가
+      setIsFavorite([...IsFavorite, idol]);
     }
   };
 
   const addFavoriteIdol = () => {
+    // 로컬 스토리지에 선택된 아이돌 저장
     const localDate = insertLocalStorage('Mypage_FavoriteIdol', IsFavorite);
+
+    // 상위 컴포넌트에 선택된 아이돌의 데이터 보내줌
     onChange(localDate);
     setIsFavorite([]);
   };
-
   return (
     <div>
       <h2 className="mb-[32px] text-2xl font-semibold">
@@ -31,12 +36,12 @@ function MyPageIdol({ idols, onChange }) {
           <li key={idol.id}>
             <button
               type="button"
-              onClick={() => handleIdolToggle(idol.id)}
+              onClick={() => handleIdolToggle(idol)}
               aria-label={`${idol.name} 썸네일`}
             >
               <IdolThumbnail
                 size="large"
-                checked={IsFavorite.includes(idol.id)}
+                checked={IsFavorite.includes(idol)}
                 name={idol.name}
                 group={idol.group}
                 src={idol.profilePicture}
