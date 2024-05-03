@@ -7,9 +7,9 @@ function LandingSection({
   title,
 }) {
   return (
-    <section className="relative flex h-dvh flex-col items-center justify-center gap-y-[10%]">
+    <section className="relative mx-auto flex h-dvh flex-col items-center justify-center gap-y-[10%] xl:w-[1200px]">
       <div className="text-center">
-        <p className="text-base text-yellowPrimary">{title}</p>
+        <p className="text-sm text-yellowPrimary md:text-base">{title}</p>
         {children}
       </div>
       <img src={previewImage} alt={previewImageAlt} className="h-1/2" />
