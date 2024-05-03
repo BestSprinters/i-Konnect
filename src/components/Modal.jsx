@@ -4,6 +4,7 @@ import { createPortal } from 'react-dom';
 import closeIcon from '../assets/imgs/ic_close.svg';
 
 function Modal({ title, type, open, onClose, children }) {
+  // 모달 창이 열렸을 때 스크롤 비활성화
   useEffect(() => {
     if (open) {
       document.body.style.overflow = 'hidden';
@@ -16,6 +17,7 @@ function Modal({ title, type, open, onClose, children }) {
 
   if (!open) return null;
 
+  // 모달 바깥 영역 클릭 시 모달 창 닫기
   const handleModalBackdropClick = (e) => {
     if (modalBackdropRef.current === e.target) {
       onClose();
