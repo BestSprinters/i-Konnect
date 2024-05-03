@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react';
 import getDonations from '../apis/donations/getDonationsApi';
 import imgCredit from '../assets/imgs/img_credit.svg';
 import displayTime from '../utils/displayTime';
+import ProgressBar from './ProgressBar';
 
 function SponsorCard() {
   const [donationsData, setDonationsData] = useState([]);
@@ -24,9 +25,12 @@ function SponsorCard() {
           key={donation.id}
         >
           <div>
-            <div className="h-[293px] overflow-hidden bg-cover bg-center">
-              <img src={donation.idol.profilePicture} alt="아이돌 이미지" />
-            </div>
+            <div
+              className="h-[293px] w-[283px] overflow-hidden bg-cover bg-center"
+              style={{
+                backgroundImage: `url('${donation.idol.profilePicture}')`,
+              }}
+            />
             <div className="relative flex justify-center">
               <button
                 type="button"
@@ -50,7 +54,12 @@ function SponsorCard() {
                 {displayTime(donation.createdAt, donation.deadline)}
               </p>
             </div>
-            <div>남은 크레딧 양 선</div>
+            <div>
+              <ProgressBar
+                targetCredit={donation.targetDonation}
+                currentCredit={donation.receivedDonations}
+              />
+            </div>
           </div>
         </div>
       ))}
