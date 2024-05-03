@@ -45,3 +45,10 @@
 body {
   background-color: #000;
 }
+
+/* Swiper Style */
+
+/* Swiper bullet 제거 */
+.swiper .swiper-pagination-bullet {
+  display: none;
+}
