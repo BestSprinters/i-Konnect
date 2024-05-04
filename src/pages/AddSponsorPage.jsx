@@ -22,7 +22,6 @@ function AddSponsorPage() {
   const getIdolsData = async () => {
     const result = await getIdols();
     const idolsList = result.list;
-    console.log(idolsList);
     setIdolsData(idolsList);
   };
   useEffect(() => {
@@ -99,11 +98,14 @@ function AddSponsorPage() {
               id="credit"
               value={value}
               min={min}
-              step="1"
+              step="10"
               max={max}
               className="m-0 h-1 w-full appearance-none rounded-full bg-gradient-to-r from-white via-pointOrange to-pointPink p-0 shadow-none outline-none [&::-webkit-slider-thumb]:h-5 [&::-webkit-slider-thumb]:w-5 [&::-webkit-slider-thumb]:cursor-grab [&::-webkit-slider-thumb]:appearance-none [&::-webkit-slider-thumb]:rounded-full [&::-webkit-slider-thumb]:bg-pointOrange"
             />
-            <output className="pointer-events-none relative ml-1 w-6 text-center text-sm font-medium text-white">
+            <output
+              htmlFor="credit"
+              className="pointer-events-none relative ml-1 w-6 text-center text-sm font-medium text-white"
+            >
               {value}
             </output>
           </div>
