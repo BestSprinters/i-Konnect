@@ -1,4 +1,4 @@
-import imgCredit from '../assets/imgs/img_credit.svg';
+import imgCredit from '../assets/imgs/ic_credit.svg';
 import displayTime from '../utils/displayTime';
 import ProgressBar from './ProgressBar';
 
