@@ -1,5 +1,3 @@
-import { Link } from 'react-router-dom';
-
 import MainLogo from '../assets/imgs/img_logo.png';
 import ItzyBackground from '../assets/imgs/itzy.png';
 import LandingPreviewImage from '../assets/imgs/landingPreviewImage.svg';
@@ -7,7 +5,7 @@ import LucyBackground from '../assets/imgs/lucy.png';
 import NewJeansBackground from '../assets/imgs/newjeans.png';
 import UkissBackground from '../assets/imgs/ukiss.png';
 import LandingSection from '../components/LandingSection';
-import Button from '../components/buttons/Button';
+import LinkButton from '../components/LinkButton';
 
 function LandingPage() {
   return (
@@ -33,10 +31,9 @@ function LandingPage() {
             className="absolute top-1/2 -z-50 h-[80%] -translate-y-1/2 rounded-md object-cover opacity-70"
           />
           <div className="absolute bottom-[100px] md:bottom-[120px]">
-            {/* Todo : 다른 분들은 Link + Button 어떻게 쓰시는 지 궁금합니다. */}
-            <Link to="/list">
-              <Button type="largeSquare">지금 시작하기</Button>
-            </Link>
+            <LinkButton to="/list" type="largeSquare">
+              지금 시작하기
+            </LinkButton>
           </div>
         </section>
         {/* previewImage 수정 필요 */}
