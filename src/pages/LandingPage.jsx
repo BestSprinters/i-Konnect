@@ -6,6 +6,7 @@ import NewJeansBackground from '../assets/imgs/newjeans.png';
 import UkissBackground from '../assets/imgs/ukiss.png';
 import LandingSection from '../components/LandingSection';
 import LinkButton from '../components/LinkButton';
+import PAGES from '../constants/paths';
 
 function LandingPage() {
   return (
@@ -31,7 +32,7 @@ function LandingPage() {
             className="absolute top-1/2 -z-50 h-[80%] -translate-y-1/2 rounded-md object-cover opacity-70"
           />
           <div className="absolute bottom-[100px] md:bottom-[120px]">
-            <LinkButton to="/list" type="largeSquare">
+            <LinkButton to={PAGES.list.link} type="largeSquare">
               지금 시작하기
             </LinkButton>
           </div>
