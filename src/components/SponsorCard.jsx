@@ -11,11 +11,13 @@ function SponsorCard({ donation }) {
       >
         <div>
           <div
-            className="h-[293px] w-[283px] overflow-hidden bg-cover bg-center"
+            className="relative h-[293px] w-[283px] overflow-hidden rounded-xl bg-cover bg-center"
             style={{
               backgroundImage: `url('${donation.idol.profilePicture}')`,
             }}
-          />
+          >
+            <div className="absolute inset-0 bg-gradient-to-b from-transparent to-black" />
+          </div>
           <div className="relative flex justify-center">
             <button
               type="button"
