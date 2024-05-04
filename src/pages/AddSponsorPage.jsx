@@ -1,9 +1,15 @@
+/* eslint-disable import/extensions */
+
+/* eslint-disable import/no-unresolved */
+
 /* eslint-disable jsx-a11y/label-has-associated-control */
 import React, { useEffect, useState } from 'react';
 
 import getIdols from '../apis/idols/getIdolsApi';
 import IdolAvatar from '../components/IdolAvatar';
 import Button from '../components/buttons/Button';
+
+// import axiosInstance from '../apis/axiosInstance';
 
 function AddSponsorPage() {
   const [idosData, setIdolsData] = useState([]);
@@ -19,6 +25,7 @@ function AddSponsorPage() {
     setMax(e.target.max || 1000000);
   };
 
+  // get: 리스트 보여주기
   const getIdolsData = async () => {
     const result = await getIdols();
     const idolsList = result.list;
@@ -27,6 +34,15 @@ function AddSponsorPage() {
   useEffect(() => {
     getIdolsData();
   }, []);
+
+  // // post: 데이터 추가하기
+  // const addData = async () => {
+  //   try {
+  //     const response = await axiosInstance.post(`/donations`, data)
+  //   } catch(error) {
+  //     console.log('데이터 추가하는 데 에러가 발생했습니다', error)
+  //   }
+  // }
 
   return (
     <div className="container mx-auto mt-[80px] flex w-full max-w-[1200px] items-center justify-center">
@@ -118,6 +134,7 @@ function AddSponsorPage() {
           >
             취소
           </button>
+
           <Button type="smallSquare">등록</Button>
         </div>
       </form>
