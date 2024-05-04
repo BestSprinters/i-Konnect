@@ -1,9 +1,13 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
+import getIdols from '../apis/idols/getIdolsApi';
+import IdolAvatar from '../components/IdolAvatar';
 import Button from '../components/buttons/Button';
 
 function AddSponsorPage() {
+  const [idosData, setIdolsData] = useState([]);
+
   const [value, setValue] = useState(0);
   const [min, setMin] = useState(0);
   const [max, setMax] = useState(1000);
@@ -15,35 +19,24 @@ function AddSponsorPage() {
     setMax(e.target.max || 1000000);
   };
 
+  const getIdolsData = async () => {
+    const result = await getIdols();
+    const idolsList = result.list;
+    console.log(idolsList);
+    setIdolsData(idolsList);
+  };
+  useEffect(() => {
+    getIdolsData();
+  }, []);
+
   return (
     <div className="container mx-auto mt-[80px] flex w-full max-w-[1200px] items-center justify-center">
       <form className="mx-8 w-full">
-        <label
-          htmlFor="idol-photo"
-          className="block text-sm font-medium leading-6 text-whitePrimary"
-        >
-          아이돌 이미지
-        </label>
-        <div className="mt-2 flex h-[300px] w-[300px] items-center justify-center rounded-lg border border-dashed border-whitePrimary/25 px-5 py-10">
-          <div className="text-center">
-            <div className="mt-4 flex-row text-sm leading-6 text-gray-600">
-              <label
-                htmlFor="file-upload"
-                className="relative cursor-pointer rounded-md bg-white p-2 font-semibold"
-              >
-                <span className="text-blackPrimary">파일 업로드</span>
-                <input
-                  id="file-upload"
-                  name="file-upload"
-                  type="file"
-                  className="sr-only"
-                />
-              </label>
-              <p className="m-4">파일을 끌어다 놓으세요</p>
-            </div>
-          </div>
+        <div className="flex gap-4">
+          {idosData.map((idol) => (
+            <IdolAvatar src={idol.profilePicture} size="medium" />
+          ))}
         </div>
-
         <div className="col-span-full my-8">
           <label
             htmlFor="title"
