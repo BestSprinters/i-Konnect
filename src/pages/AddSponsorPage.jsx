@@ -4,10 +4,14 @@
 
 /* eslint-disable jsx-a11y/label-has-associated-control */
 import React, { useEffect, useState } from 'react';
+import 'swiper/css';
+import 'swiper/css/pagination';
+import { Pagination } from 'swiper/modules';
+import { Swiper, SwiperSlide } from 'swiper/react';
 
 import getIdols from '../apis/idols/getIdolsApi';
+import Button from '../components/Button';
 import IdolAvatar from '../components/IdolAvatar';
-import Button from '../components/buttons/Button';
 
 // import axiosInstance from '../apis/axiosInstance';
 
@@ -48,6 +52,39 @@ function AddSponsorPage() {
     <div className="container mx-auto mt-[80px] flex w-full max-w-[1200px] items-center justify-center">
       <form className="mx-8 w-full">
         <div className="flex gap-4">
+          <Swiper
+            slidesPerView={1}
+            spaceBetween={10}
+            pagination={{
+              clickable: true,
+            }}
+            breakpoints={{
+              640: {
+                slidesPerView: 2,
+                spaceBetween: 20,
+              },
+              768: {
+                slidesPerView: 4,
+                spaceBetween: 40,
+              },
+              1024: {
+                slidesPerView: 5,
+                spaceBetween: 50,
+              },
+            }}
+            modules={[Pagination]}
+            className="mySwiper"
+          >
+            <SwiperSlide>Slide 1</SwiperSlide>
+            <SwiperSlide>Slide 2</SwiperSlide>
+            <SwiperSlide>Slide 3</SwiperSlide>
+            <SwiperSlide>Slide 4</SwiperSlide>
+            <SwiperSlide>Slide 5</SwiperSlide>
+            <SwiperSlide>Slide 6</SwiperSlide>
+            <SwiperSlide>Slide 7</SwiperSlide>
+            <SwiperSlide>Slide 8</SwiperSlide>
+            <SwiperSlide>Slide 9</SwiperSlide>
+          </Swiper>
           {idosData.map((idol) => (
             <IdolAvatar src={idol.profilePicture} size="medium" />
           ))}
