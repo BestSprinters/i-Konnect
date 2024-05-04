@@ -3,7 +3,9 @@ const createQueryParams = (params) => {
   const entParams = Object.entries(params);
 
   entParams.forEach(([key, value]) => {
-    if (value) {
+    if (Array.isArray(value)) {
+      value.forEach((item) => searchParams.append(key, item));
+    } else if (value) {
       searchParams.append(key, value);
     }
   });
