@@ -27,16 +27,17 @@ function Mypage() {
       const filteredIdolList = list.filter(
         (idol) => !changeIdolIds.includes(idol.id),
       );
-
-      setIdols(filteredIdolList);
+      const LimitdIdolList = filteredIdolList.slice(0, 16);
 
       // 관심있는 아이돌의 배열 길이만큼 pageSize에 추가
       setPageSizeChange(changeIdolIds.length);
+
+      setIdols(LimitdIdolList);
     };
 
     setFavoriteIdols(changeIdols);
     getIdolList();
-  }, [changeIdols, pageSizeChange]);
+  }, [pageSizeChange, changeIdols]);
   return (
     <div className="mx-auto mt-[80px] max-w-7xl">
       <FavoriteIdol idols={favoriteIdols} onChange={handleChangeFavorite} />
