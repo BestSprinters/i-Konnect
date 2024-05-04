@@ -1,19 +1,14 @@
-/* eslint-disable import/extensions */
+/* eslint-disable jsx-a11y/label-has-associated-control */
 
 /* eslint-disable import/no-unresolved */
-
-/* eslint-disable jsx-a11y/label-has-associated-control */
 import React, { useEffect, useState } from 'react';
 import 'swiper/css';
 import 'swiper/css/pagination';
-import { Pagination } from 'swiper/modules';
 import { Swiper, SwiperSlide } from 'swiper/react';
 
 import getIdols from '../apis/idols/getIdolsApi';
 import Button from '../components/Button';
 import IdolAvatar from '../components/IdolAvatar';
-
-// import axiosInstance from '../apis/axiosInstance';
 
 function AddSponsorPage() {
   const [idosData, setIdolsData] = useState([]);
@@ -39,55 +34,38 @@ function AddSponsorPage() {
     getIdolsData();
   }, []);
 
-  // // post: 데이터 추가하기
-  // const addData = async () => {
-  //   try {
-  //     const response = await axiosInstance.post(`/donations`, data)
-  //   } catch(error) {
-  //     console.log('데이터 추가하는 데 에러가 발생했습니다', error)
-  //   }
-  // }
-
   return (
     <div className="container mx-auto mt-[80px] flex w-full max-w-[1200px] items-center justify-center">
-      <form className="mx-8 w-full">
+      <form className="w-full px-8">
         <div className="flex gap-4">
           <Swiper
-            slidesPerView={1}
-            spaceBetween={10}
-            pagination={{
-              clickable: true,
-            }}
+            slidesPerView={8}
+            spaceBetween={1}
             breakpoints={{
-              640: {
-                slidesPerView: 2,
-                spaceBetween: 20,
+              375: {
+                slidesPerView: 4,
+                spaceBetween: 1,
               },
               768: {
-                slidesPerView: 4,
-                spaceBetween: 40,
+                slidesPerView: 6,
+                spaceBetween: 1,
               },
-              1024: {
-                slidesPerView: 5,
-                spaceBetween: 50,
+              1280: {
+                slidesPerView: 10,
+                spaceBetween: 1,
               },
             }}
-            modules={[Pagination]}
             className="mySwiper"
           >
-            <SwiperSlide>Slide 1</SwiperSlide>
-            <SwiperSlide>Slide 2</SwiperSlide>
-            <SwiperSlide>Slide 3</SwiperSlide>
-            <SwiperSlide>Slide 4</SwiperSlide>
-            <SwiperSlide>Slide 5</SwiperSlide>
-            <SwiperSlide>Slide 6</SwiperSlide>
-            <SwiperSlide>Slide 7</SwiperSlide>
-            <SwiperSlide>Slide 8</SwiperSlide>
-            <SwiperSlide>Slide 9</SwiperSlide>
+            {idosData.map((idol) => (
+              <SwiperSlide key={idol.id}>
+                <div className="flex flex-col items-center justify-center gap-2">
+                  <IdolAvatar src={idol.profilePicture} size="medium" />
+                  <p>{idol.name}</p>
+                </div>
+              </SwiperSlide>
+            ))}
           </Swiper>
-          {idosData.map((idol) => (
-            <IdolAvatar src={idol.profilePicture} size="medium" />
-          ))}
         </div>
         <div className="col-span-full my-8">
           <label
