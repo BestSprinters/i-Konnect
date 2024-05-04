@@ -1,3 +1,7 @@
+/* eslint-disable no-unused-vars */
+
+/* eslint-disable react-hooks/exhaustive-deps */
+
 /* eslint-disable jsx-a11y/label-has-associated-control */
 
 /* eslint-disable import/no-unresolved */
@@ -11,8 +15,15 @@ import Button from '../components/Button';
 import IdolAvatar from '../components/IdolAvatar';
 
 function AddSponsorPage() {
+  // 아이돌 get 요청
   const [idosData, setIdolsData] = useState([]);
 
+  // 아이돌 리스트 무한
+  const [cursor, setCursor] = useState(null);
+  const [loading, setLoading] = useState(false);
+  const [hasMoreData, setHasMoreData] = useState(true);
+
+  // 크레딧 프로그레스 바
   const [value, setValue] = useState(0);
   const [min, setMin] = useState(0);
   const [max, setMax] = useState(1000);
@@ -26,10 +37,14 @@ function AddSponsorPage() {
 
   // get: 리스트 보여주기
   const getIdolsData = async () => {
-    const result = await getIdols();
+    setLoading(true);
+
+    const result = await getIdols({ pageSize: 10000 });
     const idolsList = result.list;
-    setIdolsData(idolsList);
+    // 기존 아이돌 리스트 뒤에 연달아 나와야 함
+    setIdolsData((prevData) => [...prevData, ...idolsList]);
   };
+
   useEffect(() => {
     getIdolsData();
   }, []);
@@ -55,10 +70,10 @@ function AddSponsorPage() {
                 spaceBetween: 1,
               },
             }}
-            className="mySwiper"
+            className="mySwiper cursor-pointer"
           >
             {idosData.map((idol) => (
-              <SwiperSlide key={idol.id}>
+              <SwiperSlide>
                 <div className="flex flex-col items-center justify-center gap-2">
                   <IdolAvatar src={idol.profilePicture} size="medium" />
                   <p>{idol.name}</p>
