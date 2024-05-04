@@ -3,9 +3,9 @@ import React, { useEffect, useState } from 'react';
 import getCharts from '../apis/charts/getChartApi';
 import chartIcon from '../assets/imgs/ic_chart.svg';
 import useMediaQuery from '../hooks/useMediaQuery';
+import Button from './Button';
 import ChartRank from './ChartRank';
 import ChoiceGender from './ChoiceGender';
-import Button from './buttons/Button';
 
 function Chart() {
   const matches = useMediaQuery('(min-width: 1280px)');
@@ -26,10 +26,6 @@ function Chart() {
     loadChartList();
   }, [chartOption]);
 
-  useEffect(() => {
-    console.log(chartList);
-  });
-
   const handleClickMoreLook = () => {
     setChartOption((Options) => ({
       ...Options,
@@ -44,8 +40,6 @@ function Chart() {
       gender,
     }));
   };
-
-  console.log(hasMore);
 
   return (
     <div className="flex-col">
