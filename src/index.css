@@ -45,3 +45,17 @@
 body {
   background-color: #000;
 }
+
+/* input[type='radio'] {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+} */
+
+body {
+  -ms-overflow-style: none;
+}
+::-webkit-scrollbar {
+  display: none;
+}
+/* 스크롤바 없애는 거 */
