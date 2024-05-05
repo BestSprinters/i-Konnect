@@ -25,6 +25,11 @@ export default {
       fontFamily: {
         sans: ['Pretendard'],
       },
+      screens: {
+        sm: { min: "375px", max: "767px" },
+        md: { min: "768px", max: "1279px" },
+        lg: { min: "1280px" },
+      },
     },
   },
   plugins: [],
