@@ -1,6 +1,6 @@
 import creditImage from '../assets/imgs/img_credit.svg';
+import Button from './Button';
 import Modal from './Modal';
-import Button from './buttons/Button';
 
 function NoCreditModal({ open, onClose }) {
   return (
