@@ -43,11 +43,13 @@ function VoteModal() {
     };
     loadChartList();
   }, [voteOption]);
+
   const voteMobileSize = isFullModal ? '100vh' : '522px';
   const voteMobileFixed = isFullModal
     ? 'fixed w-full bottom-0  h-28 py-4 px-5 bg-blackPrimary/80'
     : 'w-full';
-  const voteMobileCreditTag = isFullModal ? 'bg-blackPrimary pb-4' : '';
+  const voteMobileCreditTag = isFullModal ? 'bg-blackPrimary pb-6' : '';
+
   return (
     <Modal
       open={isModalOpen}
@@ -94,9 +96,7 @@ function VoteModal() {
         <Button type="fullSquare" onClick={handleVoteIdol}>
           투표하기
         </Button>
-        <p
-          className={`${voteMobileCreditTag} mt-3 text-center text-xs leading-6`}
-        >
+        <p className={`${voteMobileCreditTag} mt-4 text-center text-xs`}>
           투표하는 데&nbsp;<span className="text-pointOrange">1000 크레딧</span>
           이 소모됩니다.
         </p>
