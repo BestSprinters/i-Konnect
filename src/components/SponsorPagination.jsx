@@ -1,7 +1,5 @@
 // swiper eslint 충돌
 
-/* eslint-disable react-hooks/exhaustive-deps */
-
 /* eslint-disable import/no-unresolved */
 import { useEffect, useRef, useState } from 'react';
 import 'swiper/css';
@@ -26,22 +24,36 @@ function SponsorPagination() {
     pageSize: 10,
   };
 
-  const getDonationData = async () => {
-    const result = await getDonations(fetchOption);
-    setDonationData(result.list);
-    setNextCursor(result.nextCursor);
-  };
-
+  // 초기 데이터 로딩
   useEffect(() => {
-    getDonationData();
+    const fetchInitialData = async () => {
+      const initialFetchOption = {
+        cursor: '',
+        pageSize: 10,
+      };
+      try {
+        const result = await getDonations(initialFetchOption);
+        setDonationData(result.list);
+        setNextCursor(result.nextCursor);
+      } catch (error) {
+        console.error('데이터를 불러오지 못했습니다.', error);
+      }
+    };
+
+    fetchInitialData();
   }, []);
 
+  // 추가 데이터 로딩
   const handleReachEnd = async () => {
     if (nextCursor) {
-      fetchOption.cursor = nextCursor;
-      const result = await getDonations(fetchOption);
-      setDonationData((prev) => [...prev, ...result.list]);
-      setNextCursor(result.nextCursor);
+      try {
+        const newFetchOption = { ...fetchOption, cursor: nextCursor };
+        const result = await getDonations(newFetchOption);
+        setDonationData((prevData) => [...prevData, ...result.list]);
+        setNextCursor(result.nextCursor);
+      } catch (error) {
+        console.error('추가 데이터를 불러오지 못했습니다.', error);
+      }
     }
   };
 
