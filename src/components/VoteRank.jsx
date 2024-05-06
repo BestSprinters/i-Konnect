@@ -41,12 +41,10 @@ function VoteRank({
           {formattedTotalVotes}표
         </p>
       </div>
-      <button type="button">
-        <img
-          src={selectedIdol === id ? radioChecked : radioUnChecked}
-          alt={selectedIdol === id ? 'checked' : 'unchecked'}
-        />
-      </button>
+      <img
+        src={selectedIdol === id ? radioChecked : radioUnChecked}
+        alt={selectedIdol === id ? 'checked' : 'unchecked'}
+      />
     </button>
   );
 }
