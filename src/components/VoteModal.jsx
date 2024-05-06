@@ -6,20 +6,23 @@ import Button from './Button';
 import Modal from './Modal';
 import VoteRank from './VoteRank';
 
-// 처음 뜨면 6명 보이고, 모바일이면 7명 보여야됨 css도 좀 다름
-// pc, tab일땐, 마우스 스크롤 모바일 일땐, 터치 스크롤
+// voteModal에 gender="female" 이나 "male" 전달해줘야함
 function VoteModal() {
   const [voteList, setVoteList] = useState([]);
   const [selectedIdol, setSelectedIdol] = useState();
   const [isModalOpen, setIsModalOpen] = useState(true);
   const [voteOption] = useState({
-    gender: 'female',
+    // gender: `${gender}`,
     cursor: '',
     pageSize: 24,
   });
 
   const handleSelectedIdol = (id) => {
-    setSelectedIdol(id);
+    if (selectedIdol === id) {
+      setSelectedIdol('');
+    } else {
+      setSelectedIdol(id);
+    }
   };
 
   const handleCloseModal = () => setIsModalOpen(false);
@@ -27,7 +30,7 @@ function VoteModal() {
   const handleVoteIdol = () => {
     postVotes(selectedIdol);
     setSelectedIdol('');
-    // handleCloseModal();
+    handleCloseModal();
   };
 
   useEffect(() => {
@@ -38,13 +41,12 @@ function VoteModal() {
     loadChartList();
   }, [voteOption]);
 
-  // 투표하기 누르면
   return (
     <Modal
-      title="이달의 여자 아이돌"
       open={isModalOpen}
       onClose={handleCloseModal}
       type="wide"
+      title="이달의 아이돌"
     >
       <div className="mb-5 w-full overflow-y-auto" style={{ height: '514px' }}>
         {voteList.map((chart, index) => (
@@ -53,9 +55,10 @@ function VoteModal() {
             name={chart.name}
             group={chart.group}
             totalVotes={chart.totalVotes}
-            key={crypto.randomUUID()}
-            rank={index + 1}
             id={chart.id}
+            key={crypto.randomUUID}
+            rank={index + 1}
+            selectedIdol={selectedIdol}
             handleSelectedIdol={handleSelectedIdol}
           />
         ))}
@@ -63,6 +66,7 @@ function VoteModal() {
       <Button type="fullSquare" onClick={handleVoteIdol}>
         투표하기
       </Button>
+
       <p className="mt-3 flex text-xs leading-6">
         투표하는 데&nbsp;<span className="text-pointOrange">1000 크레딧</span>이
         소모됩니다.

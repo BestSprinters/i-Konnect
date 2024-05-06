@@ -1,8 +1,6 @@
-import { useState } from 'react';
-
-import checkedIcon from '../assets/imgs/ic_check_small.svg';
 import radioChecked from '../assets/imgs/ic_radio_checked.svg';
 import radioUnChecked from '../assets/imgs/ic_radio_unchecked.svg';
+import CheckedIdolAvatar from './CheckedIdolAvatar';
 import IdolAvatar from './IdolAvatar';
 
 function VoteRank({
@@ -12,43 +10,44 @@ function VoteRank({
   totalVotes,
   rank,
   id,
+  selectedIdol,
   handleSelectedIdol,
 }) {
-  const [checked, setChecked] = useState(false);
-
   const formattedTotalVotes = new Intl.NumberFormat().format(totalVotes);
 
   const toggleCheck = () => {
-    setChecked(!checked);
     handleSelectedIdol(id);
-    console.log(checked);
   };
-  // 하.. handle있으면 두번클릭해야 체크가 되는데 어카냐..
+
   return (
-    <div className="h-17 flex w-full items-center gap-2 border-b border-white/10 py-2">
+    <button
+      type="button"
+      onClick={toggleCheck}
+      className="h-17 flex w-full  items-center  gap-2 border-b border-white/10 py-2"
+    >
       <div className="relative flex items-center gap-3">
-        <IdolAvatar size="small" src={src} alt={name} />
-        <p className="w-4 text-sm font-medium text-pointOrange">{rank}</p>
-        {checked && (
-          <img alt="checked" src={checkedIcon} className="absolute left-6" />
+        {selectedIdol === id ? (
+          <CheckedIdolAvatar size="small" src={src} alt={name} />
+        ) : (
+          <IdolAvatar size="small" src={src} alt={name} />
         )}
+        <p className="w-4 text-sm font-medium text-pointOrange">{rank}</p>
       </div>
-      <div className="1 grow flex-col">
-        <p className="text-sm font-medium">
+      <div className="grow flex-col pl-8 text-start">
+        <p className=" text-sm font-medium">
           {group} {name}
         </p>
         <p className="text-sm font-medium text-white/60">
           {formattedTotalVotes}표
         </p>
       </div>
-      <button type="button" onClick={() => toggleCheck()} key={id}>
+      <button type="button">
         <img
-          src={checked ? radioChecked : radioUnChecked}
-          alt={checked ? 'checked' : 'unchecked'}
-          className="cursor-pointer"
+          src={selectedIdol === id ? radioChecked : radioUnChecked}
+          alt={selectedIdol === id ? 'checked' : 'unchecked'}
         />
       </button>
-    </div>
+    </button>
   );
 }
 
