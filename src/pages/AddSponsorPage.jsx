@@ -13,6 +13,7 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import getIdols from '../apis/idols/getIdolsApi';
 import Button from '../components/Button';
 import IdolAvatar from '../components/IdolAvatar';
+import LinkButton from '../components/LinkButton';
 
 function AddSponsorPage() {
   // 아이돌 get 요청
@@ -36,13 +37,6 @@ function AddSponsorPage() {
     deadline: '',
   });
 
-  const onChangeInput = (e) => {
-    const val = e.target.value;
-    setOutput(val);
-    setMin(e.target.min || 0);
-    setMax(e.target.max || 1000000);
-  };
-
   // get: 리스트 보여주기
   const getIdolsData = async () => {
     setLoading(true);
@@ -59,6 +53,14 @@ function AddSponsorPage() {
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
+
+    if (name === 'targetDonation') {
+      const val = e.target.value;
+      setOutput(val);
+      setMin(e.target.min || 0);
+      setMax(e.target.max || 1000000);
+    }
+
     setDatas((prevDatas) => ({
       ...prevDatas,
       [name]: value,
@@ -96,8 +98,22 @@ function AddSponsorPage() {
           >
             {idosData.map((idol) => (
               <SwiperSlide>
-                <div className="flex flex-col items-center justify-center gap-2">
-                  <IdolAvatar src={idol.profilePicture} size="medium" />
+                <div
+                  className="flex flex-col items-center justify-center gap-2"
+                  key={idol.id}
+                >
+                  <IdolAvatar
+                    src={idol.profilePicture}
+                    size="medium"
+                    value={idol.id}
+                    onClick={() => {
+                      console.log(idol.id);
+                      setDatas((prevDatas) => ({
+                        ...prevDatas,
+                        idolId: idol.id,
+                      }));
+                    }}
+                  />
                   <p>{idol.name}</p>
                 </div>
               </SwiperSlide>
@@ -164,7 +180,7 @@ function AddSponsorPage() {
           </label>
           <div className="mt-2 flex w-full items-center justify-center">
             <input
-              onChange={onChangeInput}
+              onChange={handleInputChange}
               type="range"
               name="targetDonation"
               id="credit"
@@ -177,7 +193,6 @@ function AddSponsorPage() {
             <output
               htmlFor="credit"
               className="pointer-events-none relative ml-1 w-6 text-center text-sm font-medium text-white"
-              onChange={handleInputChange}
             >
               {output}
             </output>
@@ -185,12 +200,13 @@ function AddSponsorPage() {
         </div>
 
         <div className="mt-6 flex items-center justify-end gap-x-6">
-          <button
-            type="button"
+          <LinkButton
+            to="/list"
+            type="cancel"
             className="cursor-point border-whiteSecondary-500 flex items-center justify-center rounded-[3px] border bg-blackSecondary px-[16px] py-1.5 text-[13px] font-bold transition-all hover:bg-grayDark"
           >
             취소
-          </button>
+          </LinkButton>
 
           <Button type="smallSquare" onClick={handleSubmit}>
             등록
