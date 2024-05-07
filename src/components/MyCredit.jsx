@@ -8,7 +8,7 @@ function MyCredit() {
   };
 
   return (
-    <div className="mx-6 flex h-[87px] items-center justify-between rounded-lg border border-whiteGray p-[20px] md:h-[131px] md:px-16 md:py-9 xl:mx-[360px]">
+    <div className="mx-6 flex h-[87px] items-center justify-between rounded-lg border border-whiteGray p-[20px] md:h-[131px] md:px-16 md:py-9 xl:mx-auto xl:max-w-[1200px]">
       <div className="flex flex-col gap-y-2">
         <p className="text-xs text-white opacity-60 md:text-base">내 크레딧</p>
         <div className="flex items-center gap-x-1">
