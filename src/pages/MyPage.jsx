@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 
 import getIdols from '../apis/idols/getIdolsApi';
 import FavoriteIdol from '../components/FavoriteIdol';
+import MyPageCredit from '../components/MyPageCredit';
 import MyPageIdol from '../components/MyPageIdol';
 
 function Mypage() {
@@ -9,7 +10,7 @@ function Mypage() {
   const [favoriteIdols, setFavoriteIdols] = useState([]);
   // 이름 확인
   const [changeIdols, setChangeIdols] = useState(
-    JSON.parse(localStorage.getItem('Mypage_FavoriteIdol')) || [],
+    JSON.parse(localStorage.getItem('myPage_FavoriteIdol')) || [],
   );
   const [pageSizeChange, setPageSizeChange] = useState();
 
@@ -39,6 +40,7 @@ function Mypage() {
   }, [pageSizeChange, changeIdols]);
   return (
     <div className="mx-auto mt-[80px] max-w-7xl">
+      <MyPageCredit />
       <FavoriteIdol idols={favoriteIdols} onChange={handleChangeFavorite} />
       <MyPageIdol idols={idols} onChange={handleChangeFavorite} />
     </div>
