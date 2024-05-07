@@ -46,12 +46,6 @@ body {
   background-color: #000;
 }
 
-/* input[type='radio'] {
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  appearance: none;
-} */
-
 body {
   -ms-overflow-style: none;
 }

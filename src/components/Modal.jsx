@@ -1,6 +1,7 @@
 import { useEffect, useRef } from 'react';
 import { createPortal } from 'react-dom';
 
+import arrowLeftIcon from '../assets/imgs/ic_arrow_left.svg';
 import closeIcon from '../assets/imgs/ic_close.svg';
 
 function Modal({ title, type, open, onClose, isFullModal = false, children }) {
@@ -45,7 +46,26 @@ function Modal({ title, type, open, onClose, isFullModal = false, children }) {
           aria-hidden="true"
         >
           <div className={`${modalStyle} relative rounded-xl ${bgColor} p-5`}>
-            {isFullModal || (
+            {isFullModal ? (
+              <div>
+                <button
+                  type="button"
+                  className="absolute left-4 top-4 rounded-xl p-1 hover:bg-grayBlue/20 focus:bg-grayBlue/50"
+                  onClick={onClose}
+                >
+                  <img
+                    className="h-6 w-6"
+                    src={arrowLeftIcon}
+                    alt="닫기 아이콘"
+                  />
+                </button>
+                {title && (
+                  <h2 className="mb-5 text-center font-medium leading-6 text-whiteSecondary">
+                    {title}
+                  </h2>
+                )}
+              </div>
+            ) : (
               <div>
                 <button
                   type="button"

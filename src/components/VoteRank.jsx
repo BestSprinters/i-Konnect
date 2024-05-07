@@ -1,19 +1,12 @@
 import radioChecked from '../assets/imgs/ic_radio_checked.svg';
 import radioUnChecked from '../assets/imgs/ic_radio_unchecked.svg';
+import formattedNumber from '../utils/formattedNumber';
 import CheckedIdolAvatar from './CheckedIdolAvatar';
 import IdolAvatar from './IdolAvatar';
 
-function VoteRank({
-  src,
-  name,
-  group,
-  totalVotes,
-  rank,
-  id,
-  selectedIdol,
-  handleSelectedIdol,
-}) {
-  const formattedTotalVotes = new Intl.NumberFormat().format(totalVotes);
+function VoteRank({ selectedIdol, handleSelectedIdol, rank, chart }) {
+  const { profilePicture, name, group, totalVotes, id } = chart;
+  const formattedTotalVotes = formattedNumber(totalVotes);
 
   const toggleCheck = () => {
     handleSelectedIdol(id);
@@ -27,13 +20,13 @@ function VoteRank({
     >
       <div className="relative flex items-center gap-3">
         {selectedIdol === id ? (
-          <CheckedIdolAvatar size="small" src={src} alt={name} />
+          <CheckedIdolAvatar size="small" src={profilePicture} alt={name} />
         ) : (
-          <IdolAvatar size="small" src={src} alt={name} />
+          <IdolAvatar size="small" src={profilePicture} alt={name} />
         )}
         <p className="w-4 text-sm font-medium text-pointOrange">{rank}</p>
       </div>
-      <div className="grow flex-col pl-8 text-start">
+      <div className="grow flex-col pl-1 text-start">
         <p className=" text-sm font-medium">
           {group} {name}
         </p>
@@ -50,8 +43,3 @@ function VoteRank({
 }
 
 export default VoteRank;
-// <input
-// type="radio"
-// name="idol"
-// className="h-[14px] w-[14px] cursor-pointer rounded-full border-[3px] bg-grayBlue shadow-[0_0_0_1px_theme(colors.grayBlue)] checked:bg-pointOrange checked:shadow-[0_0_0_1px_theme(colors.pointOrange)]"
-// />
