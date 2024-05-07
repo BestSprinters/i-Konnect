@@ -1,4 +1,4 @@
-import creditImage from '../assets/imgs/img_credit.svg';
+import creditImage from '../assets/imgs/ic_credit.svg';
 import Button from './Button';
 import Modal from './Modal';
 
