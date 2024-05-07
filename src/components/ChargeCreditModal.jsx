@@ -1,4 +1,3 @@
-// TODO: keyDown 이벤트 추가하기 (엔터 누르면 옵션 선택)
 import { useState } from 'react';
 
 import creditIcon from '../assets/imgs/ic_credit.svg';
@@ -19,14 +18,18 @@ function ChargeCreditModal({ open, onClose }) {
     localStorage.setItem('myCredit', existingCredit + chargeAmount);
   };
 
-  const handleChargeButtonClick = () => {
-    chargeCredit();
+  const handleModalClosed = () => {
     setChargeAmount(0);
     onClose();
   };
 
+  const handleChargeButtonClick = () => {
+    chargeCredit();
+    handleModalClosed();
+  };
+
   return (
-    <Modal title="크레딧 충전하기" open={open} onClose={onClose}>
+    <Modal title="크레딧 충전하기" open={open} onClose={handleModalClosed}>
       <div className="mb-6 flex w-full flex-col gap-2">
         {chargeAmountList.map((amount) => (
           <CreditOption
