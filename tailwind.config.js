@@ -16,6 +16,7 @@ export default {
 
         whitePrimary: '#FFF',
         whiteSecondary: '#F7F7F8',
+        whiteGray: '#F1EEF9CC',
 
         pointOrange: '#F96D69',
         pointPink: '#FE5493',
