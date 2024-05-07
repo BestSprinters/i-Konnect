@@ -2,7 +2,7 @@ import axiosInstance from '../axiosInstance';
 
 const postVotes = async (id) => {
   try {
-    await axiosInstance.post(`/Votes`, {
+    await axiosInstance.post(`/votes`, {
       idolId: `${id}`,
     });
   } catch (error) {
