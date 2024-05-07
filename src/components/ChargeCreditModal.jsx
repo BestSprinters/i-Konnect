@@ -1,4 +1,3 @@
-/* eslint-disable jsx-a11y/click-events-have-key-events */
 // TODO: keyDown 이벤트 추가하기 (엔터 누르면 옵션 선택)
 import { useState } from 'react';
 
@@ -51,9 +50,16 @@ function CreditOption({ isSelected, amount, onSelect }) {
     onSelect();
   };
 
+  const handleKeyDown = (event) => {
+    if (event.key === 'Enter') {
+      onSelect();
+    }
+  };
+
   return (
     <div
       onClick={handleClick}
+      onKeyDown={handleKeyDown}
       className={`${isSelected ? 'border-pointOrange' : 'border-whiteSecondary'} flex w-full cursor-pointer items-center justify-center rounded-lg border px-5 py-4`}
       role="button"
       tabIndex={0}
