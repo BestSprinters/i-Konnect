@@ -1,10 +1,9 @@
-import VoteModal from '../components/VoteModal';
+import Chart from '../components/Chart';
 
 function ListPage() {
   return (
     <div>
-      ListPage 입니다
-      <VoteModal />
+      <Chart />
     </div>
   );
 }

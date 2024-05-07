@@ -3,7 +3,6 @@ import { useEffect, useState } from 'react';
 import getCharts from '../apis/charts/getChartApi';
 import postVotes from '../apis/votes/postVotes';
 import useMediaQuery from '../hooks/useMediaQuery';
-import useToggle from '../hooks/useToggle';
 import Button from './Button';
 import Modal from './Modal';
 import VoteList from './VoteList';
@@ -18,19 +17,29 @@ const getVoteResponsibleStyle = (isFullModal) => {
   return { voteMobileCreditTag, voteMobileFixed, voteMobileSize };
 };
 
-// useToggle에 true넣으시면 처음부터 모달창이 뜨게됩니다.
-function VoteModal({ gender = 'female' }) {
-  const { toggle, handleToggle } = useToggle(true);
+const initialVoteOption = {
+  gender: 'female',
+  cursor: '',
+  pageSize: 24,
+};
+
+function VoteModal({
+  gender = 'female',
+  toggle,
+  handleToggle,
+  setCreditAmount,
+  creditAmount,
+}) {
   const [voteList, setVoteList] = useState([]);
   const [selectedIdol, setSelectedIdol] = useState();
   const isFullModal = useMediaQuery('(max-width: 767px)');
   const voteTitle =
     gender === 'female' ? '이달의 여자 아이돌' : '이달의 남자 아이돌';
-  const [voteOption] = useState({
-    gender: `${gender}`,
-    cursor: '',
-    pageSize: 24,
-  });
+  const [voteOption, setVoteOption] = useState(initialVoteOption);
+
+  useEffect(() => {
+    setVoteOption((prev) => ({ ...prev, gender }));
+  }, [gender]);
 
   const handleSelectedIdol = (id) => {
     if (selectedIdol === id) {
@@ -41,11 +50,16 @@ function VoteModal({ gender = 'female' }) {
   };
 
   const handleVoteIdol = () => {
-    postVotes(selectedIdol);
-    setSelectedIdol('');
     handleToggle();
+    if (creditAmount < 1000) {
+      setSelectedIdol('');
+    } else {
+      postVotes(selectedIdol);
+      setCreditAmount(creditAmount - 1000);
+      setSelectedIdol('');
+    }
   };
-
+  // 표를 바로 반영해야함? 어떻게 id값과 표값을 상태로 저장하고 하는게 나음
   useEffect(() => {
     const loadChartList = async () => {
       const result = await getCharts(voteOption);
