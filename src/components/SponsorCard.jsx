@@ -32,7 +32,7 @@ function SponsorCard({ donation }) {
             강남역 광고
           </p>
           <h3 className="text-[18px] sm:text-[14px]">{donation.title}</h3>
-          <div className="flex justify-between">
+          <div className="flex items-center justify-between">
             <div className="flex items-center text-[12px] text-pointOrange">
               <img src={imgCredit} alt="" />
               {donation.receivedDonations}
