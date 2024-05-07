@@ -18,9 +18,9 @@ const getVoteResponsibleStyle = (isFullModal) => {
   return { voteMobileCreditTag, voteMobileFixed, voteMobileSize };
 };
 
-// toggle false로 만들어라 pr하기전에
+// useToggle에 true넣으시면 처음부터 모달창이 뜨게됩니다.
 function VoteModal({ gender = 'female' }) {
-  const { toggle, handleToggle } = useToggle(true);
+  const { toggle, handleToggle } = useToggle();
   const [voteList, setVoteList] = useState([]);
   const [selectedIdol, setSelectedIdol] = useState();
   const isFullModal = useMediaQuery('(max-width: 767px)');
