@@ -18,6 +18,12 @@ const getVoteResponsibleStyle = (isFullModal) => {
   return { voteMobileCreditTag, voteMobileFixed, voteMobileSize };
 };
 
+const initialVoteOption = {
+  gender: 'female',
+  cursor: '',
+  pageSize: 24,
+};
+
 // useToggle에 true넣으시면 처음부터 모달창이 뜨게됩니다.
 function VoteModal({ gender = 'female' }) {
   const { toggle, handleToggle } = useToggle(true);
@@ -26,11 +32,6 @@ function VoteModal({ gender = 'female' }) {
   const isFullModal = useMediaQuery('(max-width: 767px)');
   const voteTitle =
     gender === 'female' ? '이달의 여자 아이돌' : '이달의 남자 아이돌';
-  const [voteOption] = useState({
-    gender: `${gender}`,
-    cursor: '',
-    pageSize: 24,
-  });
 
   const handleSelectedIdol = (id) => {
     if (selectedIdol === id) {
@@ -48,11 +49,11 @@ function VoteModal({ gender = 'female' }) {
 
   useEffect(() => {
     const loadChartList = async () => {
-      const result = await getCharts(voteOption);
+      const result = await getCharts(initialVoteOption);
       setVoteList(result.idols);
     };
     loadChartList();
-  }, [voteOption]);
+  }, []);
 
   const { voteMobileCreditTag, voteMobileFixed, voteMobileSize } =
     getVoteResponsibleStyle(isFullModal);
@@ -66,7 +67,7 @@ function VoteModal({ gender = 'female' }) {
       isFullModal={isFullModal}
     >
       <div
-        className="h- mb-5 w-full overflow-y-auto"
+        className="mb-5 w-full overflow-y-auto"
         style={{ height: `${voteMobileSize}` }}
       >
         <VoteList
