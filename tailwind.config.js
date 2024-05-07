@@ -26,9 +26,9 @@ export default {
         sans: ['Pretendard'],
       },
       screens: {
-        sm: { min: "375px", max: "767px" },
-        md: { min: "768px", max: "1279px" },
-        lg: { min: "1280px" },
+        mobile: { min: "375px", max: "767px" },
+        tablet: { min: "768px", max: "1279px" },
+        desktop: { min: "1280px" },
       },
     },
   },
