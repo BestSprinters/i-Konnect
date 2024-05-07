@@ -20,7 +20,7 @@ const getVoteResponsibleStyle = (isFullModal) => {
 
 // useToggle에 true넣으시면 처음부터 모달창이 뜨게됩니다.
 function VoteModal({ gender = 'female' }) {
-  const { toggle, handleToggle } = useToggle();
+  const { toggle, handleToggle } = useToggle(true);
   const [voteList, setVoteList] = useState([]);
   const [selectedIdol, setSelectedIdol] = useState();
   const isFullModal = useMediaQuery('(max-width: 767px)');
