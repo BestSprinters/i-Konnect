@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 
 import getCharts from '../apis/charts/getChartApi';
-import postVotes from '../apis/votes/postVotes';
+import postVotes from '../apis/votes/postVotesApi';
 import useMediaQuery from '../hooks/useMediaQuery';
 import Button from './Button';
 import Modal from './Modal';
@@ -59,7 +59,7 @@ function VoteModal({
       setSelectedIdol('');
     }
   };
-  // 표를 바로 반영해야함? 어떻게 id값과 표값을 상태로 저장하고 하는게 나음
+
   useEffect(() => {
     const loadChartList = async () => {
       const result = await getCharts(voteOption);
