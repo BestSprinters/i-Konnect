@@ -45,3 +45,11 @@
 body {
   background-color: #000;
 }
+
+body {
+  -ms-overflow-style: none;
+}
+::-webkit-scrollbar {
+  display: none;
+}
+/* 스크롤바 없애는 거 */
