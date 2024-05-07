@@ -24,13 +24,21 @@ function AddSponsorPage() {
   const [hasMoreData, setHasMoreData] = useState(true);
 
   // 크레딧 프로그레스 바
-  const [value, setValue] = useState(0);
+  const [output, setOutput] = useState(0);
   const [min, setMin] = useState(0);
   const [max, setMax] = useState(1000);
 
+  // 폼 데이터
+  const [datas, setDatas] = useState({
+    idolId: '',
+    title: '',
+    targetDonation: 0,
+    deadline: '',
+  });
+
   const onChangeInput = (e) => {
     const val = e.target.value;
-    setValue(val);
+    setOutput(val);
     setMin(e.target.min || 0);
     setMax(e.target.max || 1000000);
   };
@@ -49,9 +57,23 @@ function AddSponsorPage() {
     getIdolsData();
   }, []);
 
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setDatas((prevDatas) => ({
+      ...prevDatas,
+      [name]: value,
+    }));
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    console.log(datas);
+  };
+
   return (
     <div className="container mx-auto mt-[80px] flex w-full max-w-[1200px] items-center justify-center">
-      <form className="w-full px-8">
+      <form className="w-full px-8" onSubmit={handleSubmit}>
         <div className="flex gap-4">
           <Swiper
             slidesPerView={8}
@@ -96,6 +118,7 @@ function AddSponsorPage() {
               type="title"
               autoComplete="title"
               className="font-regular block w-full rounded-md border-0 py-1.5 pl-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:outline-none sm:text-sm sm:leading-6"
+              onChange={handleInputChange}
             />
           </div>
         </div>
@@ -113,6 +136,7 @@ function AddSponsorPage() {
               name="content"
               rows={3}
               className="font-regular block w-full rounded-md border-0 py-1.5 pl-2 text-black shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:outline-none sm:text-sm sm:leading-6"
+              onChange={handleInputChange}
             />
           </div>
         </div>
@@ -126,8 +150,10 @@ function AddSponsorPage() {
           </label>
           <div className="mt-2">
             <input
+              name="deadline"
               type="date"
               className="font-regular rounded-md px-2 py-1.5 pl-2 text-sm text-black focus:outline-none"
+              onChange={handleInputChange}
             />
           </div>
         </div>
@@ -140,9 +166,9 @@ function AddSponsorPage() {
             <input
               onChange={onChangeInput}
               type="range"
-              name="credit"
+              name="targetDonation"
               id="credit"
-              value={value}
+              value={output}
               min={min}
               step="100"
               max={max}
@@ -151,8 +177,9 @@ function AddSponsorPage() {
             <output
               htmlFor="credit"
               className="pointer-events-none relative ml-1 w-6 text-center text-sm font-medium text-white"
+              onChange={handleInputChange}
             >
-              {value}
+              {output}
             </output>
           </div>
         </div>
@@ -165,7 +192,9 @@ function AddSponsorPage() {
             취소
           </button>
 
-          <Button type="smallSquare">등록</Button>
+          <Button type="smallSquare" onClick={handleSubmit}>
+            등록
+          </Button>
         </div>
       </form>
     </div>
