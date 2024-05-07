@@ -19,7 +19,7 @@ function Mypage() {
 
   useEffect(() => {
     const getIdolList = async () => {
-      const { list } = await getIdols({ pageSize: 16 + pageSizeChange });
+      const { list } = await getIdols({ pageSize: 10000 });
 
       // 로컬 스토리지의 있는 아이돌들의 id만 추출해서 배열로 만듦
       const changeIdolIds = changeIdols.map((idol) => idol.id);
@@ -27,12 +27,11 @@ function Mypage() {
       const filteredIdolList = list.filter(
         (idol) => !changeIdolIds.includes(idol.id),
       );
-      const LimitdIdolList = filteredIdolList.slice(0, 16);
 
       // 관심있는 아이돌의 배열 길이만큼 pageSize에 추가
       setPageSizeChange(changeIdolIds.length);
 
-      setIdols(LimitdIdolList);
+      setIdols(filteredIdolList);
     };
 
     setFavoriteIdols(changeIdols);

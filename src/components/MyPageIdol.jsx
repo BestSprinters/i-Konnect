@@ -1,4 +1,11 @@
+// swiper eslint 충돌
+
+/* eslint-disable import/no-unresolved */
 import { useState } from 'react';
+import 'swiper/css';
+import 'swiper/css/grid';
+import { Grid } from 'swiper/modules';
+import { Swiper, SwiperSlide } from 'swiper/react';
 
 import insertLocalStorage from '../utils/insertLocalStorage';
 import IdolThumbnail from './IdolThumbnail';
@@ -26,14 +33,26 @@ function MyPageIdol({ idols, onChange }) {
     onChange(localData);
     setIsFavorite([]);
   };
+
   return (
     <div>
       <h2 className="mb-[32px] text-2xl font-semibold">
         관심있는 아이돌을 추가해보세요.
       </h2>
-      <ul className="flex flex-wrap gap-6">
+      <Swiper
+        slidesPerView={8}
+        grid={{
+          rows: 2,
+        }}
+        spaceBetween={30}
+        pagination={{
+          clickable: true,
+        }}
+        modules={[Grid]}
+        className="h-[400px]"
+      >
         {idols?.map((idol) => (
-          <li key={idol.id}>
+          <SwiperSlide key={idol.id}>
             <button
               type="button"
               onClick={() => handleIdolToggle(idol)}
@@ -47,9 +66,9 @@ function MyPageIdol({ idols, onChange }) {
                 src={idol.profilePicture}
               />
             </button>
-          </li>
+          </SwiperSlide>
         ))}
-      </ul>
+      </Swiper>
       <div className="mt-[32px] flex justify-center">
         <Button type="round" onClick={addFavoriteIdol}>
           {' '}
