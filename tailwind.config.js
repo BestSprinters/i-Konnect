@@ -25,6 +25,11 @@ export default {
       fontFamily: {
         sans: ['Pretendard'],
       },
+      screens: {
+        mobile: { min: "375px", max: "767px" },
+        tablet: { min: "768px", max: "1279px" },
+        desktop: { min: "1280px" },
+      },
     },
   },
   plugins: [],
