@@ -1,6 +1,6 @@
 import IcCheck from '../assets/imgs/ic_check.svg';
 
-function IdolAvatar({ alt, src, size }) {
+function CheckedIdolAvatar({ alt, src, size }) {
   const sizes = {
     small: 'size-[70px]',
     medium: 'size-[100px]',
@@ -27,4 +27,4 @@ function IdolAvatar({ alt, src, size }) {
   );
 }
 
-export default IdolAvatar;
+export default CheckedIdolAvatar;
