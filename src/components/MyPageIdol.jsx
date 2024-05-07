@@ -20,10 +20,10 @@ function MyPageIdol({ idols, onChange }) {
 
   const addFavoriteIdol = () => {
     // 로컬 스토리지에 선택된 아이돌 저장
-    const localDate = insertLocalStorage('Mypage_FavoriteIdol', IsFavorite);
+    const localData = insertLocalStorage('Mypage_FavoriteIdol', IsFavorite);
 
     // 상위 컴포넌트에 선택된 아이돌의 데이터 보내줌
-    onChange(localDate);
+    onChange(localData);
     setIsFavorite([]);
   };
   return (
