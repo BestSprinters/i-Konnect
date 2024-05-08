@@ -21,7 +21,7 @@ import LinkButton from '../components/LinkButton';
 
 function AddSponsorPage() {
   // 아이돌 get 요청
-  const [idosData, setIdolsData] = useState([]);
+  const [idolsData, setIdolsData] = useState([]);
 
   // 아이돌 리스트 무한
   const [cursor, setCursor] = useState(null);
@@ -45,19 +45,21 @@ function AddSponsorPage() {
   const titleRef = useRef();
   const subtitleRef = useRef();
 
+  const [keyword, setKeyword] = useState('');
+
   // get: 리스트 보여주기
   const getIdolsData = async () => {
     setLoading(true);
 
-    const result = await getIdols({ pageSize: 10000 });
+    const result = await getIdols({ pageSize: 10000, keyword });
     const idolsList = result.list;
     // 기존 아이돌 리스트 뒤에 연달아 나와야 함
-    setIdolsData((prevData) => [...prevData, ...idolsList]);
+    setIdolsData(idolsList);
   };
 
   useEffect(() => {
     getIdolsData();
-  }, []);
+  }, [keyword]);
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -100,30 +102,27 @@ function AddSponsorPage() {
     }
   };
 
-  const handleKeywordSearch = (e) => {};
+  const handleKeywordSearch = (e) => {
+    setKeyword(e.target.value);
+  };
 
   return (
     <div className="container mx-auto mt-[80px] flex w-full max-w-[1200px] items-center justify-center">
       <form className="w-full px-8" onSubmit={handleSubmit}>
-        <div className="my-4 flex items-center justify-between gap-4">
-          <div className="relative flex-1">
-            <img
-              src={searchIcon}
-              alt="search icon"
-              className="absolute left-3 top-2 h-[15px] w-[15px]"
-            />
-            <input
-              placeholder="검색할 아이돌 이름을 입력해주세요"
-              onChange={handleKeywordSearch}
-              className="h-[32px] w-full rounded-[3px] bg-whiteSecondary px-9 py-2 text-black focus:outline-none"
-            />
-          </div>
-          <div>
-            <Button type="smallMore">검색</Button>
-          </div>
+        <div className="relative my-4 flex-1">
+          <img
+            src={searchIcon}
+            alt="search icon"
+            className="absolute left-2 top-1 h-[24px] w-[24px]"
+          />
+          <input
+            placeholder="검색할 아이돌 이름 혹은 그룹명을 입력해주세요"
+            onChange={handleKeywordSearch}
+            className="border-whiteSecondary-500 font-regular h-[32px] w-full rounded-[3px] border bg-blackSecondary px-9 py-2 focus:outline-none"
+          />
         </div>
 
-        <div className="flex gap-4">
+        <div>
           <Swiper
             slidesPerView={8}
             spaceBetween={1}
@@ -141,10 +140,10 @@ function AddSponsorPage() {
                 spaceBetween: 1,
               },
             }}
-            className="mySwiper cursor-pointer"
+            className="mySwiper cursor-pointer overflow-visible"
           >
-            {idosData.map((idol) => (
-              <SwiperSlide key={crypto.randomUUID()}>
+            {idolsData.map((idol) => (
+              <SwiperSlide key={idol.id}>
                 <div
                   className="flex flex-col items-center justify-center gap-2"
                   key={idol.id}
