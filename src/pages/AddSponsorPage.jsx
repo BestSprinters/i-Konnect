@@ -7,7 +7,7 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
 
 /* eslint-disable import/no-unresolved */
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import 'swiper/css';
 import 'swiper/css/pagination';
 import { Swiper, SwiperSlide } from 'swiper/react';
@@ -41,6 +41,9 @@ function AddSponsorPage() {
     deadline: '',
   });
 
+  const titleRef = useRef();
+  const subtitleRef = useRef();
+
   // get: 리스트 보여주기
   const getIdolsData = async () => {
     setLoading(true);
@@ -73,12 +76,26 @@ function AddSponsorPage() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    try {
-      console.log('폼 데이터:', datas);
+
+    if (
+      datas.idolId &&
+      datas.title &&
+      datas.subtitle &&
+      datas.targetDonation &&
+      datas.deadline
+    ) {
+      console.log('Form data:', datas);
       await postDonationsApi(datas);
-      console.log('POST 요청 완료');
-    } catch (error) {
-      console.error('요청 에러:', error);
+    } else if (!datas.idolId) {
+      alert('아이돌은 선택해주세요!');
+    } else if (!datas.title) {
+      titleRef.current.focus();
+    } else if (!datas.subtitle) {
+      subtitleRef.current.focus();
+    } else if (!datas.deadline) {
+      alert('마감일을 설정해주세요!');
+    } else if (datas.targetDonation === 0) {
+      alert('크레딧을 설정해주세요!');
     }
   };
 
@@ -138,11 +155,12 @@ function AddSponsorPage() {
           </label>
           <div className="mt-2">
             <input
+              ref={titleRef}
               id="title"
               name="title"
               type="title"
               autoComplete="title"
-              className="font-regular block w-full rounded-md border-0 py-1.5 pl-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:outline-none sm:text-sm sm:leading-6"
+              className="font-regular block w-full rounded-md border-0 py-1.5 pl-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:outline-none focus:outline-pointPink sm:text-sm sm:leading-6"
               onChange={handleInputChange}
             />
           </div>
@@ -157,10 +175,11 @@ function AddSponsorPage() {
           </label>
           <div className="mt-2">
             <textarea
+              ref={subtitleRef}
               id="subtitle"
               name="subtitle"
               rows={3}
-              className="font-regular block w-full rounded-md border-0 py-1.5 pl-2 text-black shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:outline-none sm:text-sm sm:leading-6"
+              className="font-regular block w-full rounded-md border-0 py-1.5 pl-2 text-black shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:outline-none focus:outline-pointPink sm:text-sm sm:leading-6"
               onChange={handleInputChange}
             />
           </div>
