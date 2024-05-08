@@ -186,8 +186,8 @@ function AddSponsorPage() {
               ref={titleRef}
               id="title"
               name="title"
-              type="title"
-              autoComplete="title"
+              type="text"
+              autoComplete
               className="font-regular block w-full rounded-md border-0 py-1.5 pl-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:outline-none focus:outline-pointPink sm:text-sm sm:leading-6"
               onChange={handleInputChange}
             />
