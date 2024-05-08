@@ -7,6 +7,12 @@ function CheckedIdolAvatar({ alt, src, size }) {
     large: 'size-[128px]',
   };
 
+  const checkSizes = {
+    small: 'size-[24px]',
+    medium: 'size-[52px]',
+    large: 'size-[52px]',
+  };
+
   return (
     <div
       className={`rounded-full border-2 ${sizes[size]} relative border-pointOrangePink p-[6px]`}
@@ -14,7 +20,7 @@ function CheckedIdolAvatar({ alt, src, size }) {
       <img
         src={IcCheck}
         alt="체크 표시"
-        className="absolute inset-0 z-20 m-auto size-[52px]"
+        className={`absolute inset-0 z-20 m-auto ${checkSizes[size]}`}
       />
       <div className="z-10 size-full overflow-hidden rounded-full  bg-gradient-to-r from-[#F96E68] to-[#FE578F] object-cover">
         <img

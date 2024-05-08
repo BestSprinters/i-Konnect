@@ -43,9 +43,10 @@
 }
 
 body {
-  background-color: #000;
+  background-color: theme('colors.blackPrimary');
 }
 
+<<<<<<< HEAD
 /*scrollBar 숨기기*/
 .no-scrollbar::-webkit-scrollbar {
   display: none;
@@ -54,3 +55,20 @@ body {
   -ms-overflow-style: none; /* IE and Edge */
   scrollbar-width: none; /* Firefox */
 }
+=======
+
+body {
+  -ms-overflow-style: none;
+}
+::-webkit-scrollbar {
+  display: none;
+}
+/* 스크롤바 없애는 거 */
+/* Swiper Style */
+
+/* Swiper bullet 제거 */
+.swiper .swiper-pagination-bullet {
+  display: none;
+}
+
+>>>>>>> origin/main
