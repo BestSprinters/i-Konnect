@@ -1,10 +1,10 @@
 import axiosInstance from '../axiosInstance';
 
+// 후원하는api 업데이트 아님
 const putDonations = async (id, amount) => {
   try {
-    await axiosInstance.put(`/donations/${id}`, {
-      deadline: '2025-10-10T00:00:00.000Z',
-      targetDonation: `${amount}`,
+    await axiosInstance.put(`/donations/${id}/contribute`, {
+      amount: `${amount}`,
     });
   } catch (error) {
     throw new Error(error.message);
