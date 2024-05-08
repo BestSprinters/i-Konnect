@@ -8,8 +8,8 @@ import { Grid } from 'swiper/modules';
 import { Swiper, SwiperSlide } from 'swiper/react';
 
 import insertLocalStorage from '../utils/insertLocalStorage';
-import IdolThumbnail from './IdolThumbnail';
 import Button from './Button';
+import IdolThumbnail from './IdolThumbnail';
 
 function MyPageIdol({ idols, onChange }) {
   const [IsFavorite, setIsFavorite] = useState([]);
