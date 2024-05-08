@@ -14,7 +14,7 @@ function Chart() {
   const [chartList, setChartList] = useState([]);
   const [hasMore, setHasMore] = useState(false);
   const { toggle, handleToggle } = useToggle();
-  const [creditAmount, setCreditAmount] = useState(2000);
+  const [creditAmount, setCreditAmount] = useState(20000000);
   const [chartOption, setChartOption] = useState({
     gender: 'female',
     cursor: '',
@@ -30,7 +30,7 @@ function Chart() {
       setHasMore(result.nextCursor !== null);
     };
     loadChartList();
-  }, [chartOption]);
+  }, [chartOption, toggle]);
 
   const handleClickMoreLook = () => {
     setChartOption((Options) => ({
@@ -107,6 +107,8 @@ function Chart() {
         handleToggle={handleToggle}
         setCreditAmount={setCreditAmount}
         creditAmount={creditAmount}
+        setChartList={setChartList}
+        chartList={chartList}
       />
     </div>
   );

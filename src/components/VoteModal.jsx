@@ -29,6 +29,8 @@ function VoteModal({
   handleToggle,
   setCreditAmount,
   creditAmount,
+  setChartList,
+  chartList,
 }) {
   const [voteList, setVoteList] = useState([]);
   const [selectedIdol, setSelectedIdol] = useState();
@@ -49,24 +51,30 @@ function VoteModal({
     setSelectedIdol(id);
   };
 
-  const handleVoteIdol = () => {
-    handleToggle();
-    if (creditAmount < 1000) {
-      setSelectedIdol('');
-    } else {
-      postVotes(selectedIdol);
-      setCreditAmount(creditAmount - 1000);
-      setSelectedIdol('');
-    }
-  };
-
   useEffect(() => {
     const loadChartList = async () => {
       const result = await getCharts(voteOption);
       setVoteList(result.idols);
     };
     loadChartList();
-  }, [voteOption]);
+  }, [voteOption, toggle]);
+
+  const handleVoteIdol = async () => {
+    handleToggle();
+    if (creditAmount < 1000) {
+      setSelectedIdol('');
+    } else {
+      const receivedVotes = await postVotes(selectedIdol);
+      const updatedVoteList = chartList.map((idol) =>
+        idol.id === receivedVotes.idol.id
+          ? { ...idol, ...receivedVotes.idol }
+          : idol,
+      );
+      setChartList(updatedVoteList);
+      setCreditAmount(creditAmount - 1000);
+      setSelectedIdol('');
+    }
+  };
 
   const { voteMobileCreditTag, voteMobileFixed, voteMobileSize } =
     getVoteResponsibleStyle(isFullModal);
