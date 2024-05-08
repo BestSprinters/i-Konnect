@@ -26,6 +26,17 @@ function DonateModal({ open, onClose, donationData }) {
     setCreditAmount(e.target.value.replace(/[^0-9]/g, ''));
   };
 
+  const handleButtonClick = () => {
+    // 후원한 크레딧만큼 로컬 스토리지에서 감소
+    const existingCredit = Number(localStorage.getItem('myCredit'));
+    localStorage.setItem('myCredit', existingCredit - Number(creditAmount));
+
+    // 크레딧 초기화
+    setCreditAmount('');
+
+    onClose();
+  };
+
   return (
     <Modal title="후원하기" open={open} onClose={onClose}>
       <div className="flex flex-col items-center">
@@ -59,7 +70,11 @@ function DonateModal({ open, onClose, donationData }) {
             갖고 있는 크레딧보다 더 많이 후원할 수 없어요
           </p>
         </div>
-        <Button type="largeSquare" isDisabled={disabled}>
+        <Button
+          type="largeSquare"
+          isDisabled={disabled}
+          onClick={handleButtonClick}
+        >
           후원하기
         </Button>
       </div>
