@@ -43,5 +43,5 @@
 }
 
 body {
-  background-color: #000;
+  background-color: theme('colors.blackPrimary');
 }
