@@ -63,7 +63,7 @@ function CreditOption({ isSelected, amount, onSelect }) {
     <div
       onClick={handleClick}
       onKeyDown={handleKeyDown}
-      className={`${isSelected ? 'border-pointOrange' : 'border-whiteSecondary'} flex w-full cursor-pointer items-center justify-center rounded-lg border px-5 py-4`}
+      className={`${isSelected ? 'border-pointOrange hover:outline-pointOrange focus-visible:outline-pointOrange' : 'border-whiteSecondary hover:outline-whiteSecondary focus-visible:outline-whiteSecondary'} flex w-full cursor-pointer items-center justify-center rounded-lg border px-5 py-4 hover:outline hover:outline-1 focus:outline-2 focus-visible:outline focus-visible:outline-2`}
       role="button"
       tabIndex={0}
     >
