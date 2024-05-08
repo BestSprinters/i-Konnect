@@ -5,7 +5,7 @@ import chartIcon from '../assets/imgs/ic_chart.svg';
 import useMediaQuery from '../hooks/useMediaQuery';
 import useToggle from '../hooks/useToggle';
 import Button from './Button';
-import ChartRank from './ChartRank';
+import ChartList from './ChartList';
 import ChoiceGender from './ChoiceGender';
 import VoteModal from './VoteModal';
 
@@ -38,7 +38,6 @@ function Chart() {
       pageSize: matches ? Options.pageSize + 10 : Options.pageSize + 5,
     }));
   };
-  // setChartOption((Options) => ({...Options, 이거 중복많이되면 함수로 만들어보자
 
   const handleClickChangeGender = (gender) => {
     setChartOption((Options) => ({
@@ -63,33 +62,7 @@ function Chart() {
       <div className="mt-4 flex md:mt-6">
         <ChoiceGender handleClickChangeGender={handleClickChangeGender} />
       </div>
-      <div
-        className={`mt-4 grid grid-cols-1 gap-x-6 md:mt-6 ${matches ? 'grid-cols-2' : ''}`}
-      >
-        {chartList?.map((chart, index) => {
-          const isLastItem = index === chartList.length - 1;
-          const isSecondLastItem = index === chartList.length - 2;
-
-          let hideBorder = false;
-          if (matches) {
-            hideBorder = isLastItem || isSecondLastItem;
-          } else {
-            hideBorder = isLastItem;
-          }
-
-          return (
-            <ChartRank
-              src={chart.profilePicture}
-              name={chart.name}
-              group={chart.group}
-              totalVotes={chart.totalVotes}
-              key={crypto.randomUUID()}
-              rank={index + 1}
-              hideBorder={hideBorder}
-            />
-          );
-        })}
-      </div>
+      <ChartList chartList={chartList} matches={matches} />
       {hasMore && (
         <div className="mt-8 flex justify-center md:mt-7 xl:mt-12">
           <button

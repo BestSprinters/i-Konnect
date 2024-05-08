@@ -3,13 +3,13 @@ import VoteRank from './VoteRank';
 function VoteList({ voteList, selectedIdol, handleSelectedIdol }) {
   return (
     <div>
-      {voteList?.map((chart, index) => (
+      {voteList?.map((voteIdol, index) => (
         <VoteRank
           key={crypto.randomUUID()}
           rank={index + 1}
           selectedIdol={selectedIdol}
           handleSelectedIdol={handleSelectedIdol}
-          chart={chart}
+          voteIdol={voteIdol}
         />
       ))}
     </div>

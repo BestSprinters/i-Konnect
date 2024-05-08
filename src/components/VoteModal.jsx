@@ -23,15 +23,16 @@ const initialVoteOption = {
   pageSize: 24,
 };
 
-function VoteModal({
-  gender = 'female',
-  toggle,
-  handleToggle,
-  setCreditAmount,
-  creditAmount,
-  setChartList,
-  chartList,
-}) {
+function VoteModal(props) {
+  const {
+    gender,
+    toggle,
+    handleToggle,
+    setCreditAmount,
+    creditAmount,
+    setChartList,
+    chartList,
+  } = props;
   const [voteList, setVoteList] = useState([]);
   const [selectedIdol, setSelectedIdol] = useState();
   const isFullModal = useMediaQuery('(max-width: 767px)');
