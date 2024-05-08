@@ -20,18 +20,21 @@ function FavoriteIdol({ idols, onChange }) {
   };
 
   return (
-    <div className="mobile:pl-[24px]">
+    <div className="mobile:pl-[24px] tablet:pl-[24px]">
       <h2 className="mb-[32px] text-2xl font-semibold mobile:hidden">
         내가 관심있는 아이돌
       </h2>
-      <ul className="modile:scroll-smooth no-scrollbar flex w-full flex-wrap gap-6 mobile:snap-x mobile:flex-nowrap mobile:overflow-x-scroll">
+      <ul className="modile:scroll-smooth no-scrollbar grid w-full grid-flow-col grid-rows-2 gap-6 mobile:snap-x mobile:overflow-x-scroll tablet:snap-x tablet:overflow-x-scroll tablet:scroll-smooth desktop:flex desktop:flex-wrap">
         {idols.length === 0 ? (
           <li className="w-full border border-pointOrangePink py-[80px] text-center">
             <p className="font-extralight">텅...</p>
           </li>
         ) : (
           idols?.map((idol) => (
-            <li key={idol.id} className="relative mobile:snap-start">
+            <li
+              key={idol.id}
+              className="relative mobile:snap-start tablet:snap-start"
+            >
               <button
                 type="button"
                 className="absolute right-0"
