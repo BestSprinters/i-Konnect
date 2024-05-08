@@ -35,7 +35,7 @@ function MyPageIdol({ idols, onChange }) {
   };
 
   return (
-    <div>
+    <div className="mt-[42px]  border-t border-[#FFFFFF1A] pt-[42px] mobile:mx-[24px]">
       <h2 className="mb-[32px] text-2xl font-semibold">
         관심있는 아이돌을 추가해보세요.
       </h2>
