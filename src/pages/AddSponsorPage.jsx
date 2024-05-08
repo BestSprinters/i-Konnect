@@ -119,7 +119,7 @@ function AddSponsorPage() {
             />
           </div>
           <div>
-            <Button type="smallSquare">검색</Button>
+            <Button type="smallMore">검색</Button>
           </div>
         </div>
 
