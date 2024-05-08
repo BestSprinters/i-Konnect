@@ -14,6 +14,7 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 
 import postDonationsApi from '../apis/donations/postDonationsApi';
 import getIdols from '../apis/idols/getIdolsApi';
+import searchIcon from '../assets/imgs/ic_search.svg';
 import Button from '../components/Button';
 import IdolAvatar from '../components/IdolAvatar';
 import LinkButton from '../components/LinkButton';
@@ -99,9 +100,29 @@ function AddSponsorPage() {
     }
   };
 
+  const handleKeywordSearch = (e) => {};
+
   return (
     <div className="container mx-auto mt-[80px] flex w-full max-w-[1200px] items-center justify-center">
       <form className="w-full px-8" onSubmit={handleSubmit}>
+        <div className="my-4 flex items-center justify-between gap-4">
+          <div className="relative flex-1">
+            <img
+              src={searchIcon}
+              alt="search icon"
+              className="absolute left-3 top-2 h-[15px] w-[15px]"
+            />
+            <input
+              placeholder="검색할 아이돌 이름을 입력해주세요"
+              onChange={handleKeywordSearch}
+              className="h-[32px] w-full rounded-[3px] bg-whiteSecondary px-9 py-2 text-black focus:outline-none"
+            />
+          </div>
+          <div>
+            <Button type="smallSquare">검색</Button>
+          </div>
+        </div>
+
         <div className="flex gap-4">
           <Swiper
             slidesPerView={8}
@@ -226,8 +247,7 @@ function AddSponsorPage() {
             </output>
           </div>
         </div>
-
-        <div className="mt-6 flex items-center justify-end gap-x-6">
+        <div className="flex items-center justify-end gap-x-6">
           <LinkButton
             to="/list"
             type="cancel"
