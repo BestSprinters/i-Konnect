@@ -1,25 +1,16 @@
-import { useEffect, useState } from 'react';
-
-import getDonations from '../apis/donations/getDonationsApi';
-import SponsorCard from '../components/SponsorCard';
+import Header from '../components/Header';
+import MyCredit from '../components/MyCredit';
+import SponsorPagination from '../components/SponsorPagination';
+import SponsorSlider from '../components/SponsorSlider';
+import useMediaQuery from '../hooks/useMediaQuery';
 
 function ListPage() {
-  const [donationsData, setDonationsData] = useState([]);
-
-  const getDonationsData = async () => {
-    const result = await getDonations();
-    return setDonationsData(result);
-  };
-
-  useEffect(() => {
-    getDonationsData();
-  }, []);
-
+  const tabletSize = useMediaQuery('(max-width: 1280px)');
   return (
-    <div className="min-x-[1200px] container w-[100%]">
-      {donationsData.map((donation) => (
-        <SponsorCard donation={donation} />
-      ))}
+    <div className="xl:mx-auto xl:max-w-[1200px]">
+      <Header />
+      <MyCredit />
+      {tabletSize ? <SponsorSlider /> : <SponsorPagination />}
     </div>
   );
 }

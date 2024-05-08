@@ -45,3 +45,10 @@
 body {
   background-color: theme('colors.blackPrimary');
 }
+
+/* Swiper Style */
+
+/* Swiper bullet 제거 */
+.swiper .swiper-pagination-bullet {
+  display: none;
+}
