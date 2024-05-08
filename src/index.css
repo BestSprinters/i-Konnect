@@ -46,6 +46,7 @@ body {
   background-color: theme('colors.blackPrimary');
 }
 
+
 body {
   -ms-overflow-style: none;
 }
@@ -53,3 +54,10 @@ body {
   display: none;
 }
 /* 스크롤바 없애는 거 */
+/* Swiper Style */
+
+/* Swiper bullet 제거 */
+.swiper .swiper-pagination-bullet {
+  display: none;
+}
+
