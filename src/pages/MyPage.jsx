@@ -5,7 +5,7 @@ import FavoriteIdol from '../components/FavoriteIdol';
 import MyPageCredit from '../components/MyPageCredit';
 import MyPageIdol from '../components/MyPageIdol';
 
-function Mypage() {
+function MyPage() {
   const [idols, setIdols] = useState([]);
   const [favoriteIdols, setFavoriteIdols] = useState([]);
   // 이름 확인
@@ -47,4 +47,4 @@ function Mypage() {
   );
 }
 
-export default Mypage;
+export default MyPage;
