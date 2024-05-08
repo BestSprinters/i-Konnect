@@ -1,3 +1,5 @@
+/* eslint-disable jsx-a11y/anchor-is-valid */
+
 /* eslint-disable no-unused-vars */
 
 /* eslint-disable react-hooks/exhaustive-deps */
@@ -11,6 +13,7 @@ import 'swiper/css/pagination';
 import { Swiper, SwiperSlide } from 'swiper/react';
 
 import getIdols from '../apis/idols/getIdolsApi';
+import toggle from '../assets/imgs/ic_arrow_left.svg';
 import Button from '../components/Button';
 import IdolAvatar from '../components/IdolAvatar';
 import LinkButton from '../components/LinkButton';
@@ -144,16 +147,26 @@ function AddSponsorPage() {
             htmlFor="content"
             className="block text-sm font-medium leading-6 text-whitePrimary"
           >
-            내용
+            광고 할 지하철 역
           </label>
           <div className="mt-2">
-            <textarea
-              id="content"
-              name="content"
-              rows={3}
-              className="font-regular block w-full rounded-md border-0 py-1.5 pl-2 text-black shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:outline-none sm:text-sm sm:leading-6"
-              onChange={handleInputChange}
-            />
+            <ul className="flex w-full">
+              <li className="dropdown font-regular group  relative cursor-pointer">
+                <p className="align-center flex justify-center rounded-[3px] border border-white p-1 px-2">
+                  지하철 역을 선택하세요
+                  <img src={toggle} alt="" className="mx-1 -rotate-90" />
+                </p>
+                <div className="dropdown-menu absolute hidden h-auto group-hover:block">
+                  <ul className="w-49 top-0 rounded-[3px] bg-white px-3 py-1 shadow">
+                    <li className="py-1">
+                      <p className="font-regular block cursor-pointer text-blackPrimary">
+                        Item
+                      </p>
+                    </li>
+                  </ul>
+                </div>
+              </li>
+            </ul>
           </div>
         </div>
 
