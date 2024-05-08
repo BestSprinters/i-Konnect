@@ -8,6 +8,7 @@
 
 /* eslint-disable import/no-unresolved */
 import React, { useEffect, useRef, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import 'swiper/css';
 import 'swiper/css/pagination';
 import { Swiper, SwiperSlide } from 'swiper/react';
@@ -18,7 +19,6 @@ import searchIcon from '../assets/imgs/ic_search.svg';
 import Button from '../components/Button';
 import CheckedIdolAvatar from '../components/CheckedIdolAvatar';
 import IdolAvatar from '../components/IdolAvatar';
-import IdolThumbnail from '../components/IdolThumbnail';
 import LinkButton from '../components/LinkButton';
 
 function AddSponsorPage() {
@@ -44,6 +44,8 @@ function AddSponsorPage() {
   const subtitleRef = useRef();
 
   const [keyword, setKeyword] = useState('');
+
+  const navigate = useNavigate();
 
   // get: 리스트 보여주기
   const getIdolsData = async () => {
@@ -85,8 +87,9 @@ function AddSponsorPage() {
       datas.targetDonation &&
       datas.deadline
     ) {
-      console.log('Form data:', datas);
       await postDonationsApi(datas);
+      alert('조공 등록이 완료되었습니다!');
+      navigate('/list');
     } else if (!datas.idolId) {
       alert('아이돌은 선택해주세요!');
     } else if (!datas.title) {
