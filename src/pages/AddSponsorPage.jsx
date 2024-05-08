@@ -16,17 +16,15 @@ import postDonationsApi from '../apis/donations/postDonationsApi';
 import getIdols from '../apis/idols/getIdolsApi';
 import searchIcon from '../assets/imgs/ic_search.svg';
 import Button from '../components/Button';
+import CheckedIdolAvatar from '../components/CheckedIdolAvatar';
 import IdolAvatar from '../components/IdolAvatar';
+import IdolThumbnail from '../components/IdolThumbnail';
 import LinkButton from '../components/LinkButton';
 
 function AddSponsorPage() {
   // 아이돌 get 요청
   const [idolsData, setIdolsData] = useState([]);
-
-  // 아이돌 리스트 무한
-  const [cursor, setCursor] = useState(null);
   const [loading, setLoading] = useState(false);
-  const [hasMoreData, setHasMoreData] = useState(true);
 
   // 크레딧 프로그레스 바
   const [output, setOutput] = useState(0);
@@ -148,18 +146,25 @@ function AddSponsorPage() {
                   className="flex flex-col items-center justify-center gap-2"
                   key={idol.id}
                 >
-                  <IdolAvatar
-                    src={idol.profilePicture}
-                    size="medium"
-                    value={idol.id}
-                    onClick={() => {
-                      console.log(idol.id);
-                      setDatas((prevDatas) => ({
-                        ...prevDatas,
-                        idolId: idol.id,
-                      }));
-                    }}
-                  />
+                  {datas.idolId === idol.id ? (
+                    <CheckedIdolAvatar
+                      src={idol.profilePicture}
+                      size="medium"
+                      value={idol.id}
+                    />
+                  ) : (
+                    <IdolAvatar
+                      src={idol.profilePicture}
+                      size="medium"
+                      value={idol.id}
+                      onClick={() => {
+                        setDatas((prevDatas) => ({
+                          ...prevDatas,
+                          idolId: idol.id,
+                        }));
+                      }}
+                    />
+                  )}
                   <p>{idol.name}</p>
                 </div>
               </SwiperSlide>
