@@ -19,6 +19,7 @@ export default {
 
         whitePrimary: '#FFF',
         whiteSecondary: '#F7F7F8',
+        whiteGray: '#F1EEF9CC',
 
         pointBlue: '#14C3FE',
 
