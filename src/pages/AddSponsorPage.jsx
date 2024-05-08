@@ -106,7 +106,7 @@ function AddSponsorPage() {
             className="mySwiper cursor-pointer"
           >
             {idosData.map((idol) => (
-              <SwiperSlide>
+              <SwiperSlide key={crypto.randomUUID()}>
                 <div
                   className="flex flex-col items-center justify-center gap-2"
                   key={idol.id}
