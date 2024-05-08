@@ -40,13 +40,36 @@ function MyPageIdol({ idols, onChange }) {
         관심있는 아이돌을 추가해보세요.
       </h2>
       <Swiper
-        slidesPerView={8}
+        slidesPerView={3}
         grid={{
           rows: 2,
         }}
-        spaceBetween={30}
+        spaceBetween={17}
         pagination={{
           clickable: true,
+        }}
+        breakpoints={{
+          768: {
+            slidesPerView: 4,
+            spaceBetween: 24,
+            grid: {
+              rows: 2,
+            },
+          },
+          1024: {
+            slidesPerView: 6,
+            spaceBetween: 24,
+            grid: {
+              rows: 2,
+            },
+          },
+          1280: {
+            slidesPerView: 8,
+            spaceBetween: 30,
+            grid: {
+              rows: 2,
+            },
+          },
         }}
         modules={[Grid]}
         className="h-[400px]"
