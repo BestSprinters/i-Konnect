@@ -24,7 +24,7 @@ function FavoriteIdol({ idols, onChange }) {
       <h2 className="mb-[32px] text-2xl font-semibold mobile:hidden">
         내가 관심있는 아이돌
       </h2>
-      <ul className="modile:scroll-smooth mobiled:scrollbar-hide flex w-full flex-wrap gap-6 mobile:snap-x mobile:flex-nowrap mobile:overflow-x-scroll">
+      <ul className="modile:scroll-smooth no-scrollbar flex w-full flex-wrap gap-6 mobile:snap-x mobile:flex-nowrap mobile:overflow-x-scroll">
         {idols.length === 0 ? (
           <li className="w-full border border-pointOrangePink py-[80px] text-center">
             <p className="font-extralight">텅...</p>
