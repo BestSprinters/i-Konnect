@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 
 import getCharts from '../apis/charts/getChartApi';
-import postVotes from '../apis/votes/postVotes';
+import postVotes from '../apis/votes/postVotesApi';
 import useMediaQuery from '../hooks/useMediaQuery';
 import useToggle from '../hooks/useToggle';
 import Button from './Button';
