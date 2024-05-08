@@ -9,7 +9,7 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 
 import insertLocalStorage from '../utils/insertLocalStorage';
 import IdolThumbnail from './IdolThumbnail';
-import Button from './buttons/Button';
+import Button from './Button';
 
 function MyPageIdol({ idols, onChange }) {
   const [IsFavorite, setIsFavorite] = useState([]);
