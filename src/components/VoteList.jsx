@@ -5,7 +5,7 @@ function VoteList({ voteList, selectedIdol, handleSelectedIdol }) {
     <div>
       {voteList?.map((voteIdol, index) => (
         <VoteRank
-          key={crypto.randomUUID()}
+          key={voteIdol.id}
           rank={index + 1}
           selectedIdol={selectedIdol}
           handleSelectedIdol={handleSelectedIdol}

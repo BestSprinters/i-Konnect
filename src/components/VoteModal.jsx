@@ -89,7 +89,7 @@ function VoteModal(props) {
       isFullModal={isFullModal}
     >
       <div
-        className="h- mb-5 w-full overflow-y-auto"
+        className="mb-5 w-full overflow-y-auto"
         style={{ height: `${voteMobileSize}` }}
       >
         <VoteList
@@ -97,6 +97,7 @@ function VoteModal(props) {
           selectedIdol={selectedIdol}
           handleSelectedIdol={handleSelectedIdol}
         />
+        {isFullModal && <div className="h-44 w-full" />}
       </div>
       <div
         className={`${voteMobileFixed} flex-col items-center justify-center`}

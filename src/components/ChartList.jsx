@@ -23,7 +23,7 @@ function ChartList({ chartList, matches }) {
         return (
           <ChartRank
             chart={chart}
-            key={crypto.randomUUID()}
+            key={chart.id}
             rank={index + 1}
             hideBorder={hideBorder}
           />
