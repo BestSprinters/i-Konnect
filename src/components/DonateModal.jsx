@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 import creditIcon from '../assets/imgs/ic_credit.svg';
 import Button from './Button';
@@ -9,17 +9,26 @@ function DonateModal({ open, onClose, donationData }) {
   const { profilePicture } = idol;
 
   const [creditAmount, setCreditAmount] = useState('');
+  const [disabled, setDisabled] = useState(true);
+
+  useEffect(() => {
+    const existingCredit = localStorage.getItem('myCredit');
+
+    if (Number(creditAmount) <= Number(existingCredit)) {
+      setDisabled(false);
+    } else {
+      setDisabled(true);
+    }
+  }, [creditAmount]);
 
   const handleInputChange = (e) => {
     // 크레딧 입력창에 숫자만 입력 가능
     setCreditAmount(e.target.value.replace(/[^0-9]/g, ''));
   };
 
-  // TODO: 후원하기 버튼 누르면 후원 & 갖고 있는 크레딧보다 많으면 오류 표시
-
   return (
     <Modal title="후원하기" open={open} onClose={onClose}>
-      <div className="flex flex-col items-center gap-6">
+      <div className="flex flex-col items-center">
         <div className="flex flex-col">
           <img
             src={profilePicture}
@@ -31,9 +40,9 @@ function DonateModal({ open, onClose, donationData }) {
             {title}
           </h2>
         </div>
-        <div className="relative flex items-center justify-center">
+        <div className="relative mb-10 mt-6 flex items-center justify-center">
           <input
-            className="h-14 w-full rounded-lg border border-whitePrimary bg-white/10 pl-4 pr-12 text-xl font-bold text-whitePrimary placeholder:text-grayDark"
+            className={`${disabled ? 'border-red-600 focus-visible:outline-red-600' : 'border-whitePrimary focus-visible:outline-whitePrimary'} h-14 w-full rounded-lg border bg-white/10 pl-4 pr-12 text-xl font-bold text-whitePrimary placeholder:text-grayDark focus-visible:outline focus-visible:outline-1`}
             placeholder="크레딧 입력"
             value={creditAmount}
             onChange={handleInputChange}
@@ -44,8 +53,15 @@ function DonateModal({ open, onClose, donationData }) {
             alt="크레딧 아이콘"
             aria-hidden="true"
           />
+          <p
+            className={`${!disabled && 'hidden'} absolute -bottom-6 left-0 text-xs font-medium text-red-600`}
+          >
+            갖고 있는 크레딧보다 더 많이 후원할 수 없어요
+          </p>
         </div>
-        <Button type="largeSquare">후원하기</Button>
+        <Button type="largeSquare" isDisabled={disabled}>
+          후원하기
+        </Button>
       </div>
     </Modal>
   );
