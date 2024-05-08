@@ -41,7 +41,7 @@ function VoteModal(props) {
   const [voteOption, setVoteOption] = useState(initialVoteOption);
 
   useEffect(() => {
-    setVoteOption((prev) => ({ ...prev, gender }));
+    setVoteOption((prevOption) => ({ ...prevOption, gender }));
   }, [gender]);
 
   const handleSelectedIdol = (id) => {
@@ -51,14 +51,6 @@ function VoteModal(props) {
     }
     setSelectedIdol(id);
   };
-
-  useEffect(() => {
-    const loadChartList = async () => {
-      const result = await getCharts(voteOption);
-      setVoteList(result.idols);
-    };
-    loadChartList();
-  }, [voteOption, toggle]);
 
   const handleVoteIdol = async () => {
     handleToggle();
@@ -76,6 +68,14 @@ function VoteModal(props) {
       setSelectedIdol('');
     }
   };
+
+  useEffect(() => {
+    const loadChartList = async () => {
+      const result = await getCharts(voteOption);
+      setVoteList(result.idols);
+    };
+    loadChartList();
+  }, [voteOption, toggle]);
 
   const { voteMobileCreditTag, voteMobileFixed, voteMobileSize } =
     getVoteResponsibleStyle(isFullModal);
