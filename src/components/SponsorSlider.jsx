@@ -53,20 +53,25 @@ function SponsorSlider() {
   };
 
   return (
-    <div className="px-4">
-      <Swiper
-        slidesPerView={3}
-        pagination={{ clickable: true }}
-        modules={[Pagination]}
-        spaceBetween={16}
-        onReachEnd={handleReachEnd}
-      >
-        {donationData.map((donation) => (
-          <SwiperSlide key={donation.id}>
-            <SponsorCard donation={donation} />
-          </SwiperSlide>
-        ))}
-      </Swiper>
+    <div className="mt-10 md:mt-16">
+      <h1 className="text-bold mx-6 text-base md:text-xl">
+        후원을 기다리는 조공
+      </h1>
+      <div className="mt-4 md:mt-6">
+        <Swiper
+          slidesPerView={3}
+          pagination={{ clickable: true }}
+          modules={[Pagination]}
+          spaceBetween={4}
+          onReachEnd={handleReachEnd}
+        >
+          {donationData.map((donation) => (
+            <SwiperSlide key={donation.id}>
+              <SponsorCard donation={donation} />
+            </SwiperSlide>
+          ))}
+        </Swiper>
+      </div>
     </div>
   );
 }
