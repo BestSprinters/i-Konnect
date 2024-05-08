@@ -12,6 +12,7 @@ import 'swiper/css';
 import 'swiper/css/pagination';
 import { Swiper, SwiperSlide } from 'swiper/react';
 
+import postDonationsApi from '../apis/donations/postDonationsApi';
 import getIdols from '../apis/idols/getIdolsApi';
 import Button from '../components/Button';
 import IdolAvatar from '../components/IdolAvatar';
@@ -70,10 +71,15 @@ function AddSponsorPage() {
     }));
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-
-    console.log(datas);
+    try {
+      console.log('폼 데이터:', datas);
+      await postDonationsApi(datas);
+      console.log('POST 요청 완료');
+    } catch (error) {
+      console.error('요청 에러:', error);
+    }
   };
 
   return (
