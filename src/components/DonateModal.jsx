@@ -11,9 +11,8 @@ function DonateModal({ open, onClose, donationData }) {
   const [creditAmount, setCreditAmount] = useState('');
 
   const handleInputChange = (e) => {
-    // TODO: 숫자만 입력되도록 구현 (최대값과 최소값 정하기)
-    console.log(e.target.value);
-    setCreditAmount(e.target.value);
+    // 크레딧 입력창에 숫자만 입력 가능
+    setCreditAmount(e.target.value.replace(/[^0-9]/g, ''));
   };
 
   // TODO: 후원하기 버튼 누르면 후원 & 갖고 있는 크레딧보다 많으면 오류 표시
