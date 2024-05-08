@@ -60,7 +60,7 @@ function SponsorPagination() {
   return (
     <div className="mt-[40px] md:mt-[64px]">
       <h1 className="text-bold text-2xl">후원을 기다리는 조공</h1>
-      <div className="mt-8 flex items-center justify-center gap-x-10">
+      <div className="-mx-20 mt-8 flex w-[1360px] items-center justify-center gap-x-10">
         <button
           type="button"
           onClick={() => {
