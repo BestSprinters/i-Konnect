@@ -5,7 +5,6 @@ function ListPage() {
     <div>
       <Chart />
     </div>
-  );
-}
+
 
 export default ListPage;
