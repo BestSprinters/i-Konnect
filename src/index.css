@@ -46,7 +46,6 @@ body {
   background-color: theme('colors.blackPrimary');
 }
 
-<<<<<<< HEAD
 /*scrollBar 숨기기*/
 .no-scrollbar::-webkit-scrollbar {
   display: none;
@@ -55,7 +54,6 @@ body {
   -ms-overflow-style: none; /* IE and Edge */
   scrollbar-width: none; /* Firefox */
 }
-=======
 
 body {
   -ms-overflow-style: none;
@@ -70,5 +68,3 @@ body {
 .swiper .swiper-pagination-bullet {
   display: none;
 }
-
->>>>>>> origin/main

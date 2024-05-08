@@ -7,6 +7,7 @@ import 'swiper/css/grid';
 import { Grid } from 'swiper/modules';
 import { Swiper, SwiperSlide } from 'swiper/react';
 
+import useMediaQuery from '../hooks/useMediaQuery';
 import insertLocalStorage from '../utils/insertLocalStorage';
 import Button from './Button';
 import IdolThumbnail from './IdolThumbnail';
@@ -34,6 +35,8 @@ function MyPageIdol({ idols, onChange }) {
     setIsFavorite([]);
   };
 
+  const mobileSize = useMediaQuery('(max-width: 768px)');
+
   return (
     <div className="mt-[42px]  border-t border-[#FFFFFF1A] pt-[42px] mobile:mx-[24px]">
       <h2 className="mb-[32px] text-2xl font-semibold">
@@ -44,7 +47,7 @@ function MyPageIdol({ idols, onChange }) {
         grid={{
           rows: 2,
         }}
-        spaceBetween={17}
+        spaceBetween={12}
         pagination={{
           clickable: true,
         }}
@@ -82,7 +85,7 @@ function MyPageIdol({ idols, onChange }) {
               aria-label={`${idol.name} 썸네일`}
             >
               <IdolThumbnail
-                size="large"
+                size={mobileSize ? 'medium' : 'large'}
                 checked={IsFavorite.includes(idol)}
                 name={idol.name}
                 group={idol.group}
