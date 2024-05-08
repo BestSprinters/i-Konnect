@@ -75,6 +75,7 @@ function VoteModal({ gender = 'female' }) {
           selectedIdol={selectedIdol}
           handleSelectedIdol={handleSelectedIdol}
         />
+        {isFullModal && <div className="h-44 w-full" />}
       </div>
       <div
         className={`${voteMobileFixed} flex-col items-center justify-center`}
