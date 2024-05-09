@@ -1,3 +1,6 @@
+import { useState } from 'react';
+
+import putDonations from '../apis/donations/putDonationsApi';
 import icCredit from '../assets/imgs/ic_credit.svg';
 import useToggle from '../hooks/useToggle';
 import displayTime from '../utils/displayTime';
@@ -6,6 +9,14 @@ import ProgressBar from './ProgressBar';
 
 function SponsorCard({ donation }) {
   const { toggle, handleToggle } = useToggle();
+  const [receivedDonations, setReceivedDonations] = useState(
+    donation.receivedDonations,
+  );
+
+  const putAndRefetch = async (id, amount) => {
+    const data = await putDonations(id, amount);
+    setReceivedDonations(data.receivedDonations);
+  };
 
   return (
     <div>
@@ -40,7 +51,7 @@ function SponsorCard({ donation }) {
           <div className="flex items-center justify-between">
             <div className="flex items-center text-[12px] text-pointOrange">
               <img src={icCredit} alt="" />
-              {donation.receivedDonations}
+              {receivedDonations}
             </div>
             <p className="text-[12px]">
               {displayTime(donation.createdAt, donation.deadline)}
@@ -49,7 +60,7 @@ function SponsorCard({ donation }) {
           <div>
             <ProgressBar
               targetCredit={donation.targetDonation}
-              currentCredit={donation.receivedDonations}
+              currentCredit={receivedDonations}
             />
           </div>
         </div>
@@ -58,6 +69,7 @@ function SponsorCard({ donation }) {
         open={toggle}
         onClose={handleToggle}
         donationData={donation}
+        putAndRefetch={putAndRefetch}
       />
     </div>
   );

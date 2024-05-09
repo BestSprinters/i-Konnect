@@ -1,11 +1,10 @@
 import { useEffect, useState } from 'react';
 
-import putDonations from '../apis/donations/putDonationsApi';
 import creditIcon from '../assets/imgs/ic_credit.svg';
 import Button from './Button';
 import Modal from './Modal';
 
-function DonateModal({ open, onClose, donationData }) {
+function DonateModal({ open, onClose, donationData, putAndRefetch }) {
   const { id, idol, title } = donationData;
   const { profilePicture } = idol;
 
@@ -29,7 +28,7 @@ function DonateModal({ open, onClose, donationData }) {
 
   const handleButtonClick = async () => {
     // 후원
-    await putDonations(id, creditAmount);
+    putAndRefetch(id, creditAmount);
 
     // 후원한 크레딧만큼 로컬 스토리지에서 감소
     const existingCredit = Number(localStorage.getItem('myCredit'));
