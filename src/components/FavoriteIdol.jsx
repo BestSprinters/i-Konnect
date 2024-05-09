@@ -1,4 +1,5 @@
 import deleteImg from '../assets/imgs/ic_delete.svg';
+import useMediaQuery from '../hooks/useMediaQuery';
 import IdolThumbnail from './IdolThumbnail';
 
 function FavoriteIdol({ idols, onChange }) {
@@ -18,6 +19,7 @@ function FavoriteIdol({ idols, onChange }) {
 
     onChange(favoriteIdols);
   };
+  const mobileSize = useMediaQuery('(max-width: 767px)');
 
   return (
     <div className="mobile:pl-[24px] tablet:pl-[24px]">
@@ -31,23 +33,26 @@ function FavoriteIdol({ idols, onChange }) {
           </li>
         ) : (
           idols?.map((idol) => (
-            <li
-              key={idol.id}
-              className="relative mobile:snap-start tablet:snap-start"
-            >
-              <button
-                type="button"
-                className="absolute right-0"
-                onClick={() => removeIdolById(idol.id)}
-              >
-                <img src={deleteImg} alt="삭제" className="size-[32px]" />
-              </button>
-              <IdolThumbnail
-                size="medium"
-                name={idol.name}
-                group={idol.group}
-                src={idol.profilePicture}
-              />
+            <li key={idol.id} className="mobile:snap-start tablet:snap-start">
+              <div className="relative flex w-fit flex-col items-center">
+                <button
+                  type="button"
+                  className="absolute right-0"
+                  onClick={() => removeIdolById(idol.id)}
+                >
+                  <img
+                    src={deleteImg}
+                    alt="삭제"
+                    className={mobileSize ? 'size-[24px]' : 'size-[32px]'}
+                  />
+                </button>
+                <IdolThumbnail
+                  size={mobileSize ? 'small' : 'medium'}
+                  name={idol.name}
+                  group={idol.group}
+                  src={idol.profilePicture}
+                />
+              </div>
             </li>
           ))
         )}
