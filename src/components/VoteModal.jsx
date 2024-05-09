@@ -23,26 +23,20 @@ const initialVoteOption = {
   pageSize: 24,
 };
 
-function VoteModal(props) {
-  const {
-    gender,
-    toggle,
-    handleToggle,
-    setCreditAmount,
-    creditAmount,
-    setChartList,
-    chartList,
-  } = props;
+function VoteModal({
+  gender = 'female',
+  toggle,
+  handleToggle,
+  setChartList,
+  chartList,
+  creditAmount,
+  setCreditAmount,
+}) {
   const [voteList, setVoteList] = useState([]);
   const [selectedIdol, setSelectedIdol] = useState();
   const isFullModal = useMediaQuery('(max-width: 767px)');
   const voteTitle =
     gender === 'female' ? '이달의 여자 아이돌' : '이달의 남자 아이돌';
-  const [voteOption, setVoteOption] = useState(initialVoteOption);
-
-  useEffect(() => {
-    setVoteOption((prevOption) => ({ ...prevOption, gender }));
-  }, [gender]);
 
   const handleSelectedIdol = (id) => {
     if (selectedIdol === id) {
@@ -53,29 +47,29 @@ function VoteModal(props) {
   };
 
   const handleVoteIdol = async () => {
-    handleToggle();
     if (creditAmount < 1000) {
-      setSelectedIdol('');
-    } else {
-      const receivedVotes = await postVotes(selectedIdol);
-      const updatedVoteList = chartList.map((idol) =>
-        idol.id === receivedVotes.idol.id
-          ? { ...idol, ...receivedVotes.idol }
-          : idol,
-      );
-      setChartList(updatedVoteList);
-      setCreditAmount(creditAmount - 1000);
-      setSelectedIdol('');
+      throw new Error('Credit amount is less than required 1000 credits.');
     }
+
+    const receivedVotes = await postVotes(selectedIdol);
+    const updatedVoteList = chartList.map((idol) =>
+      idol.id === receivedVotes.idol.id
+        ? { ...idol, ...receivedVotes.idol }
+        : idol,
+    );
+    setChartList(updatedVoteList);
+    setCreditAmount(creditAmount - 1000);
+    setSelectedIdol('');
+    handleToggle();
   };
 
   useEffect(() => {
     const loadChartList = async () => {
-      const result = await getCharts(voteOption);
+      const result = await getCharts(initialVoteOption);
       setVoteList(result.idols);
     };
     loadChartList();
-  }, [voteOption, toggle]);
+  }, [toggle]);
 
   const { voteMobileCreditTag, voteMobileFixed, voteMobileSize } =
     getVoteResponsibleStyle(isFullModal);
