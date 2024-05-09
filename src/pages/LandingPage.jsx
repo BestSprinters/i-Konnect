@@ -1,9 +1,9 @@
-import MainLogo from '../assets/imgs/img_logo.png';
-import ItzyBackground from '../assets/imgs/itzy.png';
-import LandingPreviewImage from '../assets/imgs/landingPreviewImage.svg';
-import LucyBackground from '../assets/imgs/lucy.png';
-import NewJeansBackground from '../assets/imgs/newjeans.png';
-import UkissBackground from '../assets/imgs/ukiss.png';
+import imgItzy from '../assets/imgs/img_itzy.png';
+import imgLandingPreview from '../assets/imgs/img_landingPreview.svg';
+import imgLogo from '../assets/imgs/img_logo.png';
+import imgLucy from '../assets/imgs/img_lucy.png';
+import imgNewjeans from '../assets/imgs/img_newjeans.png';
+import imgUkiss from '../assets/imgs/img_ukiss.png';
 import LandingSection from '../components/LandingSection';
 import LinkButton from '../components/LinkButton';
 import PAGES from '../constants/paths';
@@ -22,12 +22,12 @@ function LandingPage() {
             </h1>
           </div>
           <img
-            src={MainLogo}
+            src={imgLogo}
             alt="main logo"
             className="h-[100px] w-[500px] object-cover"
           />
           <img
-            src={ItzyBackground}
+            src={imgItzy}
             alt="main background"
             className="absolute top-1/2 -z-50 h-[80%] -translate-y-1/2 rounded-md object-cover opacity-70"
           />
@@ -40,9 +40,9 @@ function LandingPage() {
         {/* previewImage 수정 필요 */}
         <LandingSection
           backgroundImageAlt="first section background"
-          backgroundImage={NewJeansBackground}
+          backgroundImage={imgNewjeans}
           previewImageAlt="first preview image"
-          previewImage={LandingPreviewImage}
+          previewImage={imgLandingPreview}
           title="후원하기"
         >
           <h1>
@@ -53,9 +53,9 @@ function LandingPage() {
         </LandingSection>
         <LandingSection
           backgroundImageAlt="second section background"
-          backgroundImage={LucyBackground}
+          backgroundImage={imgLucy}
           previewImageAlt="second preview image"
-          previewImage={LandingPreviewImage}
+          previewImage={imgLandingPreview}
           title="이달의 아티스트"
         >
           <h1>
@@ -66,9 +66,9 @@ function LandingPage() {
         </LandingSection>
         <LandingSection
           backgroundImageAlt="third section background"
-          backgroundImage={UkissBackground}
+          backgroundImage={imgUkiss}
           previewImageAlt="third preview image"
-          previewImage={LandingPreviewImage}
+          previewImage={imgLandingPreview}
           title="나만의 아티스트"
         >
           <h1>

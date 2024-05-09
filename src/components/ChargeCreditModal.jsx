@@ -1,9 +1,9 @@
 import { useState } from 'react';
 
-import creditIcon from '../assets/imgs/ic_credit.svg';
-import checkedRadioIcon from '../assets/imgs/ic_radio_checked.svg';
-import uncheckedRadioIcon from '../assets/imgs/ic_radio_unchecked.svg';
-import whiteCreditIcon from '../assets/imgs/ic_white_credit.svg';
+import icCredit from '../assets/imgs/ic_credit.svg';
+import icRadioChecked from '../assets/imgs/ic_radio_checked.svg';
+import icRadioUnchecked from '../assets/imgs/ic_radio_unchecked.svg';
+import icWhiteCredit from '../assets/imgs/ic_white_credit.svg';
 import Button from './Button';
 import Modal from './Modal';
 
@@ -41,7 +41,7 @@ function ChargeCreditModal({ open, onClose }) {
         ))}
       </div>
       <Button type="largeSquare" onClick={handleChargeButtonClick}>
-        <img src={whiteCreditIcon} alt="크레딧 아이콘" />
+        <img src={icWhiteCredit} alt="크레딧 아이콘" />
         충전하기
       </Button>
     </Modal>
@@ -67,14 +67,14 @@ function CreditOption({ isSelected, amount, onSelect }) {
       role="button"
       tabIndex={0}
     >
-      <img src={creditIcon} alt="크레딧 아이콘" />
+      <img src={icCredit} alt="크레딧 아이콘" />
       <p
         className={`${isSelected ? 'text-whitePrimary' : 'text-grayMedium'} ml-1 grow text-xl font-bold`}
       >
         {amount}
       </p>
       <img
-        src={isSelected ? checkedRadioIcon : uncheckedRadioIcon}
+        src={isSelected ? icRadioChecked : icRadioUnchecked}
         className="h-4 w-4"
         alt="라디오 버튼"
       />

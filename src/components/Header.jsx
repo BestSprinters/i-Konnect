@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 
 import imgLogo from '../assets/imgs/img_logo.png';
-import myProfile from '../assets/imgs/loopy.png';
+import imgLoopy from '../assets/imgs/img_loopy.png';
 import PAGES from '../constants/paths';
 
 function Header() {
@@ -41,7 +41,7 @@ function Header() {
       <div>
         <Link to={PAGES.myPage.link}>
           <img
-            src={myProfile}
+            src={imgLoopy}
             alt="프로필"
             className="float-right mr-4 h-[32px] w-[32px] cursor-pointer rounded-full"
           />

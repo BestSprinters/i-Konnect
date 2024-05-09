@@ -1,4 +1,4 @@
-import imgCredit from '../assets/imgs/ic_credit.svg';
+import icCredit from '../assets/imgs/ic_credit.svg';
 import displayTime from '../utils/displayTime';
 import ProgressBar from './ProgressBar';
 
@@ -34,7 +34,7 @@ function SponsorCard({ donation }) {
           <h3 className="text-[18px] mobile:text-[14px]">{donation.title}</h3>
           <div className="flex items-center justify-between">
             <div className="flex items-center text-[12px] text-pointOrange">
-              <img src={imgCredit} alt="" />
+              <img src={icCredit} alt="" />
               {donation.receivedDonations}
             </div>
             <p className="text-[12px]">
