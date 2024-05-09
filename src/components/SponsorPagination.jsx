@@ -8,8 +8,8 @@ import { Navigation } from 'swiper/modules';
 import { Swiper, SwiperSlide } from 'swiper/react';
 
 import getDonations from '../apis/donations/getDonationsApi';
-import leftArrow from '../assets/imgs/btn_pagination_arrow_left.svg';
-import rightArrow from '../assets/imgs/btn_pagination_arrow_right.svg';
+import icArrowLeft from '../assets/imgs/ic_arrow_left.svg';
+import icArrowRight from '../assets/imgs/ic_arrow_right.svg';
 import SponsorCard from './SponsorCard';
 
 function SponsorPagination() {
@@ -69,7 +69,7 @@ function SponsorPagination() {
           className="flex h-[80px] w-[40px] items-center justify-center rounded-md bg-grayBlack"
         >
           <img
-            src={leftArrow}
+            src={icArrowLeft}
             alt="previous arrow"
             className="h-[20px] w-[10px] cursor-pointer"
           />
@@ -96,7 +96,7 @@ function SponsorPagination() {
           className="flex h-[80px] w-[40px] items-center justify-center rounded-md bg-grayBlack"
         >
           <img
-            src={rightArrow}
+            src={icArrowRight}
             alt="next arrow"
             className="h-[20px] w-[10px] cursor-pointer"
           />
