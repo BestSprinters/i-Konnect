@@ -5,7 +5,7 @@ import './index.css';
 import AddSponsorPage from './pages/AddSponsorPage';
 import LandingPage from './pages/LandingPage';
 import ListPage from './pages/ListPage';
-import Mypage from './pages/Mypage';
+import MyPage from './pages/MyPage';
 import NotFound from './pages/NotFound';
 
 function App() {
@@ -13,7 +13,7 @@ function App() {
     <Routes>
       <Route path={PAGES.home.link} element={<LandingPage />} />
       <Route path={PAGES.list.link} element={<ListPage />} />
-      <Route path={PAGES.myPage.link} element={<Mypage />} />
+      <Route path={PAGES.myPage.link} element={<MyPage />} />
       <Route path={PAGES.addSponsor.link} element={<AddSponsorPage />} />
       <Route path={PAGES.notFound.link} element={<NotFound />} />
     </Routes>

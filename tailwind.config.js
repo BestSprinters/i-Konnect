@@ -3,6 +3,9 @@ export default {
   content: ['./index.html', './src/**/*.{js,ts,jsx,tsx}'],
   theme: {
     extend: {
+      backgroundImage: {
+        'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
+      },
       colors: {
         blackPrimary: '#02000E',
         blackSecondary: '#181D26',
@@ -13,9 +16,13 @@ export default {
         grayMedium: '#828282',
         grayDark: '#67666E',
         grayBlue: '#8C92AB',
+        grayBlack: '#1B1B1BCC',
 
         whitePrimary: '#FFF',
         whiteSecondary: '#F7F7F8',
+        whiteGray: '#F1EEF9CC',
+
+        pointBlue: '#14C3FE',
 
         pointOrange: '#F96D69',
         pointPink: '#FE5493',
