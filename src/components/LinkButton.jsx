@@ -3,9 +3,7 @@ import { Link } from 'react-router-dom';
 
 import createButtonStyle from '../utils/createButtonStyle';
 
-function LinkButton(props) {
-  const { isDisabled = false, children, onClick, type, to } = props;
-
+function LinkButton({ isDisabled = false, children, onClick, type, to }) {
   const buttonTypeStyle = createButtonStyle(isDisabled);
   const buttonTypeName = type ? buttonTypeStyle[type] : '';
 
