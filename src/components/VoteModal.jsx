@@ -17,14 +17,8 @@ const getVoteResponsibleStyle = (isFullModal) => {
   return { voteMobileCreditTag, voteMobileFixed, voteMobileSize };
 };
 
-const initialVoteOption = {
-  gender: 'female',
-  cursor: '',
-  pageSize: 24,
-};
-
 function VoteModal({
-  gender = 'female',
+  gender,
   toggle,
   handleToggle,
   setChartList,
@@ -34,6 +28,12 @@ function VoteModal({
 }) {
   const [voteList, setVoteList] = useState([]);
   const [selectedIdol, setSelectedIdol] = useState();
+  const [voteOption, setVoteOption] = useState({
+    gender: 'female',
+    cursor: '',
+    pageSize: 24,
+  });
+
   const isFullModal = useMediaQuery('(max-width: 767px)');
   const voteTitle =
     gender === 'female' ? '이달의 여자 아이돌' : '이달의 남자 아이돌';
@@ -64,12 +64,16 @@ function VoteModal({
   };
 
   useEffect(() => {
+    setVoteOption((prev) => ({ ...prev, gender: `${gender}` }));
+  }, [gender]);
+
+  useEffect(() => {
     const loadChartList = async () => {
-      const result = await getCharts(initialVoteOption);
+      const result = await getCharts(voteOption);
       setVoteList(result.idols);
     };
     loadChartList();
-  }, [toggle]);
+  }, [toggle, voteOption]);
 
   const { voteMobileCreditTag, voteMobileFixed, voteMobileSize } =
     getVoteResponsibleStyle(isFullModal);
