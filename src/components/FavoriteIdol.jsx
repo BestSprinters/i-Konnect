@@ -4,7 +4,7 @@ import IdolThumbnail from './IdolThumbnail';
 function FavoriteIdol({ idols, onChange }) {
   const removeIdolById = (idToRemove) => {
     // 로컬스토리지에서 데이터 가져오기
-    const storedData = localStorage.getItem('Mypage_FavoriteIdol');
+    const storedData = localStorage.getItem('MyPage_FavoriteIdol');
     if (!storedData) return; // 데이터가 없으면 함수 종료
 
     // 가져온 데이터 파싱
@@ -14,7 +14,7 @@ function FavoriteIdol({ idols, onChange }) {
     favoriteIdols = favoriteIdols.filter((idol) => idol.id !== idToRemove);
 
     // 수정된 데이터 다시 로컬스토리지에 저장
-    localStorage.setItem('Mypage_FavoriteIdol', JSON.stringify(favoriteIdols));
+    localStorage.setItem('MyPage_FavoriteIdol', JSON.stringify(favoriteIdols));
 
     onChange(favoriteIdols);
   };

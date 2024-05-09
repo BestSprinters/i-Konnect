@@ -10,7 +10,7 @@ function MyPage() {
   const [favoriteIdols, setFavoriteIdols] = useState([]);
   // 이름 확인
   const [changeIdols, setChangeIdols] = useState(
-    JSON.parse(localStorage.getItem('myPage_FavoriteIdol')) || [],
+    JSON.parse(localStorage.getItem('MyPage_FavoriteIdol')) || [],
   );
   const [pageSizeChange, setPageSizeChange] = useState();
 
