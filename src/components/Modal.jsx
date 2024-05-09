@@ -40,7 +40,7 @@ function Modal({ title, type, open, onClose, isFullModal = false, children }) {
     <>
       {createPortal(
         <div
-          className="fixed inset-0 flex h-full w-full items-center justify-center bg-blackPrimary/80"
+          className="fixed inset-0 z-50 flex h-full w-full items-center justify-center bg-blackPrimary/80"
           ref={modalBackdropRef}
           onClick={(e) => handleModalBackdropClick(e)}
           aria-hidden="true"

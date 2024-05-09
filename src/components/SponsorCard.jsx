@@ -1,8 +1,12 @@
 import icCredit from '../assets/imgs/ic_credit.svg';
+import useToggle from '../hooks/useToggle';
 import displayTime from '../utils/displayTime';
+import DonateModal from './DonateModal';
 import ProgressBar from './ProgressBar';
 
 function SponsorCard({ donation }) {
+  const { toggle, handleToggle } = useToggle();
+
   return (
     <div>
       <div
@@ -22,6 +26,7 @@ function SponsorCard({ donation }) {
             <button
               type="button"
               className="cursor-point absolute top-[-60px] flex h-[40px] w-[234px] items-center justify-center rounded-[3px] bg-gradient-to-r from-pointOrange to-pointPink px-[16px] text-[13px] font-bold mobile:h-[31px] mobile:w-[142px]"
+              onClick={handleToggle}
             >
               후원하기
             </button>
@@ -49,6 +54,11 @@ function SponsorCard({ donation }) {
           </div>
         </div>
       </div>
+      <DonateModal
+        open={toggle}
+        onClose={handleToggle}
+        donationData={donation}
+      />
     </div>
   );
 }
