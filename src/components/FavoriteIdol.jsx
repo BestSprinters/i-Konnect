@@ -1,4 +1,4 @@
-import deleteImg from '../assets/imgs/ic_delete.svg';
+import icDelete from '../assets/imgs/ic_delete.svg';
 import IdolThumbnail from './IdolThumbnail';
 
 function FavoriteIdol({ idols, onChange }) {
@@ -35,7 +35,7 @@ function FavoriteIdol({ idols, onChange }) {
                 className="absolute right-0"
                 onClick={() => removeIdolById(idol.id)}
               >
-                <img src={deleteImg} alt="삭제" className="size-[32px]" />
+                <img src={icDelete} alt="삭제" className="size-[32px]" />
               </button>
               <IdolThumbnail
                 size="medium"

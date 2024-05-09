@@ -1,5 +1,5 @@
-import radioChecked from '../assets/imgs/ic_radio_checked.svg';
-import radioUnChecked from '../assets/imgs/ic_radio_unchecked.svg';
+import icRadioChecked from '../assets/imgs/ic_radio_checked.svg';
+import icRadioUnchecked from '../assets/imgs/ic_radio_unchecked.svg';
 import formattedNumber from '../utils/formattedNumber';
 import CheckedIdolAvatar from './CheckedIdolAvatar';
 import IdolAvatar from './IdolAvatar';
@@ -35,7 +35,7 @@ function VoteRank({ selectedIdol, handleSelectedIdol, rank, chart }) {
         </p>
       </div>
       <img
-        src={selectedIdol === id ? radioChecked : radioUnChecked}
+        src={selectedIdol === id ? icRadioChecked : icRadioUnchecked}
         alt={selectedIdol === id ? 'checked' : 'unchecked'}
       />
     </button>
