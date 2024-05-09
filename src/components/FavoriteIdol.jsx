@@ -1,10 +1,10 @@
-import deleteImg from '../assets/imgs/ic_delete.svg';
+import icDelete from '../assets/imgs/ic_delete.svg';
 import IdolThumbnail from './IdolThumbnail';
 
 function FavoriteIdol({ idols, onChange }) {
   const removeIdolById = (idToRemove) => {
     // 로컬스토리지에서 데이터 가져오기
-    const storedData = localStorage.getItem('Mypage_FavoriteIdol');
+    const storedData = localStorage.getItem('myPage_FavoriteIdol');
     if (!storedData) return; // 데이터가 없으면 함수 종료
 
     // 가져온 데이터 파싱
@@ -14,7 +14,7 @@ function FavoriteIdol({ idols, onChange }) {
     favoriteIdols = favoriteIdols.filter((idol) => idol.id !== idToRemove);
 
     // 수정된 데이터 다시 로컬스토리지에 저장
-    localStorage.setItem('Mypage_FavoriteIdol', JSON.stringify(favoriteIdols));
+    localStorage.setItem('myPage_FavoriteIdol', JSON.stringify(favoriteIdols));
 
     onChange(favoriteIdols);
   };
@@ -35,7 +35,7 @@ function FavoriteIdol({ idols, onChange }) {
                 className="absolute right-0"
                 onClick={() => removeIdolById(idol.id)}
               >
-                <img src={deleteImg} alt="삭제" className="size-[32px]" />
+                <img src={icDelete} alt="삭제" className="size-[32px]" />
               </button>
               <IdolThumbnail
                 size="medium"

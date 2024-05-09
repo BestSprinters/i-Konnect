@@ -15,7 +15,7 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 
 import postDonationsApi from '../apis/donations/postDonationsApi';
 import getIdols from '../apis/idols/getIdolsApi';
-import searchIcon from '../assets/imgs/ic_search.svg';
+import icSearch from '../assets/imgs/ic_search.svg';
 import Button from '../components/Button';
 import CheckedIdolAvatar from '../components/CheckedIdolAvatar';
 import IdolAvatar from '../components/IdolAvatar';
@@ -112,7 +112,7 @@ function AddSponsorPage() {
       <form className="w-full px-8" onSubmit={handleSubmit}>
         <div className="relative my-4 flex-1">
           <img
-            src={searchIcon}
+            src={icSearch}
             alt="search icon"
             className="absolute left-2 top-1 h-[24px] w-[24px]"
           />
@@ -186,8 +186,8 @@ function AddSponsorPage() {
               ref={titleRef}
               id="title"
               name="title"
-              type="title"
-              autoComplete="title"
+              type="text"
+              autoComplete
               className="font-regular block w-full rounded-md border-0 py-1.5 pl-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:outline-none focus:outline-pointPink sm:text-sm sm:leading-6"
               onChange={handleInputChange}
             />

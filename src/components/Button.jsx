@@ -2,9 +2,7 @@ import React from 'react';
 
 import createButtonStyle from '../utils/createButtonStyle';
 
-function Button(props) {
-  const { isDisabled = false, children, onClick, type } = props;
-
+function Button({ isDisabled = false, children, onClick, type }) {
   const buttonTypeStyle = createButtonStyle(isDisabled);
   const buttonTypeName = type ? buttonTypeStyle[type] : '';
 
