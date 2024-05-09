@@ -4,8 +4,16 @@ import formattedNumber from '../utils/formattedNumber';
 import CheckedIdolAvatar from './CheckedIdolAvatar';
 import IdolAvatar from './IdolAvatar';
 
-function VoteRank({ selectedIdol, handleSelectedIdol, rank, voteIdol }) {
-  const { profilePicture, name, group, totalVotes, id } = voteIdol;
+function VoteRank({
+  selectedIdol,
+  handleSelectedIdol,
+  rank,
+  profilePicture,
+  name,
+  group,
+  totalVotes,
+  id,
+}) {
   const formattedTotalVotes = formattedNumber(totalVotes);
 
   const toggleCheck = () => {

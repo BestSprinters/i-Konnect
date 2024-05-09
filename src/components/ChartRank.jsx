@@ -2,8 +2,14 @@ import React from 'react';
 
 import IdolAvatar from './IdolAvatar';
 
-function ChartRank({ chart, rank, hideBorder }) {
-  const { profilePicture, name, group, totalVotes } = chart;
+function ChartRank({
+  rank,
+  hideBorder,
+  profilePicture,
+  name,
+  group,
+  totalVotes,
+}) {
   return (
     <div
       className={`h-17 flex w-full items-center py-2 ${hideBorder ? '' : 'border-b border-white/10'}`}

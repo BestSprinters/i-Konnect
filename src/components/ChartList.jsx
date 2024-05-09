@@ -22,10 +22,13 @@ function ChartList({ chartList, matches }) {
 
         return (
           <ChartRank
-            chart={chart}
             key={chart.id}
             rank={index + 1}
             hideBorder={hideBorder}
+            profilePicture={chart.profilePicture}
+            name={chart.name}
+            group={chart.group}
+            totalVotes={chart.totalVotes}
           />
         );
       })}

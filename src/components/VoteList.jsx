@@ -9,7 +9,11 @@ function VoteList({ voteList, selectedIdol, handleSelectedIdol }) {
           rank={index + 1}
           selectedIdol={selectedIdol}
           handleSelectedIdol={handleSelectedIdol}
-          voteIdol={voteIdol}
+          profilePicture={voteIdol.profilePicture}
+          name={voteIdol.name}
+          group={voteIdol.group}
+          totalVotes={voteIdol.totalVotes}
+          id={voteIdol.id}
         />
       ))}
     </div>
