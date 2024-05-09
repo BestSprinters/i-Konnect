@@ -1,11 +1,12 @@
 import { useEffect, useState } from 'react';
 
+import putDonations from '../apis/donations/putDonationsApi';
 import creditIcon from '../assets/imgs/ic_credit.svg';
 import Button from './Button';
 import Modal from './Modal';
 
 function DonateModal({ open, onClose, donationData }) {
-  const { idol, title } = donationData;
+  const { id, idol, title } = donationData;
   const { profilePicture } = idol;
 
   const [creditAmount, setCreditAmount] = useState('');
@@ -26,7 +27,10 @@ function DonateModal({ open, onClose, donationData }) {
     setCreditAmount(e.target.value.replace(/[^0-9]/g, ''));
   };
 
-  const handleButtonClick = () => {
+  const handleButtonClick = async () => {
+    // 후원
+    await putDonations(id, creditAmount);
+
     // 후원한 크레딧만큼 로컬 스토리지에서 감소
     const existingCredit = Number(localStorage.getItem('myCredit'));
     localStorage.setItem('myCredit', existingCredit - Number(creditAmount));
