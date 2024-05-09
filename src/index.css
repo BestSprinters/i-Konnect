@@ -46,7 +46,6 @@ body {
   background-color: theme('colors.blackPrimary');
 }
 
-
 body {
   -ms-overflow-style: none;
 }
@@ -60,4 +59,3 @@ body {
 .swiper .swiper-pagination-bullet {
   display: none;
 }
-

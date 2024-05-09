@@ -3,7 +3,6 @@ import { useEffect, useState } from 'react';
 import getCharts from '../apis/charts/getChartApi';
 import postVotes from '../apis/votes/postVotesApi';
 import useMediaQuery from '../hooks/useMediaQuery';
-import useToggle from '../hooks/useToggle';
 import Button from './Button';
 import Modal from './Modal';
 import VoteList from './VoteList';
@@ -24,9 +23,15 @@ const initialVoteOption = {
   pageSize: 24,
 };
 
-// useToggle에 true넣으시면 처음부터 모달창이 뜨게됩니다.
-function VoteModal({ gender = 'female' }) {
-  const { toggle, handleToggle } = useToggle(true);
+function VoteModal({
+  gender = 'female',
+  toggle,
+  handleToggle,
+  setChartList,
+  chartList,
+  creditAmount,
+  setCreditAmount,
+}) {
   const [voteList, setVoteList] = useState([]);
   const [selectedIdol, setSelectedIdol] = useState();
   const isFullModal = useMediaQuery('(max-width: 767px)');
@@ -41,8 +46,19 @@ function VoteModal({ gender = 'female' }) {
     setSelectedIdol(id);
   };
 
-  const handleVoteIdol = () => {
-    postVotes(selectedIdol);
+  const handleVoteIdol = async () => {
+    if (creditAmount < 1000) {
+      throw new Error('Credit amount is less than required 1000 credits.');
+    }
+
+    const receivedVotes = await postVotes(selectedIdol);
+    const updatedVoteList = chartList.map((idol) =>
+      idol.id === receivedVotes.idol.id
+        ? { ...idol, ...receivedVotes.idol }
+        : idol,
+    );
+    setChartList(updatedVoteList);
+    setCreditAmount(creditAmount - 1000);
     setSelectedIdol('');
     handleToggle();
   };
@@ -53,7 +69,7 @@ function VoteModal({ gender = 'female' }) {
       setVoteList(result.idols);
     };
     loadChartList();
-  }, []);
+  }, [toggle]);
 
   const { voteMobileCreditTag, voteMobileFixed, voteMobileSize } =
     getVoteResponsibleStyle(isFullModal);
