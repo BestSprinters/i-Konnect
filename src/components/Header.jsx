@@ -9,7 +9,7 @@ function Header() {
   const [scrollPosition, setScrollPosition] = useState(0);
 
   const baseHeaderStyle =
-    'fixed left-0 top-0 flex w-full items-center justify-center';
+    'fixed left-0 top-0 z-50 flex w-full items-center justify-center';
 
   const headerScrollStyle = {
     base: 'bg-transparent',
