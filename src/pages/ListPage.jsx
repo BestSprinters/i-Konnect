@@ -1,3 +1,4 @@
+import Chart from '../components/Chart';
 import Header from '../components/Header';
 import MyCredit from '../components/MyCredit';
 import SponsorPagination from '../components/SponsorPagination';
@@ -11,6 +12,7 @@ function ListPage() {
       <Header />
       <MyCredit />
       {tabletSize ? <SponsorSlider /> : <SponsorPagination />}
+      <Chart />
     </div>
   );
 }

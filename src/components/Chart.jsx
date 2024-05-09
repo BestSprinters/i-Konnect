@@ -22,7 +22,7 @@ function Chart() {
     });
 
   return (
-    <div className="flex-col">
+    <div className="mb-[60px] mt-[40px] flex-col px-6 md:mb-80 md:mt-[60px] xl:mt-20">
       <div className="flex">
         <h3 className="1 grow text-base font-bold text-whitePrimary md:text-xl xl:text-2xl">
           이달의 차트
