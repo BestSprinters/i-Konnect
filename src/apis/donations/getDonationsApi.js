@@ -13,7 +13,7 @@ const getDonations = async (option = {}) => {
   const donationsParams = createQueryParams(donationsOption);
   try {
     const response = await axiosInstance.get(`/donations?${donationsParams}`);
-    const donations = response.data;
+    const donations = response.data.list;
     return donations;
   } catch (error) {
     throw new Error(error.message);

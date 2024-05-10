@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 
-import credit from '../assets/imgs/img_credit.svg';
+import imgCredit from '../assets/imgs/img_credit.svg';
 
 function MyPageCredit() {
   const [credits, setCredits] = useState();
@@ -19,7 +19,11 @@ function MyPageCredit() {
           <div>
             <p className="mb-[8px] text-grayMedium">내 크레딧</p>
             <div className="-ml-[10px] flex">
-              <img src={credit} alt="크레딧 이미지" className="size-[32px]" />
+              <img
+                src={imgCredit}
+                alt="크레딧 이미지"
+                className="size-[32px]"
+              />
               <h3 className="text-2xl font-semibold">{credits}</h3>
             </div>
           </div>

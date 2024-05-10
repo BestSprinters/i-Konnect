@@ -1,8 +1,8 @@
 import { useEffect, useRef } from 'react';
 import { createPortal } from 'react-dom';
 
-import arrowLeftIcon from '../assets/imgs/ic_arrow_left.svg';
-import closeIcon from '../assets/imgs/ic_close.svg';
+import icArrowLeft from '../assets/imgs/ic_arrow_left.svg';
+import icClose from '../assets/imgs/ic_close.svg';
 
 function Modal({ title, type, open, onClose, isFullModal = false, children }) {
   // 모달 창이 열렸을 때 스크롤 비활성화
@@ -55,7 +55,7 @@ function Modal({ title, type, open, onClose, isFullModal = false, children }) {
                 >
                   <img
                     className="h-6 w-6"
-                    src={arrowLeftIcon}
+                    src={icArrowLeft}
                     alt="닫기 아이콘"
                   />
                 </button>
@@ -72,7 +72,7 @@ function Modal({ title, type, open, onClose, isFullModal = false, children }) {
                   className="absolute right-4 top-4 rounded-xl p-1 hover:bg-grayBlue/20 focus:bg-grayBlue/50"
                   onClick={onClose}
                 >
-                  <img className="h-6 w-6" src={closeIcon} alt="닫기 아이콘" />
+                  <img className="h-6 w-6" src={icClose} alt="닫기 아이콘" />
                 </button>
                 {title && (
                   <h2 className="mb-5 text-lg font-medium leading-6 text-whiteSecondary">
