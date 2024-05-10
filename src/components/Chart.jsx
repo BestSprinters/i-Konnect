@@ -1,6 +1,7 @@
-import { useState } from 'react';
+import { useContext } from 'react';
 
 import chartIcon from '../assets/imgs/ic_chart.svg';
+import CreditContext from '../contexts/CreditAmount';
 import useChartLoader from '../hooks/useChartLoader';
 import useMediaQuery from '../hooks/useMediaQuery';
 import useToggle from '../hooks/useToggle';
@@ -11,11 +12,9 @@ import ChoiceGender from './ChoiceGender';
 import VoteModal from './VoteModal';
 
 function Chart() {
+  const { creditAmount, setCreditAmount } = useContext(CreditContext);
   const matches = useMediaQuery('(min-width: 1280px)');
   const { toggle, handleToggle } = useToggle();
-  const [creditAmount, setCreditAmount] = useState(
-    localStorage.getItem('myCredit'),
-  );
   const { chartList, hasMore, updateChartOption, setChartList, chartOption } =
     useChartLoader({
       gender: 'female',
