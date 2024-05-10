@@ -1,7 +1,8 @@
-import { useState } from 'react';
+import { useContext, useState } from 'react';
 
 import putDonations from '../apis/donations/putDonationsApi';
 import icCredit from '../assets/imgs/ic_credit.svg';
+import CreditContext from '../contexts/CreditAmount';
 import useToggle from '../hooks/useToggle';
 import displayTime from '../utils/displayTime';
 import DonateModal from './DonateModal';
@@ -12,10 +13,12 @@ function SponsorCard({ donation }) {
   const [receivedDonations, setReceivedDonations] = useState(
     donation.receivedDonations,
   );
+  const { creditAmount, setCreditAmount } = useContext(CreditContext);
 
   const putAndRefetchDonations = async (id, amount) => {
     const data = await putDonations(id, amount);
     setReceivedDonations(data.receivedDonations);
+    setCreditAmount(creditAmount - amount);
   };
 
   return (
