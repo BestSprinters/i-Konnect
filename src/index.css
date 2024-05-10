@@ -2,6 +2,12 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer utilities {
+  .base-container {
+    @apply w-full max-w-[1200px] mx-auto;
+  }
+}
+
 @font-face {
   font-family: 'Pretendard';
   font-weight: 700;
@@ -43,5 +49,19 @@
 }
 
 body {
-  background-color: #000;
+  background-color: theme('colors.blackPrimary');
+}
+
+body {
+  -ms-overflow-style: none;
+}
+::-webkit-scrollbar {
+  display: none;
+}
+/* 스크롤바 없애는 거 */
+/* Swiper Style */
+
+/* Swiper bullet 제거 */
+.swiper .swiper-pagination-bullet {
+  display: none;
 }
