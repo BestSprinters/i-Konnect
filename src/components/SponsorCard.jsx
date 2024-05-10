@@ -13,7 +13,7 @@ function SponsorCard({ donation }) {
     donation.receivedDonations,
   );
 
-  const putAndRefetch = async (id, amount) => {
+  const putAndRefetchDonations = async (id, amount) => {
     const data = await putDonations(id, amount);
     setReceivedDonations(data.receivedDonations);
   };
@@ -69,7 +69,7 @@ function SponsorCard({ donation }) {
         open={toggle}
         onClose={handleToggle}
         donationData={donation}
-        putAndRefetch={putAndRefetch}
+        putAndRefetchDonations={putAndRefetchDonations}
       />
     </div>
   );

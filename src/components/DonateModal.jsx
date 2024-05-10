@@ -4,7 +4,7 @@ import creditIcon from '../assets/imgs/ic_credit.svg';
 import Button from './Button';
 import Modal from './Modal';
 
-function DonateModal({ open, onClose, donationData, putAndRefetch }) {
+function DonateModal({ open, onClose, donationData, putAndRefetchDonations }) {
   const { id, idol, title } = donationData;
   const { profilePicture } = idol;
 
@@ -28,7 +28,7 @@ function DonateModal({ open, onClose, donationData, putAndRefetch }) {
 
   const handleButtonClick = async () => {
     // 후원
-    putAndRefetch(id, creditAmount);
+    putAndRefetchDonations(id, creditAmount);
 
     // 후원한 크레딧만큼 로컬 스토리지에서 감소
     const existingCredit = Number(localStorage.getItem('myCredit'));
