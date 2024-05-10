@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const teamName = '6-15';
+const teamName = '06-15';
 
 const axiosConfig = {
   baseURL: `https://fandom-k-api.vercel.app/${teamName}`,
