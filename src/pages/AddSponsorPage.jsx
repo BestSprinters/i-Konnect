@@ -139,7 +139,7 @@ function AddSponsorPage() {
             </div>
           </div>
           <div
-            className={`rounded-[5px] py-4 ${!isIdolIdValid ? 'border border-red-600' : ''}`}
+            className={`rounded-[5px] py-4 ${!isIdolIdValid ? 'animate-vibration border border-red-600' : ''}`}
           >
             <Swiper
               slidesPerView={8}
@@ -205,7 +205,7 @@ function AddSponsorPage() {
                 name="title"
                 type="text"
                 autoComplete
-                className={`font-regular block w-full rounded-md bg-blackSecondary px-4 py-2 text-white placeholder:text-grayLight focus:outline-none sm:text-sm sm:leading-6 ${!isTitleValid ? 'border border-red-600' : ''}`}
+                className={`font-regular block w-full rounded-md bg-blackSecondary px-4 py-2 text-white placeholder:text-grayLight focus:outline-none sm:text-sm sm:leading-6 ${!isTitleValid ? 'animate-vibration border border-red-600' : ''}`}
                 onChange={handleInputChange}
               />
               {isTitleValid || (
@@ -223,7 +223,7 @@ function AddSponsorPage() {
                 id="subtitle"
                 name="subtitle"
                 rows={3}
-                className={`font-regular block h-[10rem] w-full resize-none rounded-md bg-blackSecondary px-4 py-2 text-white placeholder:text-grayLight focus:outline-none sm:text-sm sm:leading-6 ${!isSubtitleValid ? 'border border-red-600' : ''}`}
+                className={`font-regular block h-[10rem] w-full resize-none rounded-md bg-blackSecondary px-4 py-2 text-white placeholder:text-grayLight focus:outline-none sm:text-sm sm:leading-6 ${!isSubtitleValid ? 'animate-vibration border border-red-600' : ''}`}
                 onChange={handleInputChange}
               />
               {isSubtitleValid || (
@@ -246,7 +246,7 @@ function AddSponsorPage() {
                   <input
                     name="deadline"
                     type="date"
-                    className={`font-regular w-[10rem] rounded-md bg-blackSecondary px-4 py-2 text-sm text-white focus:outline-none ${!isDeadlineValid ? 'border border-red-600' : ''}`}
+                    className={`font-regular w-[10rem] rounded-md bg-blackSecondary px-4 py-2 text-sm text-white focus:outline-none ${!isDeadlineValid ? 'animate-vibration border border-red-600' : ''}`}
                     onChange={handleInputChange}
                     ref={dateRef}
                     onClick={showCalendar}
@@ -288,7 +288,7 @@ function AddSponsorPage() {
                   min={min}
                   step="100"
                   max={max}
-                  className={`m-0 h-1 w-full appearance-none rounded-full bg-grayLight outline-none [&::-webkit-slider-thumb]:h-5 [&::-webkit-slider-thumb]:w-5 [&::-webkit-slider-thumb]:cursor-grab [&::-webkit-slider-thumb]:appearance-none [&::-webkit-slider-thumb]:rounded-full [&::-webkit-slider-thumb]:bg-pointOrange ${!isTargetDonationValid ? 'border border-red-600' : ''}`}
+                  className={`m-0 h-1 w-full appearance-none rounded-full bg-grayLight outline-none [&::-webkit-slider-thumb]:h-5 [&::-webkit-slider-thumb]:w-5 [&::-webkit-slider-thumb]:cursor-grab [&::-webkit-slider-thumb]:appearance-none [&::-webkit-slider-thumb]:rounded-full [&::-webkit-slider-thumb]:bg-pointOrange ${!isTargetDonationValid ? 'animate-vibration border border-red-600' : ''}`}
                 />
                 {isTargetDonationValid || (
                   <p className="mt-2 text-[12px] text-red-600">
