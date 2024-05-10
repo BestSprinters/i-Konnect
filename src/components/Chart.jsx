@@ -13,7 +13,9 @@ import VoteModal from './VoteModal';
 function Chart() {
   const matches = useMediaQuery('(min-width: 1280px)');
   const { toggle, handleToggle } = useToggle();
-  const [creditAmount, setCreditAmount] = useState(1000);
+  const [creditAmount, setCreditAmount] = useState(
+    localStorage.getItem('myCredit'),
+  );
   const { chartList, hasMore, updateChartOption, setChartList, chartOption } =
     useChartLoader({
       gender: 'female',

@@ -58,7 +58,11 @@ function VoteModal({
         : idol,
     );
     setChartList(updatedVoteList);
-    setCreditAmount(creditAmount - 1000);
+    setCreditAmount((credit) => {
+      const newCreditAmount = credit - 1000;
+      localStorage.setItem('myCredit', newCreditAmount);
+      return newCreditAmount;
+    });
     setSelectedIdol('');
     handleToggle();
   };
