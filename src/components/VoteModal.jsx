@@ -33,7 +33,7 @@ function VoteModal({
   const [voteOption, setVoteOption] = useState({
     gender: 'female',
     cursor: '',
-    pageSize: 24,
+    pageSize: 10000,
   });
 
   const isFullModal = useMediaQuery('(max-width: 767px)');
