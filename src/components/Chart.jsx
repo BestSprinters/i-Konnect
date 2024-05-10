@@ -13,7 +13,9 @@ import VoteModal from './VoteModal';
 function Chart() {
   const matches = useMediaQuery('(min-width: 1280px)');
   const { toggle, handleToggle } = useToggle();
-  const [creditAmount, setCreditAmount] = useState(1000);
+  const [creditAmount, setCreditAmount] = useState(
+    localStorage.getItem('myCredit'),
+  );
   const { chartList, hasMore, updateChartOption, setChartList, chartOption } =
     useChartLoader({
       gender: 'female',
@@ -22,7 +24,7 @@ function Chart() {
     });
 
   return (
-    <div className="flex-col">
+    <div className="mb-[60px] mt-[40px] flex-col px-6 md:mb-80 md:mt-[60px] xl:mt-20">
       <div className="flex">
         <h3 className="1 grow text-base font-bold text-whitePrimary md:text-xl xl:text-2xl">
           이달의 차트

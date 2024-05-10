@@ -1,9 +1,10 @@
-import { useState } from 'react';
+import { useContext, useState } from 'react';
 
 import icCredit from '../assets/imgs/ic_credit.svg';
 import icRadioChecked from '../assets/imgs/ic_radio_checked.svg';
 import icRadioUnchecked from '../assets/imgs/ic_radio_unchecked.svg';
 import icWhiteCredit from '../assets/imgs/ic_white_credit.svg';
+import CreditContext from '../contexts/CreditAmount';
 import Button from './Button';
 import Modal from './Modal';
 
@@ -11,11 +12,15 @@ const chargeAmountList = [100, 500, 1000];
 
 function ChargeCreditModal({ open, onClose }) {
   const [chargeAmount, setChargeAmount] = useState(0);
+  // 컨텍스트를 이용하여 렌더링 할 credit을 추가하였습니다
+  const { setCreditAmount } = useContext(CreditContext);
 
   // TODO: util 함수로 분리해내는 리팩토링 필요
   const chargeCredit = () => {
-    const existingCredit = Number(localStorage.getItem('myCredit'));
+    const existingCredit = Number(localStorage.getItem('myCredit')) ?? 0;
     localStorage.setItem('myCredit', existingCredit + chargeAmount);
+    // 컨텍스트를 이용하여 렌더링 할 credit을 추가하였습니다
+    setCreditAmount(existingCredit + chargeAmount);
   };
 
   const handleModalClosed = () => {
