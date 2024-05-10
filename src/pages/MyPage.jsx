@@ -39,7 +39,7 @@ function MyPage() {
     getIdolList();
   }, [pageSizeChange, changeIdols]);
   return (
-    <div className="mx-auto mt-[80px] max-w-7xl">
+    <div className="base-container mt-[80px]">
       <MyPageCredit />
       <FavoriteIdol idols={favoriteIdols} onChange={handleChangeFavorite} />
       <MyPageIdol idols={idols} onChange={handleChangeFavorite} />

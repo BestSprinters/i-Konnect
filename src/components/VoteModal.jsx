@@ -18,7 +18,7 @@ const getVoteResponsibleStyle = (isFullModal) => {
 };
 
 function VoteModal({
-  gender,
+  gender = 'female',
   toggle,
   handleToggle,
   setChartList,

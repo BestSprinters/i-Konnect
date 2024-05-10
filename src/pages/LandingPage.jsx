@@ -11,7 +11,7 @@ import PAGES from '../constants/paths';
 function LandingPage() {
   return (
     <main className="relative">
-      <div className="absolute -left-[100px] -top-[135px] -z-10 h-[270px] w-[200px] bg-gradient-radial from-pointBlue to-blackPrimary opacity-20 blur-2xl" />
+      <div className="bg-gradient-radial from-pointBlue absolute -left-[100px] -top-[135px] -z-10 h-[270px] w-[200px] to-blackPrimary opacity-20 blur-2xl" />
       <div className="px-2 text-2xl font-bold text-white">
         <section className="relative flex h-dvh flex-col items-center">
           <div className="mt-[100px] text-center md:mt-[120px] xl:mt-[140px]">

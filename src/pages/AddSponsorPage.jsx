@@ -108,7 +108,7 @@ function AddSponsorPage() {
   };
 
   return (
-    <div className="container mx-auto mt-[80px] flex w-full max-w-[1200px] items-center justify-center">
+    <div className="base-container mt-[80px] flex items-center justify-center">
       <form className="w-full px-8" onSubmit={handleSubmit}>
         <div className="relative my-4 flex-1">
           <img
