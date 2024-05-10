@@ -1,7 +1,8 @@
-import { useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 
 import getCharts from '../apis/charts/getChartApi';
 import postVotes from '../apis/votes/postVotesApi';
+import CreditContext from '../contexts/CreditAmount';
 import useMediaQuery from '../hooks/useMediaQuery';
 import Button from './Button';
 import Modal from './Modal';
@@ -27,6 +28,7 @@ function VoteModal({
   setCreditAmount,
 }) {
   const [voteList, setVoteList] = useState([]);
+  const { setCreditAmount: setmyCredit } = useContext(CreditContext);
   const [selectedIdol, setSelectedIdol] = useState();
   const [voteOption, setVoteOption] = useState({
     gender: 'female',
@@ -61,6 +63,7 @@ function VoteModal({
     setCreditAmount((credit) => {
       const newCreditAmount = credit - 1000;
       localStorage.setItem('myCredit', newCreditAmount);
+      setmyCredit(newCreditAmount);
       return newCreditAmount;
     });
     setSelectedIdol('');
