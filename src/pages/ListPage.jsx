@@ -15,7 +15,7 @@ function ListPage() {
     setCreditAmount(localStorage.getItem('myCredit'));
   }, []);
   return (
-    <div className="xl:base-container">
+    <div className="desktop:base-container">
       <Header />
       <CreditContext.Provider
         // useState를 이용하여 재렌더링을 구현하려고 하니 linter문제가 떴습니다.
