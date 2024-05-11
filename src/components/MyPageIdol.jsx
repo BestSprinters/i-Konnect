@@ -7,8 +7,8 @@ import 'swiper/css/grid';
 import { Grid, Navigation } from 'swiper/modules';
 import { Swiper, SwiperSlide } from 'swiper/react';
 
-import prevArrow from '../assets/imgs/btn_pagination_arrow_left.svg';
-import nextArrow from '../assets/imgs/btn_pagination_arrow_right.svg';
+import prevArrow from '../assets/imgs/ic_arrow_left.svg';
+import nextArrow from '../assets/imgs/ic_arrow_right.svg';
 import useMediaQuery from '../hooks/useMediaQuery';
 import insertLocalStorage from '../utils/insertLocalStorage';
 import Button from './Button';
