@@ -12,8 +12,9 @@ function ListPage() {
   const [creditAmount, setCreditAmount] = useState();
   const tabletSize = useMediaQuery('(max-width: 1280px)');
   useEffect(() => {
-    setCreditAmount(localStorage.getItem('myCredit'));
+    setCreditAmount(Number(localStorage.getItem('myCredit')) ?? 0);
   }, []);
+
   return (
     <div className="xl:base-container">
       <Header />

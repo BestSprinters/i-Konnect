@@ -13,14 +13,13 @@ const chargeAmountList = [100, 500, 1000];
 function ChargeCreditModal({ open, onClose }) {
   const [chargeAmount, setChargeAmount] = useState(0);
   // 컨텍스트를 이용하여 렌더링 할 credit을 추가하였습니다
-  const { setCreditAmount } = useContext(CreditContext);
+  const { creditAmount, setCreditAmount } = useContext(CreditContext);
 
   // TODO: util 함수로 분리해내는 리팩토링 필요
   const chargeCredit = () => {
-    const existingCredit = Number(localStorage.getItem('myCredit')) ?? 0;
-    localStorage.setItem('myCredit', existingCredit + chargeAmount);
+    localStorage.setItem('myCredit', creditAmount + chargeAmount);
     // 컨텍스트를 이용하여 렌더링 할 credit을 추가하였습니다
-    setCreditAmount(existingCredit + chargeAmount);
+    setCreditAmount(creditAmount + chargeAmount);
   };
 
   const handleModalClosed = () => {
