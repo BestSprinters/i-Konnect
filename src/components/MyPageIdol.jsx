@@ -123,14 +123,14 @@ function MyPageIdol({ idols, onChange }) {
 
         <div
           ref={prevRef}
-          className="absolute left-0 top-[50%] z-[50] hidden h-[135px] w-[30px] items-center justify-center bg-[#1B1B1BCC] tablet:left-[20px] tablet:flex desktop:flex"
+          className="absolute left-0 top-[50%] z-[50] hidden h-[135px] w-[30px] items-center justify-center bg-[#1B1B1BCC] tablet:left-[20px] desktop:flex"
         >
           <img src={prevArrow} alt="prevArrow" />
         </div>
 
         <div
           ref={nextRef}
-          className="absolute right-0 top-[50%] z-[6] hidden h-[135px] w-[30px] items-center justify-center bg-[#1B1B1BCC] tablet:right-[20px] tablet:flex desktop:flex"
+          className="absolute right-0 top-[50%] z-[6] hidden h-[135px] w-[30px] items-center justify-center bg-[#1B1B1BCC] tablet:right-[20px] desktop:flex"
         >
           <img src={nextArrow} alt="nextArrow" />
         </div>
