@@ -107,10 +107,8 @@ function AddSponsorPage() {
       if (!datas.idolId) setIsIdolIdValid(false);
       if (!datas.title) setIsTitleValid(false);
       if (!datas.subtitle) setIsSubtitleValid(false);
-      if (!datas.deadline) {
-        setIsDeadlineValid(false);
-      }
-      if (datas.targetDonation === 0) setIsTargetDonationValid(false);
+      if (!datas.deadline) setIsDeadlineValid(false);
+      if (datas.targetDonation === '0') setIsTargetDonationValid(false);
     }
   };
 
@@ -209,7 +207,6 @@ function AddSponsorPage() {
                 id="title"
                 name="title"
                 type="text"
-                autoComplete
                 className={`font-regular block w-full rounded-md bg-blackSecondary px-4 py-2 text-white placeholder:text-grayLight focus:outline-none sm:text-sm sm:leading-6 ${!isTitleValid ? 'animate-vibration border border-red-600' : ''}`}
                 onChange={handleInputChange}
               />
