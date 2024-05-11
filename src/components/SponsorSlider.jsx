@@ -53,11 +53,11 @@ function SponsorSlider() {
   };
 
   return (
-    <div className="mt-10 md:mt-16">
-      <h1 className="text-bold mx-6 text-base md:text-xl">
+    <div className="mt-10 tablet:mt-16">
+      <h1 className="text-bold mx-6 text-base tablet:text-xl">
         후원을 기다리는 조공
       </h1>
-      <div className="mt-4 px-6 md:mt-6">
+      <div className="mt-4 px-6 tablet:mt-6">
         <Swiper
           slidesPerView={3}
           pagination={{ clickable: true }}
