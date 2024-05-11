@@ -1,3 +1,5 @@
+/* eslint-disable no-undef */
+
 /* eslint-disable react-hooks/exhaustive-deps */
 
 /* eslint-disable no-unused-vars */
@@ -105,8 +107,10 @@ function AddSponsorPage() {
       if (!datas.idolId) setIsIdolIdValid(false);
       if (!datas.title) setIsTitleValid(false);
       if (!datas.subtitle) setIsSubtitleValid(false);
-      if (!datas.targetDonation) setIsDeadlineValid(false);
-      if (!datas.deadline) setIsTargetDonationValid(false);
+      if (!datas.deadline) {
+        setIsDeadlineValid(false);
+      }
+      if (datas.targetDonation === 0) setIsTargetDonationValid(false);
     }
   };
 
@@ -116,12 +120,13 @@ function AddSponsorPage() {
 
   const showCalendar = () => {
     dateRef.current.showPicker();
+    setIsDeadlineValid(true);
   };
 
   return (
     <>
       <Header />
-      <div className="container mx-auto mt-[80px] flex w-full max-w-[1200px] items-center justify-between">
+      <div className="container mx-auto mt-[200px] flex w-full max-w-[1200px] items-center justify-between">
         <form className="w-full px-8" onSubmit={handleSubmit}>
           <div className="flex items-center justify-between">
             <p className="font-bold">조공 추가하기</p>
