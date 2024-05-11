@@ -139,7 +139,7 @@ function MyPageIdol({ idols, onChange }) {
       <div className="mt-[32px] flex justify-center">
         <Button type="round" onClick={addFavoriteIdol}>
           {' '}
-          kkk + 추가하기{' '}
+          + 추가하기{' '}
         </Button>
       </div>
     </div>
