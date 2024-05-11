@@ -7,7 +7,7 @@ import formattedNumber from '../utils/formattedNumber';
 import ChargeCreditModal from './ChargeCreditModal';
 
 function MyCredit() {
-  const { toggle, handleToggle } = useToggle();
+  const [toggle, handleToggle] = useToggle();
   const { creditAmount } = useContext(CreditContext);
 
   return (

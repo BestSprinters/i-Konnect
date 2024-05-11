@@ -9,7 +9,7 @@ import DonateModal from './DonateModal';
 import ProgressBar from './ProgressBar';
 
 function SponsorCard({ donation }) {
-  const { toggle, handleToggle } = useToggle();
+  const [toggle, handleToggle] = useToggle();
   const [receivedDonations, setReceivedDonations] = useState(
     donation.receivedDonations,
   );
