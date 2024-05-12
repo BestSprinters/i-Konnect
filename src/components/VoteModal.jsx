@@ -21,12 +21,12 @@ const getVoteResponsibleStyle = (isFullModal) => {
 function VoteModal({
   gender = 'female',
   toggle,
-  handleToggle,
+  handleVoteToggle,
+  handleNoCreditToggle,
   setChartList,
   chartList,
-  creditAmount,
-  setCreditAmount,
 }) {
+  const { creditAmount, setCreditAmount } = useContext(CreditContext);
   const [voteList, setVoteList] = useState([]);
   const { setCreditAmount: setmyCredit } = useContext(CreditContext);
   const [selectedIdol, setSelectedIdol] = useState();
@@ -49,8 +49,9 @@ function VoteModal({
   };
 
   const handleVoteIdol = async () => {
+    handleVoteToggle();
     if (creditAmount < 1000) {
-      throw new Error('Credit amount is less than required 1000 credits.');
+      handleNoCreditToggle();
     }
 
     const receivedVotes = await postVotes(selectedIdol);
@@ -67,11 +68,10 @@ function VoteModal({
       return newCreditAmount;
     });
     setSelectedIdol('');
-    handleToggle();
   };
 
   useEffect(() => {
-    setVoteOption((prev) => ({ ...prev, gender: `${gender}` }));
+    setVoteOption((prev) => ({ ...prev, gender }));
   }, [gender]);
 
   useEffect(() => {
@@ -88,7 +88,7 @@ function VoteModal({
   return (
     <Modal
       open={toggle}
-      onClose={handleToggle}
+      onClose={handleVoteToggle}
       type="wide"
       title={voteTitle}
       isFullModal={isFullModal}
