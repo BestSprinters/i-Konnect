@@ -6,6 +6,7 @@ import useChartLoader from '../hooks/useChartLoader';
 import useMediaQuery from '../hooks/useMediaQuery';
 import useToggle from '../hooks/useToggle';
 import Button from './Button';
+import ChargeCreditModal from './ChargeCreditModal';
 import ChartList from './ChartList';
 import ChartMoreButton from './ChartMoreButton';
 import ChoiceGender from './ChoiceGender';
@@ -17,6 +18,7 @@ function Chart() {
   const matches = useMediaQuery('(min-width: 1280px)');
   const [voteToggle, handleVoteToggle] = useToggle();
   const [noCreditToggle, handleNoCreditToggle] = useToggle();
+  const [chargeCreditToggle, handleChargeCreditToggle] = useToggle();
   const { chartList, hasMore, updateChartOption, setChartList, chartOption } =
     useChartLoader({
       gender: 'female',
@@ -67,6 +69,10 @@ function Chart() {
         setCreditAmount={setCreditAmount}
       />
       <NoCreditModal open={noCreditToggle} onClose={handleNoCreditToggle} />
+      <ChargeCreditModal
+        open={chargeCreditToggle}
+        onClose={handleChargeCreditToggle}
+      />
     </div>
   );
 }
