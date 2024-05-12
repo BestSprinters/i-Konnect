@@ -28,7 +28,7 @@ function FavoriteIdol({ idols, onChange }) {
   const mobileSize = useMediaQuery('(max-width: 767px)');
 
   return (
-    <div className="mobile:pl-[24px] tablet:pl-[24px]">
+    <div className="mt-6 mobile:mx-[24px] tablet:mx-[24px]">
       <h2 className="mb-[32px] text-2xl font-semibold mobile:hidden">
         내가 관심있는 아이돌
       </h2>
