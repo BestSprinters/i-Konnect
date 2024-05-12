@@ -2,7 +2,8 @@ import { useEffect, useState } from 'react';
 
 import getIdols from '../apis/idols/getIdolsApi';
 import FavoriteIdol from '../components/FavoriteIdol';
-import MyPageCredit from '../components/MyPageCredit';
+import Header from '../components/Header';
+import MyCredit from '../components/MyCredit';
 import MyPageIdol from '../components/MyPageIdol';
 
 function MyPage() {
@@ -50,10 +51,9 @@ function MyPage() {
 
   return (
     <div className="desktop:base-container my-[80px]">
-      <MyPageCredit />
-
+      <Header />
+      <MyCredit />
       <FavoriteIdol idols={favoriteIdols} onChange={handleChangeFavorite} />
-
       <MyPageIdol idols={idols} onChange={handleChangeFavorite} />
     </div>
   );
