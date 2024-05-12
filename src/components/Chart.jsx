@@ -1,7 +1,4 @@
-import { useContext } from 'react';
-
 import chartIcon from '../assets/imgs/ic_chart.svg';
-import CreditContext from '../contexts/CreditAmount';
 import useChartLoader from '../hooks/useChartLoader';
 import useMediaQuery from '../hooks/useMediaQuery';
 import useToggle from '../hooks/useToggle';
@@ -13,7 +10,6 @@ import NoCreditModal from './NoCreditModal';
 import VoteModal from './VoteModal';
 
 function Chart() {
-  const { creditAmount, setCreditAmount } = useContext(CreditContext);
   const matches = useMediaQuery('(min-width: 1280px)');
   const [voteToggle, handleVoteToggle] = useToggle();
   const [noCreditToggle, handleNoCreditToggle] = useToggle();
@@ -63,8 +59,6 @@ function Chart() {
         handleNoCreditToggle={handleNoCreditToggle}
         setChartList={setChartList}
         chartList={chartList}
-        creditAmount={creditAmount}
-        setCreditAmount={setCreditAmount}
       />
       <NoCreditModal open={noCreditToggle} onClose={handleNoCreditToggle} />
     </div>

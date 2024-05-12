@@ -25,9 +25,8 @@ function VoteModal({
   handleNoCreditToggle,
   setChartList,
   chartList,
-  creditAmount,
-  setCreditAmount,
 }) {
+  const { creditAmount, setCreditAmount } = useContext(CreditContext);
   const [voteList, setVoteList] = useState([]);
   const { setCreditAmount: setmyCredit } = useContext(CreditContext);
   const [selectedIdol, setSelectedIdol] = useState();
