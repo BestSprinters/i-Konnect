@@ -49,7 +49,7 @@ function MyPage() {
   }, [pageSizeChange, changeIdols]);
 
   return (
-    <div className="mx-auto mt-[80px] max-w-7xl">
+    <div className="desktop:base-container my-[80px]">
       <MyPageCredit />
 
       <FavoriteIdol idols={favoriteIdols} onChange={handleChangeFavorite} />
