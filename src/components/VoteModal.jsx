@@ -25,10 +25,9 @@ function VoteModal({
   handleNoCreditToggle,
   setChartList,
   chartList,
-  creditAmount,
-  setCreditAmount,
 }) {
   const [voteList, setVoteList] = useState([]);
+  const { creditAmount, setCreditAmount } = useContext(CreditContext);
   const { setCreditAmount: setmyCredit } = useContext(CreditContext);
   const [selectedIdol, setSelectedIdol] = useState();
   const [voteOption, setVoteOption] = useState({
@@ -53,7 +52,6 @@ function VoteModal({
     handleVoteToggle();
     if (creditAmount < 1000) {
       handleNoCreditToggle();
-      throw new Error('Credit amount is less than required 1000 credits.');
     }
 
     const receivedVotes = await postVotes(selectedIdol);
