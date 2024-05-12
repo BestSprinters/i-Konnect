@@ -52,7 +52,6 @@ function VoteModal({
     handleVoteToggle();
     if (creditAmount < 1000) {
       handleNoCreditToggle();
-      throw new Error('Credit amount is less than required 1000 credits.');
     }
 
     const receivedVotes = await postVotes(selectedIdol);
