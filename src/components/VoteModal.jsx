@@ -73,7 +73,7 @@ function VoteModal({
   };
 
   useEffect(() => {
-    setVoteOption((prev) => ({ ...prev, gender: `${gender}` }));
+    setVoteOption((prev) => ({ ...prev, gender }));
   }, [gender]);
 
   useEffect(() => {
