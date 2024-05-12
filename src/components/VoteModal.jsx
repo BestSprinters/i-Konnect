@@ -77,10 +77,6 @@ function VoteModal({
   }, [gender]);
 
   useEffect(() => {
-    setVoteOption((prev) => ({ ...prev, gender: `${gender}` }));
-  }, [gender]);
-
-  useEffect(() => {
     const loadChartList = async () => {
       const result = await getCharts(voteOption);
       setVoteList(result.idols);
