@@ -7,7 +7,7 @@ function ChartList({ chartList, matches }) {
 
   return (
     <div
-      className={`mt-4 grid gap-x-6 md:mt-6 ${matches ? 'grid-cols-2' : 'grid-cols-1'}`}
+      className={`mt-4 grid gap-x-6 tablet:mt-6 ${matches ? 'grid-cols-2' : 'grid-cols-1'}`}
     >
       {chartList?.map((chart, index) => {
         const isLastItem = index === length - 1;

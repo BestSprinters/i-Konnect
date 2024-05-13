@@ -10,12 +10,12 @@ import VoteList from './VoteList';
 function VoteModal({
   gender = 'female',
   toggle,
-  handleToggle,
+  handleVoteToggle,
+  handleNoCreditToggle,
   setChartList,
   chartList,
-  creditAmount,
-  setCreditAmount,
 }) {
+  const { creditAmount, setCreditAmount } = useContext(CreditContext);
   const [voteList, setVoteList] = useState([]);
   const { setCreditAmount: setmyCredit } = useContext(CreditContext);
   const [selectedIdol, setSelectedIdol] = useState();
@@ -37,8 +37,9 @@ function VoteModal({
   };
 
   const handleVoteIdol = async () => {
+    handleVoteToggle();
     if (creditAmount < 1000) {
-      throw new Error('Credit amount is less than required 1000 credits.');
+      handleNoCreditToggle();
     }
 
     const receivedVotes = await postVotes(selectedIdol);
@@ -55,11 +56,10 @@ function VoteModal({
       return newCreditAmount;
     });
     setSelectedIdol('');
-    handleToggle();
   };
 
   useEffect(() => {
-    setVoteOption((prev) => ({ ...prev, gender: `${gender}` }));
+    setVoteOption((prev) => ({ ...prev, gender }));
   }, [gender]);
 
   useEffect(() => {
@@ -71,7 +71,12 @@ function VoteModal({
   }, [toggle, voteOption]);
 
   return (
-    <Modal open={toggle} onClose={handleToggle} type="wide" title={voteTitle}>
+    <Modal
+      open={toggle}
+      onClose={handleVoteToggle}
+      type="wide"
+      title={voteTitle}
+    >
       <div className="mb-5 h-[522px] w-full overflow-y-auto mobile:mb-0 mobile:h-full">
         <div className="mb-28">
           <VoteList

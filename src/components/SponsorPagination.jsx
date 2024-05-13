@@ -58,7 +58,7 @@ function SponsorPagination() {
   };
 
   return (
-    <div className="mt-[40px] md:mt-[64px]">
+    <div className="mt-[40px] tablet:mt-[64px]">
       <h1 className="text-bold text-2xl">후원을 기다리는 조공</h1>
       <div className="-mx-20 mt-8 flex w-[1360px] items-center justify-center gap-x-10">
         <button
