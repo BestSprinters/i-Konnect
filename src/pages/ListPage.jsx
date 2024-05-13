@@ -1,3 +1,4 @@
+import Chart from '../components/Chart';
 import Header from '../components/Header';
 import MyCredit from '../components/MyCredit';
 import SponsorPagination from '../components/SponsorPagination';
@@ -6,11 +7,13 @@ import useMediaQuery from '../hooks/useMediaQuery';
 
 function ListPage() {
   const tabletSize = useMediaQuery('(max-width: 1280px)');
+
   return (
-    <div className="xl:mx-auto xl:max-w-[1200px]">
+    <div className="desktop:base-container">
       <Header />
       <MyCredit />
       {tabletSize ? <SponsorSlider /> : <SponsorPagination />}
+      <Chart />
     </div>
   );
 }

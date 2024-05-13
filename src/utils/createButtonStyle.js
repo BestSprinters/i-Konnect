@@ -1,12 +1,12 @@
 const createButtonStyle = (isDisabled) => {
   const buttonTypeStyle = {
-    smallSquare: `h-[32px] rounded-[3px] py-2 ${!isDisabled ? 'bg-gradient-to-r from-pointOrange to-pointPink' : 'cursor-not-allowed bg-grayMedium'}`,
-    largeSquare: `h-[40px] w-[295px] rounded-[3px] ${!isDisabled ? 'cursor-point bg-gradient-to-r from-pointOrange to-pointPink' : 'cursor-not-allowed bg-grayMedium'}`,
-    fullSquare: `h-[40px] w-full rounded-[3px] ${!isDisabled ? 'cursor-point bg-gradient-to-r from-pointOrange to-pointPink' : 'cursor-not-allowed bg-grayMedium'}`,
-    round: `h-[48px] w-[255px] rounded-3xl text-[16px] ${!isDisabled ? 'bg-gradient-to-r from-pointOrange to-pointPink' : 'cursor-not-allowed bg-grayMedium'}`,
-    cancel: `h-[32px] rounded-[3px] bg-grayMedium py-2 ${!isDisabled ? '' : 'cursor-not-allowed'}`,
-    more: `border-whiteSecondary-500 h-[40px] w-[295px] rounded-[3px] border bg-blackSecondary ${!isDisabled ? '' : 'cursor-not-allowed'}`,
-    smallMore: `border-whiteSecondary-500 h-[32px] rounded-[3px] border bg-blackSecondary ${!isDisabled ? '' : 'cursor-not-allowed'}`,
+    xlargeSquarePrimary: `max-w-[476px] w-full h-[48px] rounded-[3px] ${!isDisabled ? 'bg-gradient-to-r from-pointOrange to-pointPink' : 'cursor-not-allowed bg-grayMedium'}`,
+    fullSquarePrimary: `w-full h-[42px] rounded-[3px] ${!isDisabled ? 'bg-gradient-to-r from-pointOrange to-pointPink' : 'cursor-not-allowed bg-grayMedium'}`,
+    fitSquarePrimary: `h-[32px] rounded-[3px] ${!isDisabled ? 'bg-gradient-to-r from-pointOrange to-pointPink' : 'cursor-not-allowed bg-grayMedium'}`,
+    largeSquareBlack: `w-[326px] h-[42px] rounded-[3px] bg-blackSecondary border-whiteSecondary-500 border ${!isDisabled ? '' : 'cursor-not-allowed bg-grayMedium'}`,
+    mediumRoundPrimary: `max-w-[256px] w-full h-[48px] rounded-3xl ${!isDisabled ? 'bg-gradient-to-r from-pointOrange to-pointPink' : 'cursor-not-allowed bg-grayMedium'}`,
+    mediumSqaureBlack: `w-[180px] h-[42px] bg-blackSecondary border-whiteSecondary-500 border ${!isDisabled ? '' : 'cursor-not-allowed bg-grayMedium'}`,
+    mediumSqaurePrimary: `w-[180px] h-[42px] ${!isDisabled ? 'bg-gradient-to-r from-pointOrange to-pointPink' : 'cursor-not-allowed bg-grayMedium'}`,
   };
   return buttonTypeStyle;
 };

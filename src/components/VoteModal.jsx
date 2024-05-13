@@ -1,9 +1,9 @@
-import { useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 
 import getCharts from '../apis/charts/getChartApi';
 import postVotes from '../apis/votes/postVotesApi';
+import CreditContext from '../contexts/CreditAmount';
 import useMediaQuery from '../hooks/useMediaQuery';
-import useToggle from '../hooks/useToggle';
 import Button from './Button';
 import Modal from './Modal';
 import VoteList from './VoteList';
@@ -18,17 +18,24 @@ const getVoteResponsibleStyle = (isFullModal) => {
   return { voteMobileCreditTag, voteMobileFixed, voteMobileSize };
 };
 
-const initialVoteOption = {
-  gender: 'female',
-  cursor: '',
-  pageSize: 24,
-};
-
-// useToggle에 true넣으시면 처음부터 모달창이 뜨게됩니다.
-function VoteModal({ gender = 'female' }) {
-  const { toggle, handleToggle } = useToggle(true);
+function VoteModal({
+  gender = 'female',
+  toggle,
+  handleVoteToggle,
+  handleNoCreditToggle,
+  setChartList,
+  chartList,
+}) {
+  const { creditAmount, setCreditAmount } = useContext(CreditContext);
   const [voteList, setVoteList] = useState([]);
+  const { setCreditAmount: setmyCredit } = useContext(CreditContext);
   const [selectedIdol, setSelectedIdol] = useState();
+  const [voteOption, setVoteOption] = useState({
+    gender: 'female',
+    cursor: '',
+    pageSize: 10000,
+  });
+
   const isFullModal = useMediaQuery('(max-width: 767px)');
   const voteTitle =
     gender === 'female' ? '이달의 여자 아이돌' : '이달의 남자 아이돌';
@@ -41,19 +48,39 @@ function VoteModal({ gender = 'female' }) {
     setSelectedIdol(id);
   };
 
-  const handleVoteIdol = () => {
-    postVotes(selectedIdol);
+  const handleVoteIdol = async () => {
+    handleVoteToggle();
+    if (creditAmount < 1000) {
+      handleNoCreditToggle();
+    }
+
+    const receivedVotes = await postVotes(selectedIdol);
+    const updatedVoteList = chartList.map((idol) =>
+      idol.id === receivedVotes.idol.id
+        ? { ...idol, ...receivedVotes.idol }
+        : idol,
+    );
+    setChartList(updatedVoteList);
+    setCreditAmount((credit) => {
+      const newCreditAmount = credit - 1000;
+      localStorage.setItem('myCredit', newCreditAmount);
+      setmyCredit(newCreditAmount);
+      return newCreditAmount;
+    });
     setSelectedIdol('');
-    handleToggle();
   };
 
   useEffect(() => {
+    setVoteOption((prev) => ({ ...prev, gender }));
+  }, [gender]);
+
+  useEffect(() => {
     const loadChartList = async () => {
-      const result = await getCharts(initialVoteOption);
+      const result = await getCharts(voteOption);
       setVoteList(result.idols);
     };
     loadChartList();
-  }, []);
+  }, [toggle, voteOption]);
 
   const { voteMobileCreditTag, voteMobileFixed, voteMobileSize } =
     getVoteResponsibleStyle(isFullModal);
@@ -61,7 +88,7 @@ function VoteModal({ gender = 'female' }) {
   return (
     <Modal
       open={toggle}
-      onClose={handleToggle}
+      onClose={handleVoteToggle}
       type="wide"
       title={voteTitle}
       isFullModal={isFullModal}
