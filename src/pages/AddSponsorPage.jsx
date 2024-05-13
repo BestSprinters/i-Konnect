@@ -268,7 +268,7 @@ function AddSponsorPage() {
                 )}
               </div>
               <div className="w-full flex-1 justify-stretch">
-                <div className="flex justify-between">
+                <div className="flex justify-between pb-4">
                   <label className="text-sm font-medium leading-6 text-whitePrimary">
                     필요 후원 크레딧
                   </label>
