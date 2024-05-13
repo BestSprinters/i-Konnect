@@ -97,8 +97,8 @@ function AddSponsorPage() {
       datas.idolId &&
       datas.title &&
       datas.subtitle &&
-      datas.targetDonation &&
-      datas.deadline
+      datas.deadline &&
+      datas.targetDonation !== 0
     ) {
       await postDonationsApi(datas);
       alert('조공 등록이 완료되었습니다!');
@@ -108,7 +108,8 @@ function AddSponsorPage() {
       if (!datas.title) setIsTitleValid(false);
       if (!datas.subtitle) setIsSubtitleValid(false);
       if (!datas.deadline) setIsDeadlineValid(false);
-      if (datas.targetDonation === '0') setIsTargetDonationValid(false);
+      if (datas.targetDonation === '0' || datas.targetDonation === 0)
+        setIsTargetDonationValid(false);
     }
   };
 
@@ -124,7 +125,7 @@ function AddSponsorPage() {
   return (
     <>
       <Header />
-      <div className="container mx-auto mt-[200px] flex w-full max-w-[1200px] items-center justify-between">
+      <div className="base-container my-[100px] flex items-center justify-between">
         <form className="w-full px-8" onSubmit={handleSubmit}>
           <div className="flex items-center justify-between">
             <p className="font-bold">조공 추가하기</p>
@@ -248,7 +249,7 @@ function AddSponsorPage() {
                   <input
                     name="deadline"
                     type="date"
-                    className={`font-regular w-[10rem] rounded-md bg-blackSecondary px-4 py-2 text-sm text-white focus:outline-none ${!isDeadlineValid ? 'animate-vibration border border-red-600' : ''}`}
+                    className={`font-regular w-[10rem] cursor-pointer rounded-md bg-blackSecondary px-4 py-2 text-sm text-white focus:outline-none ${!isDeadlineValid ? 'animate-vibration border border-red-600' : ''}`}
                     onChange={handleInputChange}
                     ref={dateRef}
                     onClick={showCalendar}
@@ -303,12 +304,12 @@ function AddSponsorPage() {
           <div className="flex items-center justify-center gap-x-6">
             <LinkButton
               to="/list"
-              type="more"
+              type="mediumSqaureBlack"
               className="cursor-point border-whiteSecondary-500 flex items-center justify-center rounded-[3px] border bg-blackSecondary px-[16px] py-1.5 text-[13px] font-bold transition-all hover:bg-grayDark"
             >
               취소
             </LinkButton>
-            <Button type="largeSquare" onClick={handleSubmit}>
+            <Button type="mediumSqaurePrimary" onClick={handleSubmit}>
               등록
             </Button>
           </div>
