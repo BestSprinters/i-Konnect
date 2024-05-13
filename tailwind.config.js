@@ -9,6 +9,7 @@ export default {
       colors: {
         blackPrimary: '#02000E',
         blackSecondary: '#181D26',
+        blackHover: '##1f2937',
 
         yellowPrimary: '#D2C030',
 
@@ -36,6 +37,13 @@ export default {
         mobile: { min: "375px", max: "767px" },
         tablet: { min: "768px", max: "1279px" },
         desktop: { min: "1280px" },
+      },
+      backgroundSize: {
+        'size-200': '200% 200%',
+      },
+      backgroundPosition: {
+        'pos-0': '0% 0%',
+        'pos-100': '100% 100%',
       },
     },
   },
