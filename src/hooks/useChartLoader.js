@@ -11,19 +11,16 @@ function useChartLoader(initialOptions) {
   useEffect(() => {
     const loadChartList = async () => {
       const { idols, nextCursor } = await getCharts(chartOption);
-      const filteredIdols =
-        searchValue === false
-          ? idols
-          : idols.filter(
-              (idol) =>
-                idol.name.toLowerCase().includes(searchValue.toLowerCase()) ||
-                idol.group.toLowerCase().includes(searchValue.toLowerCase()),
-            );
+      const filteredIdols = idols.filter(
+        (idol) =>
+          idol.name.toLowerCase().includes(searchValue.toLowerCase()) ||
+          idol.group.toLowerCase().includes(searchValue.toLowerCase()),
+      );
       setChartList(filteredIdols);
       setHasMore(nextCursor !== null);
     };
     loadChartList();
-  }, [chartOption, searchValue]);
+  }, [searchValue, chartOption]);
 
   const updateChartOption = (options) => {
     setChartOption((prevOptions) => ({
@@ -32,12 +29,19 @@ function useChartLoader(initialOptions) {
     }));
   };
 
-  const updateSearchIdol = (e) => {
-    setSearchValue(e.target.value);
-    setChartOption((prevOptions) => ({
-      ...prevOptions,
-      pageSize: 10000,
-    }));
+  const updateSearchIdol = (inputValue) => {
+    setSearchValue(inputValue);
+    if (inputValue === '') {
+      setChartOption((prevOptions) => ({
+        ...prevOptions,
+        pageSize: 10,
+      }));
+    } else {
+      setChartOption((prevOptions) => ({
+        ...prevOptions,
+        pageSize: 10000,
+      }));
+    }
   };
 
   return {
