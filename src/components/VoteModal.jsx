@@ -38,23 +38,25 @@ function VoteModal({
 
   const handleVoteIdol = async () => {
     handleVoteToggle();
+
     if (creditAmount < 1000) {
       handleNoCreditToggle();
+    } else {
+      const receivedVotes = await postVotes(selectedIdol);
+      const updatedVoteList = chartList.map((idol) =>
+        idol.id === receivedVotes.idol.id
+          ? { ...idol, ...receivedVotes.idol }
+          : idol,
+      );
+      setChartList(updatedVoteList);
+      setCreditAmount((credit) => {
+        const newCreditAmount = credit - 1000;
+        localStorage.setItem('myCredit', newCreditAmount);
+        setmyCredit(newCreditAmount);
+        return newCreditAmount;
+      });
     }
 
-    const receivedVotes = await postVotes(selectedIdol);
-    const updatedVoteList = chartList.map((idol) =>
-      idol.id === receivedVotes.idol.id
-        ? { ...idol, ...receivedVotes.idol }
-        : idol,
-    );
-    setChartList(updatedVoteList);
-    setCreditAmount((credit) => {
-      const newCreditAmount = credit - 1000;
-      localStorage.setItem('myCredit', newCreditAmount);
-      setmyCredit(newCreditAmount);
-      return newCreditAmount;
-    });
     setSelectedIdol('');
   };
 
