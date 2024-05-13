@@ -1,5 +1,6 @@
 import Chart from '../components/Chart';
 import Header from '../components/Header';
+import InnerAnimation from '../components/InnerAnimation';
 import MyCredit from '../components/MyCredit';
 import SponsorPagination from '../components/SponsorPagination';
 import SponsorSlider from '../components/SponsorSlider';
@@ -11,9 +12,11 @@ function ListPage() {
   return (
     <div className="desktop:base-container">
       <Header />
-      <MyCredit />
-      {tabletSize ? <SponsorSlider /> : <SponsorPagination />}
-      <Chart />
+      <InnerAnimation>
+        <MyCredit />
+        {tabletSize ? <SponsorSlider /> : <SponsorPagination />}
+        <Chart />
+      </InnerAnimation>
     </div>
   );
 }
