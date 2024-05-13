@@ -3,20 +3,9 @@ import { useContext, useEffect, useState } from 'react';
 import getCharts from '../apis/charts/getChartApi';
 import postVotes from '../apis/votes/postVotesApi';
 import CreditContext from '../contexts/CreditAmount';
-import useMediaQuery from '../hooks/useMediaQuery';
 import Button from './Button';
 import Modal from './Modal';
 import VoteList from './VoteList';
-
-const getVoteResponsibleStyle = (isFullModal) => {
-  const voteMobileSize = isFullModal ? '100vh' : '522px';
-  const voteMobileFixed = isFullModal
-    ? 'fixed w-full bottom-0  h-28 py-4 px-5 bg-blackPrimary/80'
-    : 'w-full';
-  const voteMobileCreditTag = isFullModal ? 'pb-6' : '';
-
-  return { voteMobileCreditTag, voteMobileFixed, voteMobileSize };
-};
 
 function VoteModal({
   gender = 'female',
@@ -36,7 +25,6 @@ function VoteModal({
     pageSize: 10000,
   });
 
-  const isFullModal = useMediaQuery('(max-width: 767px)');
   const voteTitle =
     gender === 'female' ? '이달의 여자 아이돌' : '이달의 남자 아이돌';
 
@@ -82,35 +70,27 @@ function VoteModal({
     loadChartList();
   }, [toggle, voteOption]);
 
-  const { voteMobileCreditTag, voteMobileFixed, voteMobileSize } =
-    getVoteResponsibleStyle(isFullModal);
-
   return (
     <Modal
       open={toggle}
       onClose={handleVoteToggle}
       type="wide"
       title={voteTitle}
-      isFullModal={isFullModal}
     >
-      <div
-        className="mb-5 w-full overflow-y-auto"
-        style={{ height: `${voteMobileSize}` }}
-      >
-        <VoteList
-          voteList={voteList}
-          selectedIdol={selectedIdol}
-          handleSelectedIdol={handleSelectedIdol}
-        />
-        {isFullModal && <div className="h-44 w-full" />}
+      <div className="mb-5 h-[522px] w-full overflow-y-auto mobile:mb-0 mobile:h-full">
+        <div className="mb-28">
+          <VoteList
+            voteList={voteList}
+            selectedIdol={selectedIdol}
+            handleSelectedIdol={handleSelectedIdol}
+          />
+        </div>
       </div>
-      <div
-        className={`${voteMobileFixed} flex-col items-center justify-center`}
-      >
+      <div className="flex w-full flex-col items-center justify-center mobile:fixed mobile:bottom-0 mobile:bg-blackPrimary/80 mobile:p-5">
         <Button type="fullSquare" onClick={handleVoteIdol}>
           투표하기
         </Button>
-        <p className={`${voteMobileCreditTag} mt-4 text-center text-xs`}>
+        <p className="mt-4 text-center text-xs">
           투표하는 데 <span className="text-pointOrange">1000 크레딧</span>이
           소모됩니다.
         </p>
