@@ -1,3 +1,5 @@
+import { motion } from 'framer-motion';
+
 import imgItzy from '../assets/imgs/img_itzy.png';
 import imgLandingPreview from '../assets/imgs/img_landingPreview.svg';
 import imgLogo from '../assets/imgs/img_logo.png';
@@ -17,14 +19,20 @@ function LandingPage() {
         <div className="px-2 text-2xl font-bold text-white">
           <section className="relative flex h-dvh flex-col items-center">
             <div className="mt-[100px] text-center tablet:mt-[120px] desktop:mt-[140px]">
-              <h1>
+              <motion.h1
+                initial={{ opacity: 0, y: 100 }}
+                animate={{ opacity: 1, y: 0 }}
+              >
                 내가 좋아하는 아이돌을
                 <br />
                 가장 <span className="text-pointOrange">쉽게 덕질</span> 하는
                 방법
-              </h1>
+              </motion.h1>
             </div>
-            <img
+            <motion.img
+              initial={{ opacity: 0, y: 100 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, ease: 'easeInOut' }}
               src={imgLogo}
               alt="main logo"
               className="h-[100px] w-[500px] object-cover"
