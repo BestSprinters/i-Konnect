@@ -11,9 +11,15 @@ import insertLocalStorage from '../utils/insertLocalStorage';
 import Button from './Button';
 import IdolThumbnail from './IdolThumbnail';
 
-function MyPageIdol({ idols, onChange }) {
+function MyPageIdol({ idols, onChange, gender }) {
   const [IsFavorite, setIsFavorite] = useState([]);
-
+  const [isDropDown, setIsDropDown] = useState(false);
+  const [selectedGender, setSelectedGender] = useState('전체');
+  const selectOptions = [
+    { value: '', label: '전체' },
+    { value: 'male', label: '남자 아이돌' },
+    { value: 'female', label: '여자 아이돌' },
+  ];
   const handleIdolToggle = (idol) => {
     // 아이돌이 선택된건지 선택 해제하는건지 확인
     if (IsFavorite.includes(idol)) {
@@ -34,11 +40,40 @@ function MyPageIdol({ idols, onChange }) {
     setIsFavorite([]);
   };
 
+  const onClickSelect = () => {
+    setIsDropDown(!isDropDown);
+  };
+  // 선택된 옵션을 처리하는 함수
+  const selectOption = (label, value) => {
+    setSelectedGender(label);
+    gender(value);
+    setIsDropDown(false); // 옵션 선택 후 드롭다운 닫기
+  };
+
   return (
     <div>
       <h2 className="mb-[32px] text-2xl font-semibold">
         관심있는 아이돌을 추가해보세요.
       </h2>
+      <div>
+        <button type="button" onClick={onClickSelect}>
+          {selectedGender === '전체' ? '아이돌 정렬' : selectedGender}
+        </button>
+        {isDropDown && (
+          <ul>
+            {selectOptions.map((option) => (
+              <li key={option.value}>
+                <button
+                  type="button"
+                  onClick={() => selectOption(option.label, option.value)}
+                >
+                  {option.label}
+                </button>
+              </li>
+            ))}
+          </ul>
+        )}
+      </div>
       <Swiper
         slidesPerView={8}
         grid={{
