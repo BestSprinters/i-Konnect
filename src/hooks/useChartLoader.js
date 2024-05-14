@@ -1,8 +1,10 @@
 import { useEffect, useState } from 'react';
 
 import getCharts from '../apis/charts/getChartApi';
+import useMediaQuery from './useMediaQuery';
 
 function useChartLoader(initialOptions) {
+  const matches = useMediaQuery('(min-width: 1280px)');
   const [chartList, setChartList] = useState([]);
   const [hasMore, setHasMore] = useState(false);
   const [chartOption, setChartOption] = useState(initialOptions);
@@ -34,7 +36,7 @@ function useChartLoader(initialOptions) {
     if (inputValue === '') {
       setChartOption((prevOptions) => ({
         ...prevOptions,
-        pageSize: 10,
+        pageSize: matches ? 10 : 5,
       }));
     } else {
       setChartOption((prevOptions) => ({
