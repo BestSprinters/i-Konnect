@@ -12,6 +12,7 @@ const chargeAmountList = [100, 500, 1000];
 
 function ChargeCreditModal({ open, onClose }) {
   const [chargeAmount, setChargeAmount] = useState(0);
+
   // 컨텍스트를 이용하여 렌더링 할 credit을 추가하였습니다
   const { setCreditAmount } = useContext(CreditContext);
 
