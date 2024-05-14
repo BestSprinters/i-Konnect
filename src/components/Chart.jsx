@@ -2,6 +2,7 @@
 import { useEffect, useState } from 'react';
 
 import chartIcon from '../assets/imgs/ic_chart.svg';
+import icSearch from '../assets/imgs/ic_search.svg';
 import useChartLoader from '../hooks/useChartLoader';
 import useMediaQuery from '../hooks/useMediaQuery';
 import useToggle from '../hooks/useToggle';
@@ -44,17 +45,24 @@ function Chart() {
 
   return (
     <div className="mb-[60px] mt-[40px] flex-col px-6 tablet:mb-80 tablet:mt-[60px] desktop:mt-20">
-      <div className="flex">
+      <div className="relative flex gap-4 mobile:h-20">
         <h3 className="1 grow text-base font-bold text-whitePrimary tablet:text-xl desktop:text-2xl">
           이달의 차트
         </h3>
-        <input
-          type="input"
-          value={debouncedSearchValue}
-          onChange={(e) => setDebouncedSearchValue(e.target.value)}
-          placeholder="이름 or 그룹"
-          className="border-whiteSecondary-500 font-regular w-30 h-[32px] rounded-[3px] border bg-blackSecondary px-2 py-2 focus:outline-none"
-        />
+        <div className="relative mobile:absolute mobile:bottom-0 mobile:w-full">
+          <img
+            src={icSearch}
+            alt="search icon"
+            className="absolute left-2 top-1 h-[24px] w-[24px]"
+          />
+          <input
+            type="input"
+            value={debouncedSearchValue}
+            onChange={(e) => setDebouncedSearchValue(e.target.value)}
+            placeholder="이름 또는 그룹명을 입력해주세요."
+            className="border-whiteSecondary-500 font-regular h-[32px] w-[300px] rounded-[8px] border bg-blackSecondary px-9 py-2 focus:outline-none mobile:w-full"
+          />
+        </div>
         <Button type="fitSquarePrimary" onClick={handleVoteToggle}>
           <div className="flex items-center justify-center gap-1">
             <img alt="chartIcon" src={chartIcon} />
