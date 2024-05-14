@@ -56,7 +56,7 @@ function LandingPage() {
         <div className="absolute bottom-0 right-0 z-10 size-0 border-b-[69dvh] border-l-[34dvw] border-blackPrimary border-l-transparent" />
         <div className="absolute bottom-0 right-0 size-0 border-b-[70dvh] border-l-[35dvw] border-pointPink border-l-transparent" />
       </section>
-      <section className="relative h-[100dvh] w-full">
+      <section className="relative h-[100dvh] w-full overflow-hidden">
         <div className="flex flex-col items-center justify-center">
           <div className="mt-[10dvh]">
             <p className="text-2xl text-yellowPrimary mobile:text-xs tablet:text-base">
@@ -70,7 +70,7 @@ function LandingPage() {
           <img
             src={imgFourthLanding}
             alt="imgFourthLanding"
-            className="mt-[10dvh] size-[60%] object-cover"
+            className="-z-50 mt-[10dvh] size-[60%] object-cover"
           />
         </div>
         <div className="absolute bottom-0 z-10 size-0 border-b-[8dvh] border-r-[8dvw] border-blackPrimary border-r-transparent" />
