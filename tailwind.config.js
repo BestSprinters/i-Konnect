@@ -9,7 +9,7 @@ export default {
       colors: {
         blackPrimary: '#02000E',
         blackSecondary: '#181D26',
-        blackHover: '##1f2937',
+        blackHover: '#1f2937',
 
         yellowPrimary: '#D2C030',
 
