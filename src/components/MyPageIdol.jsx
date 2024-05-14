@@ -7,6 +7,8 @@ import 'swiper/css/grid';
 import { Grid } from 'swiper/modules';
 import { Swiper, SwiperSlide } from 'swiper/react';
 
+import icArrow from '../assets/imgs/ic_arrow_left.svg';
+import icSearch from '../assets/imgs/ic_search.svg';
 import insertLocalStorage from '../utils/insertLocalStorage';
 import Button from './Button';
 import IdolThumbnail from './IdolThumbnail';
@@ -57,31 +59,58 @@ function MyPageIdol({ idols, onChange, gender, SearchValue }) {
   };
   return (
     <div>
-      <h2 className="mb-[32px] text-2xl font-semibold">
-        관심있는 아이돌을 추가해보세요.
-      </h2>
-      <div>
-        <button type="button" onClick={onClickSelect}>
-          {selectedGender === '전체' ? '아이돌 정렬' : selectedGender}
-        </button>
-        {isDropDown && (
-          <ul>
-            {selectOptions.map((option) => (
-              <li key={option.value}>
-                <button
-                  type="button"
-                  onClick={() => selectOption(option.label, option.value)}
-                >
-                  {option.label}
-                </button>
-              </li>
-            ))}
-          </ul>
-        )}
+      <div className="mb-[32px] flex justify-between">
+        <h2 className="text-2xl font-semibold">
+          관심있는 아이돌을 추가해보세요.
+        </h2>
+        <div className="flex">
+          <div className="relative">
+            <img
+              src={icSearch}
+              alt="search icon"
+              className="absolute left-2 top-1 h-[24px] w-[24px]"
+            />
+            <input
+              placeholder="검색할 아이돌 이름 혹은 그룹명을 입력해주세요"
+              onChange={insertValue}
+              className="border-whiteSecondary-500 font-regular h-[32px] w-full min-w-[350px] rounded-[3px] border bg-blackSecondary py-4 pl-9 focus:outline-none"
+            />
+          </div>
+          <div className="relative ml-[10px]">
+            <button
+              type="button"
+              onClick={onClickSelect}
+              className="border-whiteSecondary-500 flex min-w-[135px] items-center rounded-[5px] border bg-blackSecondary px-[20px] py-[4px] text-grayLight"
+            >
+              {selectedGender === '전체' ? '아이돌 정렬' : selectedGender}
+              <img
+                src={icArrow}
+                alt="드롭다운 화살표"
+                className="ml-[10px] size-[15px] -rotate-90 opacity-70"
+              />
+            </button>
+            {isDropDown && (
+              <ul className="absolute -bottom-[115px] left-0 z-10 min-w-[135px] animate-[dropdown_0.4s_ease] rounded-[5px] border bg-blackSecondary">
+                {selectOptions.map((option) => (
+                  <li
+                    key={option.value}
+                    className="w-full border-b text-center text-grayLight hover:bg-pointPink hover:text-white"
+                  >
+                    <button
+                      className="w-full py-[5px]"
+                      type="button"
+                      onClick={() => selectOption(option.label, option.value)}
+                    >
+                      {option.label}
+                    </button>
+                  </li>
+                ))}
+              </ul>
+            )}
+          </div>
+        </div>
       </div>
-      <div>
-        <input type="text" onChange={insertValue} />
-      </div>
+
       <Swiper
         slidesPerView={8}
         grid={{
