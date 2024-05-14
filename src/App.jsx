@@ -1,5 +1,6 @@
+import { AnimatePresence } from 'framer-motion';
 import { useEffect, useMemo, useState } from 'react';
-import { Route, Routes } from 'react-router-dom';
+import { Route, Routes, useLocation } from 'react-router-dom';
 
 import PAGES from './constants/paths';
 import CreditContext from './contexts/CreditAmount';
@@ -11,6 +12,7 @@ import MyPage from './pages/MyPage';
 import NotFound from './pages/NotFound';
 
 function App() {
+  const location = useLocation();
   const [creditAmount, setCreditAmount] = useState();
   useEffect(() => {
     setCreditAmount(localStorage.getItem('myCredit'));
@@ -24,13 +26,15 @@ function App() {
         [creditAmount, setCreditAmount],
       )}
     >
-      <Routes>
-        <Route path={PAGES.home.link} element={<LandingPage />} />
-        <Route path={PAGES.list.link} element={<ListPage />} />
-        <Route path={PAGES.myPage.link} element={<MyPage />} />
-        <Route path={PAGES.addSponsor.link} element={<AddSponsorPage />} />
-        <Route path={PAGES.notFound.link} element={<NotFound />} />
-      </Routes>
+      <AnimatePresence mode="wait">
+        <Routes location={location} key={location.pathname}>
+          <Route path={PAGES.home.link} element={<LandingPage />} />
+          <Route path={PAGES.list.link} element={<ListPage />} />
+          <Route path={PAGES.myPage.link} element={<MyPage />} />
+          <Route path={PAGES.addSponsor.link} element={<AddSponsorPage />} />
+          <Route path={PAGES.notFound.link} element={<NotFound />} />
+        </Routes>
+      </AnimatePresence>
     </CreditContext.Provider>
   );
 }

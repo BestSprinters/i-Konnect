@@ -4,6 +4,7 @@ import getDonations from '../apis/donations/getDonationsApi';
 import icPlus from '../assets/imgs/ic_plus.svg';
 import Chart from '../components/Chart';
 import Header from '../components/Header';
+import InnerAnimation from '../components/InnerAnimation';
 import LinkButton from '../components/LinkButton';
 import MyCredit from '../components/MyCredit';
 import SponsorPagination from '../components/SponsorPagination';
@@ -57,27 +58,29 @@ function ListPage() {
   return (
     <div className="desktop:base-container">
       <Header />
-      <MyCredit />
-      <div className="mt-10 tablet:mt-16">
-        <div className="mx-6 flex items-end justify-between desktop:m-0">
-          <h1 className="text-bold text-base tablet:text-xl desktop:text-2xl">
-            후원을 기다리는 조공
-          </h1>
-          <LinkButton type="fitSquarePrimary" to="/addSponsor">
-            <img src={icPlus} alt="" className="mr-1" />
-            조공 등록하기
-          </LinkButton>
+      <InnerAnimation>
+        <MyCredit />
+        <div className="mt-10 tablet:mt-16">
+          <div className="mx-6 flex items-end justify-between desktop:m-0">
+            <h1 className="text-bold text-base tablet:text-xl desktop:text-2xl">
+              후원을 기다리는 조공
+            </h1>
+            <LinkButton type="fitSquarePrimary" to="/addSponsor">
+              <img src={icPlus} alt="" className="mr-1" />
+              조공 등록하기
+            </LinkButton>
+          </div>
+          {tabletSize ? (
+            <SponsorSlider donations={donations} onReachEnd={handleReachEnd} />
+          ) : (
+            <SponsorPagination
+              donations={donations}
+              onReachEnd={handleReachEnd}
+            />
+          )}
         </div>
-        {tabletSize ? (
-          <SponsorSlider donations={donations} onReachEnd={handleReachEnd} />
-        ) : (
-          <SponsorPagination
-            donations={donations}
-            onReachEnd={handleReachEnd}
-          />
-        )}
-      </div>
-      <Chart />
+        <Chart />
+      </InnerAnimation>
     </div>
   );
 }
