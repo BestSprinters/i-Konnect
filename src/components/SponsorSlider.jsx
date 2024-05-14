@@ -9,7 +9,7 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 
 import getDonations from '../apis/donations/getDonationsApi';
 import icPlus from '../assets/imgs/ic_plus.svg';
-import Button from './Button';
+import LinkButton from './LinkButton';
 import SponsorCard from './SponsorCard';
 
 function SponsorSlider() {
@@ -58,10 +58,10 @@ function SponsorSlider() {
     <div className="mt-10 tablet:mt-16">
       <div className="mx-6 flex flex-row justify-between">
         <h1 className="text-bold text-2xl">후원을 기다리는 조공</h1>
-        <Button type="fitSquarePrimary">
+        <LinkButton type="fitSquarePrimary" to="addSponsor">
           <img src={icPlus} alt="" className="mr-1" />
           조공 등록하기
-        </Button>
+        </LinkButton>
       </div>
       <div className="mt-4 px-6 tablet:mt-6">
         <Swiper

@@ -11,7 +11,7 @@ import getDonations from '../apis/donations/getDonationsApi';
 import icArrowLeft from '../assets/imgs/ic_arrow_left.svg';
 import icArrowRight from '../assets/imgs/ic_arrow_right.svg';
 import icPlus from '../assets/imgs/ic_plus.svg';
-import Button from './Button';
+import LinkButton from './LinkButton';
 import SponsorCard from './SponsorCard';
 
 function SponsorPagination() {
@@ -63,10 +63,10 @@ function SponsorPagination() {
     <div className="mt-[40px] tablet:mt-[64px]">
       <div className="flex flex-row justify-between">
         <h1 className="text-bold text-2xl">후원을 기다리는 조공</h1>
-        <Button type="fitSquarePrimary">
+        <LinkButton type="fitSquarePrimary" to="addSponsor">
           <img src={icPlus} alt="" className="mr-1" />
           조공 등록하기
-        </Button>
+        </LinkButton>
       </div>
       <div className="-mx-20 mt-8 flex w-[1360px] items-center justify-center gap-x-10">
         <button
