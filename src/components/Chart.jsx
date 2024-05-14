@@ -55,7 +55,7 @@ function Chart() {
           placeholder="이름 or 그룹"
           className="border-whiteSecondary-500 font-regular w-30 h-[32px] rounded-[3px] border bg-blackSecondary px-2 py-2 focus:outline-none"
         />
-        <Button type="smallSquare" onClick={handleVoteToggle}>
+        <Button type="fitSquarePrimary" onClick={handleVoteToggle}>
           <div className="flex items-center justify-center gap-1">
             <img alt="chartIcon" src={chartIcon} />
             <p> 차트 투표하기</p>

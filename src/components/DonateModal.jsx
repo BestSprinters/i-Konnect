@@ -74,7 +74,7 @@ function DonateModal({ open, onClose, donationData, putAndRefetchDonations }) {
           </p>
         </div>
         <Button
-          type="largeSquare"
+          type="fullSquarePrimary"
           isDisabled={disabled}
           onClick={handleButtonClick}
         >
