@@ -34,9 +34,8 @@ function ListPage() {
         await getDonations(FetchOption);
 
       if (isOnlyFavorite) {
-        const favoriteIdols = JSON.parse(
-          localStorage.getItem('MyPage_FavoriteIdol'),
-        );
+        const favoriteIdols =
+          JSON.parse(localStorage.getItem('MyPage_FavoriteIdol')) ?? [];
         const favoriteIdolIds = favoriteIdols.map(
           (favoriteIdol) => favoriteIdol.id,
         );
