@@ -10,7 +10,7 @@ import SponsorCard from './SponsorCard';
 
 function SponsorSlider({ donations, onReachEnd }) {
   return (
-    <div className="mt-4 px-6 tablet:mt-6">
+    <div className="mt-2 px-6">
       <Swiper
         slidesPerView={3}
         pagination={{ clickable: true }}

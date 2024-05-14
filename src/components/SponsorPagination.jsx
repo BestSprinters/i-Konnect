@@ -16,7 +16,7 @@ function SponsorPagination({ donations, onReachEnd }) {
   const swiperRef = useRef(null);
 
   return (
-    <div className="-mx-20 mt-8 flex w-[1360px] items-center justify-center gap-x-10">
+    <div className="-mx-20 mt-3 flex w-[1360px] items-center justify-center gap-x-10">
       <button
         type="button"
         onClick={() => {
