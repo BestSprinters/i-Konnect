@@ -68,7 +68,7 @@ function LandingPage() {
             }}
             src={mainLogo}
             alt="logo"
-            className="tablet: absolute -bottom-0 right-0 top-0 z-10 w-[40dvw]"
+            className="absolute -bottom-0 right-0 z-10 w-[40dvw] mobile:top-0 tablet:top-0"
           />
         </section>
         <section
