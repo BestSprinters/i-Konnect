@@ -37,6 +37,15 @@ export default {
         tablet: { min: "768px", max: "1279px" },
         desktop: { min: "1280px" },
       },
+      keyframes: {
+        vibration: {
+          from: { transform: 'rotate(0.5deg)' },
+          to: { transform: 'rotate(-0.5deg)' },
+        },
+      },
+      animation: {
+        vibration: 'vibration .1s ease-in-out 3'
+      }
     },
   },
   plugins: [],
