@@ -1,7 +1,9 @@
 // swiper eslint 충돌
 
 /* eslint-disable import/no-unresolved */
-import { useState } from 'react';
+
+/* eslint-disable react-hooks/exhaustive-deps */
+import { useEffect, useState } from 'react';
 import 'swiper/css';
 import 'swiper/css/grid';
 import { Grid } from 'swiper/modules';
@@ -17,6 +19,7 @@ function MyPageIdol({ idols, onChange, gender, SearchValue }) {
   const [IsFavorite, setIsFavorite] = useState([]);
   const [isDropDown, setIsDropDown] = useState(false);
   const [selectedGender, setSelectedGender] = useState('전체');
+  const [debouncedSearchValue, setDebouncedSearchValue] = useState(SearchValue);
   const selectOptions = [
     { value: '', label: '전체' },
     { value: 'male', label: '남자 아이돌' },
@@ -54,9 +57,16 @@ function MyPageIdol({ idols, onChange, gender, SearchValue }) {
     setIsDropDown(false); // 옵션 선택 후 드롭다운 닫기
   };
 
-  const insertValue = (e) => {
-    SearchValue(e.target.value);
-  };
+  useEffect(() => {
+    const handler = setTimeout(() => {
+      SearchValue(debouncedSearchValue);
+    }, 300); // 300ms의 딜레이
+
+    return () => {
+      clearTimeout(handler);
+    };
+  }, [debouncedSearchValue]);
+
   return (
     <div>
       <div className="mb-[32px] flex justify-between">
@@ -72,7 +82,7 @@ function MyPageIdol({ idols, onChange, gender, SearchValue }) {
             />
             <input
               placeholder="검색할 아이돌 이름 혹은 그룹명을 입력해주세요"
-              onChange={insertValue}
+              onChange={(e) => setDebouncedSearchValue(e.target.value)}
               className="border-whiteSecondary-500 font-regular h-[32px] w-full min-w-[350px] rounded-[3px] border bg-blackSecondary py-4 pl-9 focus:outline-none"
             />
           </div>
