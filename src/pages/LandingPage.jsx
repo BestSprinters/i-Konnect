@@ -31,7 +31,7 @@ function LandingPage() {
             alt="main background"
             className="absolute top-1/2 -z-50 h-[80%] -translate-y-1/2 rounded-md object-cover opacity-70"
           />
-          <div className="absolute bottom-[100px] w-full max-w-[476px] tablet:bottom-[120px]">
+          <div className="absolute bottom-[100px] flex w-full justify-center tablet:bottom-[120px]">
             <LinkButton to={PAGES.list.link} type="xlargeSquarePrimary">
               지금 시작하기
             </LinkButton>
