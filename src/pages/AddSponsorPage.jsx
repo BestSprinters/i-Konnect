@@ -55,6 +55,13 @@ function AddSponsorPage() {
   const [isDeadlineValid, setIsDeadlineValid] = useState(true);
   const [isTargetDonationValid, setIsTargetDonationValid] = useState(true);
 
+  const today = new Date();
+  const year = today.getFullYear();
+  const month = (today.getMonth() + 1).toString().padStart(2, '0');
+  const day = today.getDate().toString().padStart(2, '0');
+
+  const minDay = `${year}-${month}-${day}`;
+
   const getIdolsData = async () => {
     setLoading(true);
     const result = await getIdols({ pageSize: 10000, keyword });
@@ -253,6 +260,7 @@ function AddSponsorPage() {
                     onChange={handleInputChange}
                     ref={dateRef}
                     onClick={showCalendar}
+                    min={minDay}
                   />
                   <img
                     src={icCalendar}
