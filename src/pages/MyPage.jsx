@@ -3,6 +3,7 @@ import { useEffect, useState } from 'react';
 import getIdols from '../apis/idols/getIdolsApi';
 import FavoriteIdol from '../components/FavoriteIdol';
 import Header from '../components/Header';
+import InnerAnimation from '../components/InnerAnimation';
 import MyCredit from '../components/MyCredit';
 import MyPageIdol from '../components/MyPageIdol';
 
@@ -52,9 +53,11 @@ function MyPage() {
   return (
     <div className="desktop:base-container my-[80px]">
       <Header />
-      <MyCredit />
-      <FavoriteIdol idols={favoriteIdols} onChange={handleChangeFavorite} />
-      <MyPageIdol idols={idols} onChange={handleChangeFavorite} />
+      <InnerAnimation>
+        <MyCredit />
+        <FavoriteIdol idols={favoriteIdols} onChange={handleChangeFavorite} />
+        <MyPageIdol idols={idols} onChange={handleChangeFavorite} />
+      </InnerAnimation>
     </div>
   );
 }
