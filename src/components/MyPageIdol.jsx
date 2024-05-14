@@ -75,56 +75,54 @@ function MyPageIdol({ idols, onChange, gender, SearchValue }) {
   const mobileSize = useMediaQuery('(max-width: 767px)');
 
   return (
-    <div className="mt-[42px] border-t border-[#FFFFFF1A] pt-[42px] mobile:mx-[24px] mobile:px-[0] tablet:px-[70px]">
-      <div className="mb-[32px] flex justify-between">
-        <h2 className="text-2xl font-semibold">
+    <div className="mt-[42px] border-t border-[#FFFFFF1A] pt-[42px] mobile:mx-[24px] tablet:px-[24px]">
+      <div className="mb-[32px] flex mobile:relative mobile:block">
+        <h2 className="grow text-2xl font-semibold mobile:mb-[20px] mobile:text-base tablet:text-[20px]">
           관심있는 아이돌을 추가해보세요.
         </h2>
-        <div className="flex">
-          <div className="relative">
+        <div className="relative mobile:w-full">
+          <img
+            src={icSearch}
+            alt="search icon"
+            className="absolute left-2 top-1 h-[24px] w-[24px]"
+          />
+          <input
+            placeholder="검색할 아이돌 이름 혹은 그룹명을 입력해주세요"
+            onChange={(e) => setDebouncedSearchValue(e.target.value)}
+            className="border-whiteSecondary-500 font-regular h-[32px] w-full min-w-[350px] rounded-[3px] border bg-blackSecondary py-4 pl-9 focus:outline-none mobile:min-w-full mobile:text-[13px]"
+          />
+        </div>
+        <div className="relative ml-[10px] mobile:absolute mobile:-top-[5px] mobile:right-0">
+          <button
+            type="button"
+            onClick={onClickSelect}
+            className="border-whiteSecondary-500 flex min-w-[135px] items-center rounded-[5px] border bg-blackSecondary px-[20px] py-[4px] text-grayLight mobile:min-w-fit mobile:px-[10px] mobile:text-[14px] "
+          >
+            {selectedGender === '전체' ? '아이돌 정렬' : selectedGender}
             <img
-              src={icSearch}
-              alt="search icon"
-              className="absolute left-2 top-1 h-[24px] w-[24px]"
+              src={prevArrow}
+              alt="드롭다운 화살표"
+              className="ml-[10px] size-[15px] -rotate-90 opacity-70"
             />
-            <input
-              placeholder="검색할 아이돌 이름 혹은 그룹명을 입력해주세요"
-              onChange={(e) => setDebouncedSearchValue(e.target.value)}
-              className="border-whiteSecondary-500 font-regular h-[32px] w-full min-w-[350px] rounded-[3px] border bg-blackSecondary py-4 pl-9 focus:outline-none"
-            />
-          </div>
-          <div className="relative ml-[10px]">
-            <button
-              type="button"
-              onClick={onClickSelect}
-              className="border-whiteSecondary-500 flex min-w-[135px] items-center rounded-[5px] border bg-blackSecondary px-[20px] py-[4px] text-grayLight"
-            >
-              {selectedGender === '전체' ? '아이돌 정렬' : selectedGender}
-              <img
-                src={prevArrow}
-                alt="드롭다운 화살표"
-                className="ml-[10px] size-[15px] -rotate-90 opacity-70"
-              />
-            </button>
-            {isDropDown && (
-              <ul className="absolute -bottom-[115px] left-0 z-10 min-w-[135px] animate-[dropdown_0.4s_ease] rounded-[5px] border bg-blackSecondary">
-                {selectOptions.map((option) => (
-                  <li
-                    key={option.value}
-                    className="w-full border-b text-center text-grayLight hover:bg-pointPink hover:text-white"
+          </button>
+          {isDropDown && (
+            <ul className="absolute -bottom-[115px] left-0 z-10 min-w-[135px] animate-[dropdown_0.4s_ease] rounded-[5px] border bg-blackSecondary mobile:-bottom-[105px] mobile:min-w-[111px]">
+              {selectOptions.map((option) => (
+                <li
+                  key={option.value}
+                  className="w-full border-b text-center text-grayLight hover:bg-pointPink hover:text-white mobile:text-[14px]"
+                >
+                  <button
+                    className="w-full py-[5px]"
+                    type="button"
+                    onClick={() => selectOption(option.label, option.value)}
                   >
-                    <button
-                      className="w-full py-[5px]"
-                      type="button"
-                      onClick={() => selectOption(option.label, option.value)}
-                    >
-                      {option.label}
-                    </button>
-                  </li>
-                ))}
-              </ul>
-            )}
-          </div>
+                    {option.label}
+                  </button>
+                </li>
+              ))}
+            </ul>
+          )}
         </div>
       </div>
       <div className="relative">
@@ -209,7 +207,7 @@ function MyPageIdol({ idols, onChange, gender, SearchValue }) {
         </div>
       </div>
 
-      <div className="mt-[32px] flex justify-center">
+      <div className="mt-[32px] flex justify-center mobile:mt-0">
         <Button type="mediumRoundPrimary" onClick={addFavoriteIdol}>
           {' '}
           + 추가하기{' '}
