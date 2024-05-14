@@ -11,7 +11,7 @@ import insertLocalStorage from '../utils/insertLocalStorage';
 import Button from './Button';
 import IdolThumbnail from './IdolThumbnail';
 
-function MyPageIdol({ idols, onChange, gender }) {
+function MyPageIdol({ idols, onChange, gender, SearchValue }) {
   const [IsFavorite, setIsFavorite] = useState([]);
   const [isDropDown, setIsDropDown] = useState(false);
   const [selectedGender, setSelectedGender] = useState('전체');
@@ -40,9 +40,11 @@ function MyPageIdol({ idols, onChange, gender }) {
     setIsFavorite([]);
   };
 
+  // 드롭다운 클릭 시
   const onClickSelect = () => {
     setIsDropDown(!isDropDown);
   };
+
   // 선택된 옵션을 처리하는 함수
   const selectOption = (label, value) => {
     setSelectedGender(label);
@@ -50,6 +52,9 @@ function MyPageIdol({ idols, onChange, gender }) {
     setIsDropDown(false); // 옵션 선택 후 드롭다운 닫기
   };
 
+  const insertValue = (e) => {
+    SearchValue(e.target.value);
+  };
   return (
     <div>
       <h2 className="mb-[32px] text-2xl font-semibold">
@@ -73,6 +78,9 @@ function MyPageIdol({ idols, onChange, gender }) {
             ))}
           </ul>
         )}
+      </div>
+      <div>
+        <input type="text" onChange={insertValue} />
       </div>
       <Swiper
         slidesPerView={8}

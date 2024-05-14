@@ -13,6 +13,7 @@ function MyPage() {
   );
   const [pageSizeChange, setPageSizeChange] = useState();
   const [selectedGender, setSelectedGender] = useState('');
+  const [searchValue, setSearchValue] = useState('');
 
   const handleChangeFavorite = (idol) => {
     setChangeIdols(idol);
@@ -21,9 +22,16 @@ function MyPage() {
   const handleChangeGender = (gender) => {
     setSelectedGender(gender);
   };
+
+  const handleSearchValue = (value) => {
+    setSearchValue(value);
+  };
   useEffect(() => {
     const getIdolList = async () => {
-      const { list } = await getIdols({ pageSize: 10000 });
+      const { list } = await getIdols({
+        pageSize: 10000,
+        keyword: searchValue,
+      });
 
       // 로컬 스토리지의 있는 아이돌들의 id만 추출해서 배열로 만듦
       const changeIdolIds = changeIdols.map((idol) => idol.id);
@@ -51,7 +59,7 @@ function MyPage() {
 
     setFavoriteIdols(changeIdols);
     getIdolList();
-  }, [pageSizeChange, changeIdols, selectedGender]);
+  }, [pageSizeChange, changeIdols, selectedGender, searchValue]);
   return (
     <div className="base-container mt-[80px]">
       <MyPageCredit />
@@ -60,6 +68,7 @@ function MyPage() {
         idols={idols}
         onChange={handleChangeFavorite}
         gender={handleChangeGender}
+        SearchValue={handleSearchValue}
       />
     </div>
   );
