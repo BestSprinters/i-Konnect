@@ -10,7 +10,7 @@ function NoCreditModal({ open, onClose }) {
         앗! 투표하기 위한 <span className="text-pointOrange">크레딧</span>이
         부족해요
       </p>
-      <Button type="largeSquare" onClick={onClose}>
+      <Button type="fullSquarePrimary" onClick={onClose}>
         확인
       </Button>
     </Modal>
