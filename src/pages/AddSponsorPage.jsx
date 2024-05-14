@@ -1,16 +1,12 @@
-/* eslint-disable no-undef */
-
-/* eslint-disable react-hooks/exhaustive-deps */
-
-/* eslint-disable no-unused-vars */
-
-/* eslint-disable import/no-unresolved */
-
 /* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
 
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 
 /* eslint-disable jsx-a11y/label-has-associated-control */
+
+/* eslint-disable react-hooks/exhaustive-deps */
+
+/* eslint-disable import/no-unresolved */
 import React, { useEffect, useRef, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import 'swiper/css';
@@ -31,7 +27,6 @@ import formattedNumber from '../utils/formattedNumber';
 
 function AddSponsorPage() {
   const [idolsData, setIdolsData] = useState([]);
-  const [loading, setLoading] = useState(false);
   const [output, setOutput] = useState(0);
   const [min, setMin] = useState(0);
   const [max, setMax] = useState(1000000);
@@ -63,7 +58,6 @@ function AddSponsorPage() {
   const minDay = `${year}-${month}-${day}`;
 
   const getIdolsData = async () => {
-    setLoading(true);
     const result = await getIdols({ pageSize: 10000, keyword });
     const idolsList = result.list;
     setIdolsData(idolsList);
