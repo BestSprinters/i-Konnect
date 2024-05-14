@@ -3,6 +3,7 @@ import { useEffect, useState } from 'react';
 import getDonations from '../apis/donations/getDonationsApi';
 import Chart from '../components/Chart';
 import Header from '../components/Header';
+import InnerAnimation from '../components/InnerAnimation';
 import MyCredit from '../components/MyCredit';
 import SponsorPagination from '../components/SponsorPagination';
 import SponsorSlider from '../components/SponsorSlider';
@@ -55,21 +56,23 @@ function ListPage() {
   return (
     <div className="desktop:base-container">
       <Header />
-      <MyCredit />
-      <div className="mt-10 tablet:mt-16">
-        <h1 className="text-bold mx-6 text-base tablet:text-xl desktop:m-0 desktop:text-2xl">
-          후원을 기다리는 조공
-        </h1>
-        {tabletSize ? (
-          <SponsorSlider donations={donations} onReachEnd={handleReachEnd} />
-        ) : (
-          <SponsorPagination
-            donations={donations}
-            onReachEnd={handleReachEnd}
-          />
-        )}
-      </div>
-      <Chart />
+      <InnerAnimation>
+        <MyCredit />
+        <div className="mt-10 tablet:mt-16">
+          <h1 className="text-bold mx-6 text-base tablet:text-xl desktop:m-0 desktop:text-2xl">
+            후원을 기다리는 조공
+          </h1>
+          {tabletSize ? (
+            <SponsorSlider donations={donations} onReachEnd={handleReachEnd} />
+          ) : (
+            <SponsorPagination
+              donations={donations}
+              onReachEnd={handleReachEnd}
+            />
+          )}
+        </div>
+        <Chart />
+      </InnerAnimation>
     </div>
   );
 }
