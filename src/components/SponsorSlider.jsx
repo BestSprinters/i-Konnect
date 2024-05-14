@@ -8,6 +8,8 @@ import { Pagination } from 'swiper/modules';
 import { Swiper, SwiperSlide } from 'swiper/react';
 
 import getDonations from '../apis/donations/getDonationsApi';
+import icPlus from '../assets/imgs/ic_plus.svg';
+import Button from './Button';
 import SponsorCard from './SponsorCard';
 
 function SponsorSlider() {
@@ -54,9 +56,13 @@ function SponsorSlider() {
 
   return (
     <div className="mt-10 tablet:mt-16">
-      <h1 className="text-bold mx-6 text-base tablet:text-xl">
-        후원을 기다리는 조공
-      </h1>
+      <div className="mx-6 flex flex-row justify-between">
+        <h1 className="text-bold text-2xl">후원을 기다리는 조공</h1>
+        <Button type="fitSquarePrimary">
+          <img src={icPlus} alt="" className="mr-1" />
+          조공 등록하기
+        </Button>
+      </div>
       <div className="mt-4 px-6 tablet:mt-6">
         <Swiper
           slidesPerView={3}
