@@ -46,7 +46,7 @@ function ChargeCreditModal({ open, onClose }) {
           />
         ))}
       </div>
-      <Button type="largeSquare" onClick={handleChargeButtonClick}>
+      <Button type="fullSquarePrimary" onClick={handleChargeButtonClick}>
         <img src={icWhiteCredit} alt="크레딧 아이콘" />
         충전하기
       </Button>
