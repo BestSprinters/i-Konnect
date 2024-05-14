@@ -87,7 +87,7 @@ function MyPageIdol({ idols, onChange, gender, SearchValue }) {
         grid={{
           rows: 2,
         }}
-        spaceBetween={30}
+        spaceBetween={25}
         pagination={{
           clickable: true,
         }}
