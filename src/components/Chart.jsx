@@ -1,4 +1,3 @@
-/* eslint-disable react-hooks/exhaustive-deps */
 import { useEffect, useState } from 'react';
 
 import chartIcon from '../assets/imgs/ic_chart.svg';
@@ -7,7 +6,6 @@ import useMediaQuery from '../hooks/useMediaQuery';
 import useToggle from '../hooks/useToggle';
 import Button from './Button';
 import ChartList from './ChartList';
-import ChartMoreButton from './ChartMoreButton';
 import ChoiceGender from './ChoiceGender';
 import NoCreditModal from './NoCreditModal';
 import VoteModal from './VoteModal';
@@ -40,7 +38,7 @@ function Chart() {
     return () => {
       clearTimeout(handler);
     };
-  }, [debouncedSearchValue]);
+  }, [debouncedSearchValue, updateSearchIdol]);
 
   return (
     <div className="mb-[60px] mt-[40px] flex-col px-6 tablet:mb-80 tablet:mt-[60px] desktop:mt-20">
@@ -70,7 +68,8 @@ function Chart() {
       <ChartList chartList={chartList} matches={matches} />
       {hasMore && (
         <div className="mt-8 flex justify-center tablet:mt-7 desktop:mt-12">
-          <ChartMoreButton
+          <Button
+            type="largeSquareBlack"
             onClick={() =>
               updateChartOption({
                 pageSize: matches
@@ -78,7 +77,9 @@ function Chart() {
                   : chartOption.pageSize + 5,
               })
             }
-          />
+          >
+            더 보기
+          </Button>
         </div>
       )}
       <VoteModal
