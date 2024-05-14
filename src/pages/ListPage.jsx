@@ -59,8 +59,10 @@ function ListPage() {
       <Header />
       <MyCredit />
       <div className="mt-10 tablet:mt-16">
-        <div className="mx-6 flex flex-row justify-between">
-          <h1 className="text-bold text-2xl">후원을 기다리는 조공</h1>
+        <div className="mr-6 flex flex-row justify-between">
+          <h1 className="text-bold mx-6 text-base tablet:text-xl desktop:m-0 desktop:text-2xl">
+            후원을 기다리는 조공
+          </h1>
           <LinkButton type="fitSquarePrimary" to="/addSponsor">
             <img src={icPlus} alt="" className="mr-1" />
             조공 등록하기
