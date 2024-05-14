@@ -58,7 +58,7 @@ function LandingPage() {
       </section>
       <section className="relative h-[100dvh] w-full overflow-hidden">
         <div className="flex flex-col items-center justify-center">
-          <div className="mt-[10dvh]">
+          <div className="mt-[5dvh]">
             <p className="text-2xl text-yellowPrimary mobile:text-xs tablet:text-base">
               이달의 아티스트
             </p>
@@ -70,7 +70,7 @@ function LandingPage() {
           <img
             src={imgFourthLanding}
             alt="imgFourthLanding"
-            className="-z-50 mt-[10dvh] size-[60%] object-cover"
+            className="-z-50 mt-[10dvh] size-[50%] object-cover"
           />
         </div>
         <div className="absolute bottom-0 z-10 size-0 border-b-[8dvh] border-r-[8dvw] border-blackPrimary border-r-transparent" />
