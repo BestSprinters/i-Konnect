@@ -10,8 +10,6 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import getDonations from '../apis/donations/getDonationsApi';
 import icArrowLeft from '../assets/imgs/ic_arrow_left.svg';
 import icArrowRight from '../assets/imgs/ic_arrow_right.svg';
-import icRadioChecked from '../assets/imgs/ic_radio_checked.svg';
-import icRadioUnchecked from '../assets/imgs/ic_radio_unchecked.svg';
 import useToggle from '../hooks/useToggle';
 import SponsorCard from './SponsorCard';
 
@@ -79,22 +77,24 @@ function SponsorPagination() {
     <div className="mt-[40px] tablet:mt-[64px]">
       <div className="flex items-end justify-between">
         <h1 className="text-bold text-2xl">후원을 기다리는 조공</h1>
-        <button
-          onClick={toggleOnlyFavorite}
-          className="flex items-center justify-center"
-          type="button"
-        >
-          내가 관심있는 아이돌
-          <img
-            src={isOnlyFavorite ? icRadioChecked : icRadioUnchecked}
-            alt={
-              isOnlyFavorite
-                ? '체크된 라디오 버튼'
-                : '체크되지 않은 라디오 버튼'
-            }
-            className="ml-2"
-          />
-        </button>
+        <div className="flex items-center justify-center">
+          <label
+            className="inline-flex cursor-pointer items-center"
+            htmlFor="toggle"
+          >
+            <span className="mr-3 text-sm font-medium text-whitePrimary">
+              내가 관심있는 아이돌
+            </span>
+            <input
+              type="checkbox"
+              value={isOnlyFavorite}
+              onClick={toggleOnlyFavorite}
+              className="peer sr-only"
+              id="toggle"
+            />
+            <div className="peer relative h-6 w-11 rounded-full border-gray-600 bg-gray-700 after:absolute after:start-[2px] after:top-[2px] after:h-5 after:w-5 after:rounded-full after:border after:border-whitePrimary after:bg-whitePrimary after:transition-all after:content-[''] peer-checked:bg-pointOrangePink peer-checked:after:translate-x-full peer-checked:after:border-whitePrimary peer-focus:outline-none peer-focus:ring-[3px] peer-focus:ring-pointOrangePink/40 rtl:peer-checked:after:-translate-x-full" />
+          </label>
+        </div>
       </div>
       <div className="-mx-20 mt-8 flex w-[1360px] items-center justify-center gap-x-10">
         <button
