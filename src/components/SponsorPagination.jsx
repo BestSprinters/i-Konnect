@@ -10,6 +10,9 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import getDonations from '../apis/donations/getDonationsApi';
 import icArrowLeft from '../assets/imgs/ic_arrow_left.svg';
 import icArrowRight from '../assets/imgs/ic_arrow_right.svg';
+import icRadioChecked from '../assets/imgs/ic_radio_checked.svg';
+import icRadioUnchecked from '../assets/imgs/ic_radio_unchecked.svg';
+import useToggle from '../hooks/useToggle';
 import SponsorCard from './SponsorCard';
 
 function SponsorPagination() {
@@ -24,24 +27,39 @@ function SponsorPagination() {
     pageSize: 10,
   };
 
+  const [isOnlyFavorite, toggleOnlyFavorite] = useToggle(false);
+
   // 초기 데이터 로딩
   useEffect(() => {
-    const fetchInitialData = async () => {
-      const initialFetchOption = {
+    const fetchData = async () => {
+      const FetchOption = {
         cursor: '',
-        pageSize: 10,
+        pageSize: isOnlyFavorite ? 10000 : 10,
       };
-      try {
-        const result = await getDonations(initialFetchOption);
-        setDonationData(result.list);
-        setNextCursor(result.nextCursor);
-      } catch (error) {
-        console.error('데이터를 불러오지 못했습니다.', error);
+
+      const { list: donations, nextCursor: donationsNextCursor } =
+        await getDonations(FetchOption);
+
+      if (isOnlyFavorite) {
+        const favoriteIdols = JSON.parse(
+          localStorage.getItem('MyPage_FavoriteIdol'),
+        );
+        const favoriteIdolIds = favoriteIdols.map(
+          (favoriteIdol) => favoriteIdol.id,
+        );
+        const filteredDonations = donations.filter((donation) =>
+          favoriteIdolIds.includes(donation.idol.id),
+        );
+
+        setDonationData(filteredDonations);
+      } else {
+        setDonationData(donations);
+        setNextCursor(donationsNextCursor);
       }
     };
 
-    fetchInitialData();
-  }, []);
+    fetchData();
+  }, [isOnlyFavorite]);
 
   // 추가 데이터 로딩
   const handleReachEnd = async () => {
@@ -59,7 +77,25 @@ function SponsorPagination() {
 
   return (
     <div className="mt-[40px] tablet:mt-[64px]">
-      <h1 className="text-bold text-2xl">후원을 기다리는 조공</h1>
+      <div className="flex items-end justify-between">
+        <h1 className="text-bold text-2xl">후원을 기다리는 조공</h1>
+        <button
+          onClick={toggleOnlyFavorite}
+          className="flex items-center justify-center"
+          type="button"
+        >
+          내가 관심있는 아이돌
+          <img
+            src={isOnlyFavorite ? icRadioChecked : icRadioUnchecked}
+            alt={
+              isOnlyFavorite
+                ? '체크된 라디오 버튼'
+                : '체크되지 않은 라디오 버튼'
+            }
+            className="ml-2"
+          />
+        </button>
+      </div>
       <div className="-mx-20 mt-8 flex w-[1360px] items-center justify-center gap-x-10">
         <button
           type="button"
