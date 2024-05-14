@@ -1,8 +1,11 @@
 import { useEffect, useState } from 'react';
 
 import getDonations from '../apis/donations/getDonationsApi';
+import icPlus from '../assets/imgs/ic_plus.svg';
 import Chart from '../components/Chart';
 import Header from '../components/Header';
+import InnerAnimation from '../components/InnerAnimation';
+import LinkButton from '../components/LinkButton';
 import MyCredit from '../components/MyCredit';
 import SponsorPagination from '../components/SponsorPagination';
 import SponsorSlider from '../components/SponsorSlider';
@@ -70,41 +73,47 @@ function ListPage() {
   return (
     <div className="desktop:base-container">
       <Header />
-      <MyCredit />
-      <div className="mt-10 tablet:mt-16">
-        <div className="mx-6 flex items-end justify-between desktop:m-0">
-          <h1 className="text-bold text-base tablet:text-xl desktop:text-2xl">
-            후원을 기다리는 조공
-          </h1>
-          <div className="flex items-center justify-center">
-            <label
-              className="inline-flex cursor-pointer items-center"
-              htmlFor="toggle"
-            >
-              <span className="mr-3 text-sm font-medium text-whitePrimary">
-                내가 관심있는 아이돌
-              </span>
-              <input
-                type="checkbox"
-                value={isOnlyFavorite}
-                onClick={toggleOnlyFavorite}
-                className="peer sr-only"
-                id="toggle"
-              />
-              <div className="peer relative h-6 w-11 rounded-full border-gray-600 bg-gray-700 after:absolute after:start-[2px] after:top-[2px] after:h-5 after:w-5 after:rounded-full after:border after:border-whitePrimary after:bg-whitePrimary after:transition-all after:content-[''] peer-checked:bg-pointOrangePink peer-checked:after:translate-x-full peer-checked:after:border-whitePrimary peer-focus:outline-none peer-focus:ring-[3px] peer-focus:ring-pointOrangePink/40 rtl:peer-checked:after:-translate-x-full" />
-            </label>
+      <InnerAnimation>
+        <MyCredit />
+        <div className="mt-10 tablet:mt-16">
+          <div className="mx-6 flex items-end justify-between desktop:m-0">
+            <h1 className="text-bold mx-6 text-base tablet:text-xl desktop:m-0 desktop:text-2xl">
+              후원을 기다리는 조공
+            </h1>
+            <div className="flex items-center justify-center">
+              <label
+                className="inline-flex cursor-pointer items-center"
+                htmlFor="toggle"
+              >
+                <span className="mr-3 text-sm font-medium text-whitePrimary">
+                  내가 관심있는 아이돌
+                </span>
+                <input
+                  type="checkbox"
+                  value={isOnlyFavorite}
+                  onClick={toggleOnlyFavorite}
+                  className="peer sr-only"
+                  id="toggle"
+                />
+                <div className="peer relative h-6 w-11 rounded-full border-gray-600 bg-gray-700 after:absolute after:start-[2px] after:top-[2px] after:h-5 after:w-5 after:rounded-full after:border after:border-whitePrimary after:bg-whitePrimary after:transition-all after:content-[''] peer-checked:bg-pointOrangePink peer-checked:after:translate-x-full peer-checked:after:border-whitePrimary peer-focus:outline-none peer-focus:ring-[3px] peer-focus:ring-pointOrangePink/40 rtl:peer-checked:after:-translate-x-full" />
+              </label>
+              <LinkButton type="fitSquarePrimary" to="/addSponsor">
+                <img src={icPlus} alt="" className="mr-1" />
+                조공 등록하기
+              </LinkButton>
+            </div>
           </div>
+          {tabletSize ? (
+            <SponsorSlider donations={donations} onReachEnd={handleReachEnd} />
+          ) : (
+            <SponsorPagination
+              donations={donations}
+              onReachEnd={handleReachEnd}
+            />
+          )}
         </div>
-        {tabletSize ? (
-          <SponsorSlider donations={donations} onReachEnd={handleReachEnd} />
-        ) : (
-          <SponsorPagination
-            donations={donations}
-            onReachEnd={handleReachEnd}
-          />
-        )}
-      </div>
-      <Chart />
+        <Chart />
+      </InnerAnimation>
     </div>
   );
 }

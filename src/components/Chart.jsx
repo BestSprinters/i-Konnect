@@ -26,7 +26,7 @@ function Chart() {
         <h3 className="1 grow text-base font-bold text-whitePrimary tablet:text-xl desktop:text-2xl">
           이달의 차트
         </h3>
-        <Button type="smallSquare" onClick={handleVoteToggle}>
+        <Button type="fitSquarePrimary" onClick={handleVoteToggle}>
           <div className="flex items-center justify-center gap-1">
             <img alt="chartIcon" src={chartIcon} />
             <p> 차트 투표하기</p>

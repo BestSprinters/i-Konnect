@@ -89,7 +89,7 @@ function VoteModal({
         </div>
       </div>
       <div className="flex w-full flex-col items-center justify-center mobile:fixed mobile:bottom-0 mobile:bg-blackPrimary/80 mobile:p-5">
-        <Button type="fullSquare" onClick={handleVoteIdol}>
+        <Button type="fullSquarePrimary" onClick={handleVoteIdol}>
           투표하기
         </Button>
         <p className="mt-4 text-center text-xs">
