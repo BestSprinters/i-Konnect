@@ -246,7 +246,7 @@ function AddSponsorPage() {
                 >
                   조공 마감 날짜
                 </label>
-                <div className="relative mt-2">
+                <div className="relative mt-3">
                   <input
                     name="deadline"
                     type="date"
@@ -270,7 +270,7 @@ function AddSponsorPage() {
                 )}
               </div>
               <div className="w-full flex-1 justify-stretch">
-                <div className="flex justify-between pb-4">
+                <div className="flex justify-between">
                   <label className="text-sm font-medium leading-6 text-whitePrimary">
                     필요 후원 크레딧
                   </label>
@@ -295,6 +295,12 @@ function AddSponsorPage() {
                   max={max}
                   className={`m-0 h-1 w-full appearance-none rounded-full bg-grayLight outline-none [&::-webkit-slider-thumb]:h-5 [&::-webkit-slider-thumb]:w-5 [&::-webkit-slider-thumb]:cursor-grab [&::-webkit-slider-thumb]:appearance-none [&::-webkit-slider-thumb]:rounded-full [&::-webkit-slider-thumb]:bg-pointOrange ${!isTargetDonationValid ? 'animate-vibration border border-red-600' : ''}`}
                 />
+                <div className="ml-2 mt-1 flex justify-between">
+                  <p className="font-regular text-[12px] text-grayLight">0</p>
+                  <p className="font-regular text-[12px] text-grayLight">
+                    최대 1,000,000 크레딧
+                  </p>
+                </div>
                 {isTargetDonationValid || (
                   <p className="mt-2 text-[12px] text-red-600">
                     크레딧을 설정해주세요
