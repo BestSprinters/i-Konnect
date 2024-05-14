@@ -131,7 +131,13 @@ function LandingPage() {
         </section>
         <section className="flex h-[100dvh] w-full items-center justify-center">
           <div className="flex flex-col items-center justify-center text-center text-[100px] font-normal mobile:text-[30px] tablet:text-[60px]">
-            <p>커넥팅 완료! ^^</p>
+            {/* 기본 a태그처럼 만들기 */}
+            <Link
+              to={PAGES.list.link}
+              className="font-bold text-blue-600 underline visited:text-purple-600 hover:text-blue-800"
+            >
+              커넥팅 완료! ^^
+            </Link>
             <h1>
               당신의{' '}
               <span className="text-[160px] font-bold mobile:text-[40px] tablet:text-[90px]">
@@ -156,11 +162,11 @@ function LandingPage() {
               </span>
               or
               <br />
-              <span className="text-[160px] font-bold text-pointPink mobile:text-[40px]">
+              <span className="text-[160px] font-bold text-pointPink mobile:text-[40px] tablet:text-[90px]">
                 형
               </span>
               or
-              <span className="text-[160px] font-bold text-pointPink mobile:text-[40px]">
+              <span className="text-[160px] font-bold text-pointPink mobile:text-[40px] tablet:text-[90px]">
                 누나
               </span>
               를 덕질해 보세요
