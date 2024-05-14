@@ -45,6 +45,15 @@ export default {
         'pos-0': '0% 0%',
         'pos-100': '100% 100%',
       },
+      keyframes: {
+        vibration: {
+          from: { transform: 'rotate(0.5deg)' },
+          to: { transform: 'rotate(-0.5deg)' },
+        },
+      },
+      animation: {
+        vibration: 'vibration .1s ease-in-out 3'
+      }
     },
   },
   plugins: [],
