@@ -1,4 +1,13 @@
+// swiper eslint 충돌
+
+/* eslint-disable import/no-unresolved */
+import 'swiper/css';
+import 'swiper/css/grid';
+import { Navigation } from 'swiper/modules';
+import { Swiper, SwiperSlide } from 'swiper/react';
+
 import deleteImg from '../assets/imgs/ic_delete.svg';
+import icEmptyItem from '../assets/imgs/ic_empty_item.svg';
 import useMediaQuery from '../hooks/useMediaQuery';
 import IdolThumbnail from './IdolThumbnail';
 
@@ -28,28 +37,49 @@ function FavoriteIdol({ idols, onChange }) {
   const mobileSize = useMediaQuery('(max-width: 767px)');
 
   return (
-    <div className="mt-6 mobile:mx-[24px] tablet:mx-[24px]">
+    <div className="mt-6 mobile:mx-[24px] mobile:mt-[40px] tablet:mx-[24px]">
       <h2 className="mb-[32px] text-2xl font-semibold mobile:hidden tablet:text-[20px]">
         내가 관심있는 아이돌
       </h2>
 
-      <ul
-        className={`flex w-full flex-wrap gap-6 ${
-          idols.length >= 8 && mobileSize
-            ? 'mobile:no-scrollbar mobile:snap-x mobile:flex-nowrap mobile:overflow-x-scroll mobile:scroll-smooth tablet:snap-x tablet:overflow-x-scroll tablet:scroll-smooth'
-            : ''
-        }
+      {idols.length === 0 ? (
+        <div className="flex min-h-[152px] flex-col justify-center mobile:min-h-[122px]">
+          <img
+            src={icEmptyItem}
+            alt="아이템이 비어있는 아이콘"
+            className="mx-auto mb-[15px]"
+          />
 
-`}
-      >
-        {idols.length === 0 ? (
-          <li className="w-full border border-pointOrangePink py-[80px] text-center">
-            <p className="font-extralight">텅...</p>
-          </li>
-        ) : (
-          idols?.map((idol) => (
-            <li key={idol.id} className="mobile:snap-start tablet:snap-start">
-              <div className="relative flex w-fit flex-col items-center">
+          <p className="text-center font-extralight text-grayMedium">
+            선택된 관심있는 아이돌이 없습니다
+          </p>
+        </div>
+      ) : (
+        <Swiper
+          slidesPerView={4}
+          spaceBetween={12}
+          breakpoints={{
+            767: {
+              slidesPerView: 6,
+              spaceBetween: 20,
+            },
+
+            1024: {
+              slidesPerView: 8,
+              spaceBetween: 20,
+            },
+
+            1280: {
+              slidesPerView: 10,
+              spaceBetween: 20,
+            },
+          }}
+          modules={[Navigation]}
+          className="cursor-pointer"
+        >
+          {idols?.map((idol) => (
+            <SwiperSlide key={idol.id}>
+              <div className="relative flex w-fit select-none flex-col items-center">
                 <button
                   type="button"
                   className="absolute right-0"
@@ -69,10 +99,10 @@ function FavoriteIdol({ idols, onChange }) {
                   src={idol.profilePicture}
                 />
               </div>
-            </li>
-          ))
-        )}
-      </ul>
+            </SwiperSlide>
+          ))}
+        </Swiper>
+      )}
     </div>
   );
 }
