@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 
-/* eslint-disable */
+/* eslint-disable react-hooks/exhaustive-deps */
 import chartIcon from '../assets/imgs/ic_chart.svg';
 import icSearch from '../assets/imgs/ic_search.svg';
 import useChartLoader from '../hooks/useChartLoader';
