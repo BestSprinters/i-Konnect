@@ -16,7 +16,9 @@ function ChartRank({
     >
       <div className="1 flex grow items-center gap-2">
         <IdolAvatar size="small" src={profilePicture} />
-        <p className="w-4 text-sm font-medium">{rank}</p>
+        <p className="ml-2 w-4 text-sm font-medium text-pointOrange/60">
+          {rank}
+        </p>
         <p className="text-sm font-medium">
           {group} {name}
         </p>
