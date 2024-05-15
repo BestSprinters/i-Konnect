@@ -6,7 +6,7 @@ function FavoriteIdol({ idols, onChange }) {
   const removeIdolById = (idToRemove) => {
     // 로컬스토리지에서 데이터 가져오기
 
-    const storedData = localStorage.getItem('MyPage_FavoriteIdol');
+    const storedData = localStorage.getItem('myPage_FavoriteIdol');
 
     if (!storedData) return; // 데이터가 없으면 함수 종료
 
