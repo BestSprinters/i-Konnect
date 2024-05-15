@@ -84,7 +84,7 @@ function FavoriteIdol({ idols, onChange }) {
         >
           {idols?.map((idol) => (
             <SwiperSlide key={idol.id}>
-              <div className="relative flex w-fit flex-col items-center">
+              <div className="relative flex w-fit select-none flex-col items-center">
                 <button
                   type="button"
                   className="absolute right-0"
