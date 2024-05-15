@@ -80,6 +80,7 @@ function FavoriteIdol({ idols, onChange }) {
             },
           }}
           modules={[Navigation]}
+          className="cursor-pointer"
         >
           {idols?.map((idol) => (
             <SwiperSlide key={idol.id}>
