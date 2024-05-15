@@ -26,7 +26,7 @@ function MyCredit() {
       </div>
       <button
         type="button"
-        className="text-sm font-bold text-pointOrange tablet:text-base"
+        className="rounded-md px-4 py-3 text-sm font-bold text-pointOrange transition hover:bg-whiteSecondary/20 focus:bg-whiteSecondary/30 tablet:text-base"
         onClick={handleToggle}
       >
         충전하기
