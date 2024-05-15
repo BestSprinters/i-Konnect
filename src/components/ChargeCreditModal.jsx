@@ -8,7 +8,7 @@ import CreditContext from '../contexts/CreditAmount';
 import Button from './Button';
 import Modal from './Modal';
 
-const chargeAmountList = [100, 500, 1000];
+const chargeAmountList = [100, 500, 1000, 3000, 5000];
 
 function ChargeCreditModal({ open, onClose }) {
   const [chargeAmount, setChargeAmount] = useState(0);
