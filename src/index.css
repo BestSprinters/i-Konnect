@@ -44,6 +44,13 @@
     url(./assets/fonts/Pretendard-Regular.woff) format('woff');
 }
 
+@font-face {
+  font-family: 'DOSGothic';
+  src: url('./assets/fonts/DOSGothic.ttf') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
 * {
   color: #fff;
 }

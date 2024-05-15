@@ -144,39 +144,39 @@ function LandingPage() {
                 {/* 기본 a태그처럼 만들기 */}
                 <Link
                   to={PAGES.list.link}
-                  className="font-bold text-blue-600 underline visited:text-purple-600 hover:text-blue-800"
+                  className="font-dosGothic text-blue-600 underline visited:text-purple-600 hover:text-blue-800"
                 >
-                  커넥팅 완료! ^^
+                  커넥팅 완료! (´▽`ʃ♡ƪ)
                 </Link>
-                <h1>
+                <h1 className="font-dosGothic">
                   당신의{' '}
-                  <span className="text-[160px] font-bold mobile:text-[40px] tablet:text-[90px]">
+                  <span className="font-dosGothic text-[160px] mobile:text-[35px] tablet:text-[90px]">
                     아이돌
                   </span>
                   을{' '}
-                  <span className="text-[160px] font-bold mobile:text-[40px] tablet:text-[90px]">
+                  <span className="font-dosGothic text-[160px] mobile:text-[40px] tablet:text-[90px]">
                     커넥팅
                   </span>
                   해보세요
                   <br />
                   영원한{' '}
-                  <span className="text-[160px] font-bold mobile:text-[40px] tablet:text-[90px]">
+                  <span className="font-dosGothic text-[160px] mobile:text-[40px] tablet:text-[90px]">
                     우리
                   </span>{' '}
-                  <span className="text-[160px] font-bold text-pointPink mobile:text-[40px] tablet:text-[90px]">
+                  <span className="font-dosGothic text-[160px] text-pointPink mobile:text-[40px] tablet:text-[90px]">
                     오빠
                   </span>
                   or
-                  <span className="text-[160px] font-bold text-pointPink mobile:text-[40px] tablet:text-[90px]">
+                  <span className="font-dosGothic text-[160px] text-pointPink mobile:text-[40px] tablet:text-[90px]">
                     언니
                   </span>
                   or
                   <br />
-                  <span className="text-[160px] font-bold text-pointPink mobile:text-[40px] tablet:text-[90px]">
+                  <span className="font-dosGothic text-[160px] text-pointPink mobile:text-[40px] tablet:text-[90px]">
                     형
                   </span>
                   or
-                  <span className="text-[160px] font-bold text-pointPink mobile:text-[40px] tablet:text-[90px]">
+                  <span className="font-dosGothic text-[160px] text-pointPink mobile:text-[40px] tablet:text-[90px]">
                     누나
                   </span>
                   를 덕질해 보세요

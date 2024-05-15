@@ -32,6 +32,7 @@ export default {
       },
       fontFamily: {
         sans: ['Pretendard'],
+        dosGothic: ['DOSGothic']
       },
       screens: {
         mobile: { min: "375px", max: "767px" },
