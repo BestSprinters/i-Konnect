@@ -22,10 +22,11 @@ function MyPageIdol({ idols, onChange, gender, search }) {
   const [IsFavorite, setIsFavorite] = useState([]);
   const [isDropDown, setIsDropDown] = useState(false);
   const [selectedGender, setSelectedGender] = useState('전체');
-  const [debouncedSearchValue, setDebouncedSearchValue] = useState(search);
-  const prevRef = useRef(null);
+  const [debouncedSearchValue, setDebouncedSearchValue] = useState();
 
+  const prevRef = useRef(null);
   const nextRef = useRef(null);
+
   const selectOptions = [
     { value: '', label: '전체' },
     { value: 'male', label: '남자 아이돌' },
