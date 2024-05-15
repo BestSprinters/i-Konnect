@@ -36,13 +36,13 @@ function FavoriteIdol({ idols, onChange }) {
   const mobileSize = useMediaQuery('(max-width: 767px)');
 
   return (
-    <div className="mt-6 mobile:mx-[24px] tablet:mx-[24px]">
+    <div className="mt-6 mobile:mx-[24px] mobile:mt-[40px] tablet:mx-[24px]">
       <h2 className="mb-[32px] text-2xl font-semibold mobile:hidden">
         내가 관심있는 아이돌
       </h2>
 
       {idols.length === 0 ? (
-        <div className="min-h-[152px]">
+        <div className="flex min-h-[152px] flex-col justify-center mobile:min-h-[122px]">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             id="Layer_1"
