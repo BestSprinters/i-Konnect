@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 
+/* eslint-disable react-hooks/exhaustive-deps */
 import chartIcon from '../assets/imgs/ic_chart.svg';
 import icSearch from '../assets/imgs/ic_search.svg';
 import useChartLoader from '../hooks/useChartLoader';
@@ -41,7 +42,7 @@ function Chart() {
     return () => {
       clearTimeout(handler);
     };
-  }, [debouncedSearchValue, updateSearchIdol]);
+  }, [debouncedSearchValue]);
 
   return (
     <div className="mb-[60px] mt-[40px] flex-col px-6 tablet:mb-80 tablet:mt-[60px] desktop:mt-20 desktop:px-0">
