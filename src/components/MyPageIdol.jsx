@@ -17,11 +17,11 @@ import insertLocalStorage from '../utils/insertLocalStorage';
 import Button from './Button';
 import IdolThumbnail from './IdolThumbnail';
 
-function MyPageIdol({ idols, onChange, gender, SearchValue }) {
+function MyPageIdol({ idols, onChange, gender, search }) {
   const [IsFavorite, setIsFavorite] = useState([]);
   const [isDropDown, setIsDropDown] = useState(false);
   const [selectedGender, setSelectedGender] = useState('전체');
-  const [debouncedSearchValue, setDebouncedSearchValue] = useState(SearchValue);
+  const [debouncedSearchValue, setDebouncedSearchValue] = useState(search);
   const prevRef = useRef(null);
 
   const nextRef = useRef(null);
@@ -64,7 +64,7 @@ function MyPageIdol({ idols, onChange, gender, SearchValue }) {
 
   useEffect(() => {
     const handler = setTimeout(() => {
-      SearchValue(debouncedSearchValue);
+      search(debouncedSearchValue);
     }, 300); // 300ms의 딜레이
 
     return () => {

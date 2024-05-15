@@ -15,7 +15,7 @@ function MyPage() {
   );
   const [pageSizeChange, setPageSizeChange] = useState();
   const [selectedGender, setSelectedGender] = useState('');
-  const [searchValue, setSearchValue] = useState('');
+  const [search, setSearch] = useState('');
 
   const handleChangeFavorite = (idol) => {
     setChangeIdols(idol);
@@ -26,13 +26,13 @@ function MyPage() {
   };
 
   const handleSearchValue = (value) => {
-    setSearchValue(value);
+    setSearch(value);
   };
   useEffect(() => {
     const getIdolList = async () => {
       const { list } = await getIdols({
         pageSize: 10000,
-        keyword: searchValue,
+        keyword: search,
       });
 
       // 로컬 스토리지의 있는 아이돌들의 id만 추출해서 배열로 만듦
@@ -61,7 +61,7 @@ function MyPage() {
 
     setFavoriteIdols(changeIdols);
     getIdolList();
-  }, [pageSizeChange, changeIdols, selectedGender, searchValue]);
+  }, [pageSizeChange, changeIdols, selectedGender, search]);
 
   return (
     <div className="desktop:base-container my-[80px]">
@@ -73,7 +73,7 @@ function MyPage() {
           idols={idols}
           onChange={handleChangeFavorite}
           gender={handleChangeGender}
-          SearchValue={handleSearchValue}
+          search={handleSearchValue}
         />
       </InnerAnimation>
     </div>
