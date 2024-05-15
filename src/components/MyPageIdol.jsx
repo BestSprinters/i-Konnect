@@ -97,7 +97,7 @@ function MyPageIdol({ idols, onChange, gender, search }) {
           <button
             type="button"
             onClick={onClickSelect}
-            className="border-whiteSecondary-500 flex min-w-[135px] items-center rounded-[5px] border bg-blackSecondary px-[20px] py-[4px] text-grayLight mobile:min-w-fit mobile:px-[10px] mobile:text-[14px] "
+            className="border-whiteSecondary-500 flex min-w-[135px] items-center rounded-[3px] border bg-blackSecondary px-[20px] py-[4px] text-grayLight mobile:min-w-fit mobile:px-[10px] mobile:text-[14px] "
           >
             {selectedGender === '전체' ? '아이돌 정렬' : selectedGender}
             <img
