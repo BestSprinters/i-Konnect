@@ -11,6 +11,7 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 
 import prevArrow from '../assets/imgs/ic_arrow_left.svg';
 import nextArrow from '../assets/imgs/ic_arrow_right.svg';
+import icPlus from '../assets/imgs/ic_plus.svg';
 import icSearch from '../assets/imgs/ic_search.svg';
 import useMediaQuery from '../hooks/useMediaQuery';
 import insertLocalStorage from '../utils/insertLocalStorage';
@@ -210,7 +211,12 @@ function MyPageIdol({ idols, onChange, gender, search }) {
       <div className="mt-[32px] flex justify-center mobile:mt-0">
         <Button type="mediumRoundPrimary" onClick={addFavoriteIdol}>
           {' '}
-          + 추가하기{' '}
+          <img
+            src={icPlus}
+            alt="플러스 이미지"
+            className="mr-[4px] mt-[1px] size-[15px]"
+          />{' '}
+          추가하기{' '}
         </Button>
       </div>
     </div>
