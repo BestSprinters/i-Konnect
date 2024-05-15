@@ -22,7 +22,7 @@ function SponsorPagination({ donations, onReachEnd }) {
         onClick={() => {
           swiperRef.current.swiper.slidePrev();
         }}
-        className="flex h-[80px] w-[40px] items-center justify-center rounded-md bg-grayBlack"
+        className="flex h-[80px] w-[40px] select-none items-center justify-center rounded-md bg-grayBlack transition hover:bg-whiteSecondary/20"
       >
         <img
           src={icArrowLeft}
@@ -49,7 +49,7 @@ function SponsorPagination({ donations, onReachEnd }) {
         onClick={() => {
           swiperRef.current.swiper.slideNext();
         }}
-        className="flex h-[80px] w-[40px] items-center justify-center rounded-md bg-grayBlack"
+        className="flex h-[80px] w-[40px] select-none items-center justify-center rounded-md bg-grayBlack transition hover:bg-whiteSecondary/20"
       >
         <img
           src={icArrowRight}
