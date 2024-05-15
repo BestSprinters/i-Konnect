@@ -78,7 +78,7 @@ function ListPage() {
         <div className="mt-10 tablet:mt-16">
           <div className="mx-6 flex flex-col gap-1 tablet:gap-2 desktop:m-0 desktop:gap-3">
             <div className="flex items-center justify-between">
-              <h1 className="text-bold text-base text-whitePrimary tablet:text-xl desktop:m-0 desktop:text-2xl">
+              <h1 className="text-lg font-bold text-whitePrimary tablet:text-xl desktop:m-0 desktop:text-2xl">
                 후원을 기다리는 조공
               </h1>
               <LinkButton type="fitSquarePrimary" to="/addSponsor">

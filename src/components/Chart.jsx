@@ -44,9 +44,9 @@ function Chart() {
   }, [debouncedSearchValue]);
 
   return (
-    <div className="mb-[60px] mt-[40px] flex-col px-6 tablet:mb-80 tablet:mt-[60px] desktop:mt-20">
+    <div className="mb-[60px] mt-[40px] flex-col px-6 tablet:mb-80 tablet:mt-[60px] desktop:mt-20 desktop:px-0">
       <div className="relative flex gap-4 mobile:h-20">
-        <h3 className="1 grow text-base font-bold text-whitePrimary tablet:text-xl desktop:text-2xl">
+        <h3 className="grow text-lg font-bold text-whitePrimary tablet:text-xl desktop:text-2xl">
           이달의 차트
         </h3>
         <div className="relative mobile:absolute mobile:bottom-0 mobile:w-full">
