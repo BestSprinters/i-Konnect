@@ -12,11 +12,13 @@ import ChartMoreButton from './ChartMoreButton';
 import ChoiceGender from './ChoiceGender';
 import NoCreditModal from './NoCreditModal';
 import VoteModal from './VoteModal';
+import VoteSuccessModal from './VoteSuccessModal';
 
 function Chart() {
   const matches = useMediaQuery('(min-width: 1280px)');
   const [voteToggle, handleVoteToggle] = useToggle();
   const [noCreditToggle, handleNoCreditToggle] = useToggle();
+  const [voteSuccessToggle, handleVoteSuccessToggle] = useToggle();
   const {
     chartList,
     hasMore,
@@ -94,10 +96,15 @@ function Chart() {
         toggle={voteToggle}
         handleVoteToggle={handleVoteToggle}
         handleNoCreditToggle={handleNoCreditToggle}
+        handleVoteSuccessToggle={handleVoteSuccessToggle}
         setChartList={setChartList}
         chartList={chartList}
       />
       <NoCreditModal open={noCreditToggle} onClose={handleNoCreditToggle} />
+      <VoteSuccessModal
+        open={voteSuccessToggle}
+        onClose={handleVoteSuccessToggle}
+      />
     </div>
   );
 }
