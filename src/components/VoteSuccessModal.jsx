@@ -5,7 +5,7 @@ import Modal from './Modal';
 function VoteSuccessModal({ open, onClose }) {
   return (
     <Modal open={open} onClose={onClose}>
-      <img src={ImgVoteSuccess} alt="투표 성공" />
+      <img src={ImgVoteSuccess} className="h-56 w-56" alt="투표 성공" />
       <p className="mb-8 font-medium">
         투표가 <span className="text-pointOrange">성공</span>
         했어요!
