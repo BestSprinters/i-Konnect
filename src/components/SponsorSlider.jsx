@@ -13,6 +13,7 @@ function SponsorSlider({ donations, onReachEnd }) {
     <div className="mt-2 px-6">
       <Swiper
         slidesPerView={3}
+        slidesOffsetAfter={110}
         pagination={{ clickable: true }}
         modules={[Pagination]}
         spaceBetween={150}
