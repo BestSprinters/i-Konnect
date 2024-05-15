@@ -5,6 +5,7 @@ import icCredit from '../assets/imgs/ic_credit.svg';
 import CreditContext from '../contexts/CreditAmount';
 import useToggle from '../hooks/useToggle';
 import displayTime from '../utils/displayTime';
+import formattedNumber from '../utils/formattedNumber';
 import Button from './Button';
 import DonateModal from './DonateModal';
 import ProgressBar from './ProgressBar';
@@ -66,7 +67,7 @@ function SponsorCard({ donation }) {
           <div className="flex items-center justify-between">
             <div className="flex items-center text-[12px] text-pointOrange">
               <img src={icCredit} alt="" />
-              {receivedDonations}
+              {formattedNumber(receivedDonations)}
             </div>
             <p className="text-[12px]">
               {displayTime(donation.createdAt, donation.deadline)}
