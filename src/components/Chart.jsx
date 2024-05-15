@@ -100,7 +100,7 @@ function Chart() {
         handleNoCreditToggle={handleNoCreditToggle}
         handleVoteSuccessToggle={handleVoteSuccessToggle}
         setChartList={setChartList}
-        chartList={chartList}
+        chartOption={chartOption}
       />
       <NoCreditModal open={noCreditToggle} onClose={handleNoCreditToggle} />
       <VoteSuccessModal
