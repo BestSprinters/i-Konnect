@@ -4,7 +4,7 @@
 
 @layer utilities {
   .base-container {
-    @apply w-full max-w-[1200px] mx-auto;
+    @apply mx-auto w-full max-w-[1200px];
   }
 }
 
@@ -44,6 +44,13 @@
     url(./assets/fonts/Pretendard-Regular.woff) format('woff');
 }
 
+@font-face {
+  font-family: 'DOSGothic';
+  src: url('./assets/fonts/DOSGothic.ttf') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
 * {
   color: #fff;
 }
@@ -64,4 +71,19 @@ body {
 /* Swiper bullet 제거 */
 .swiper .swiper-pagination-bullet {
   display: none;
+}
+
+/*배경에 먼지처럼 뿌연거 추가*/
+body:after {
+  content: '';
+  width: 200px;
+  height: 275px;
+  position: absolute;
+  left: 0;
+  top: 0;
+  background-image: url('./assets/imgs/img_bg_dust.png');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  z-index: 999;
 }
