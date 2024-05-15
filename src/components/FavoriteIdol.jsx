@@ -29,7 +29,7 @@ function FavoriteIdol({ idols, onChange }) {
 
   return (
     <div className="mt-6 mobile:mx-[24px] tablet:mx-[24px]">
-      <h2 className="mb-[32px] text-2xl font-semibold mobile:hidden">
+      <h2 className="mb-[32px] text-2xl font-semibold mobile:hidden tablet:text-[20px]">
         내가 관심있는 아이돌
       </h2>
 
