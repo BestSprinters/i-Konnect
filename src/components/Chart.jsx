@@ -77,7 +77,7 @@ function Chart() {
         />
       </div>
       <ChartList chartList={chartList} matches={matches} />
-      {hasMore && (
+      {hasMore ? (
         <div className="mt-8 flex justify-center tablet:mt-7 desktop:mt-12">
           <Button
             type="largeSquareBlack"
@@ -92,6 +92,8 @@ function Chart() {
             더 보기
           </Button>
         </div>
+      ) : (
+        <div className="mt-8 h-[42px] w-[326px] tablet:mt-7 desktop:mt-12" />
       )}
       <VoteModal
         gender={chartOption.gender}

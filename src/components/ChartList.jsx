@@ -1,9 +1,10 @@
-import React from 'react';
-
 import ChartRank from './ChartRank';
 
 function ChartList({ chartList, matches }) {
   const { length } = chartList;
+  const requiredLength = matches ? 10 : 5;
+  const skeletonCount = requiredLength - length;
+  const skeletonArray = Array.from({ length: skeletonCount });
 
   return (
     <div
@@ -32,6 +33,9 @@ function ChartList({ chartList, matches }) {
           />
         );
       })}
+      {skeletonArray.map((_, key) => (
+        <div key={key && key} className="h-[87px] w-full" />
+      ))}
     </div>
   );
 }
