@@ -312,12 +312,12 @@ function AddSponsorPage() {
           <div className="flex items-center justify-center gap-x-6">
             <LinkButton
               to="/list"
-              type="mediumSqaureBlack"
+              type="mediumSquareBlack"
               className="cursor-point border-whiteSecondary-500 flex items-center justify-center rounded-[3px] border bg-blackSecondary px-[16px] py-1.5 text-[13px] font-bold transition-all hover:bg-grayDark"
             >
               취소
             </LinkButton>
-            <Button type="mediumSqaurePrimary" onClick={handleSubmit}>
+            <Button type="mediumSquarePrimary" onClick={handleSubmit}>
               등록
             </Button>
           </div>
