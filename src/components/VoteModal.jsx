@@ -62,6 +62,11 @@ function VoteModal({
     setSelectedIdol('');
   };
 
+  const handleModalClose = () => {
+    setSelectedIdol();
+    handleVoteToggle();
+  };
+
   useEffect(() => {
     setVoteOption((prev) => ({ ...prev, gender }));
   }, [gender]);
@@ -77,7 +82,7 @@ function VoteModal({
   return (
     <Modal
       open={toggle}
-      onClose={handleVoteToggle}
+      onClose={handleModalClose}
       type="wide"
       title={voteTitle}
     >

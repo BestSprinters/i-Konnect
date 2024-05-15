@@ -26,6 +26,11 @@ function DonateModal({ open, onClose, donationData, putAndRefetchDonations }) {
     setCreditAmount(e.target.value.replace(/[^0-9]/g, ''));
   };
 
+  const handleModalClose = async () => {
+    setCreditAmount('');
+    onClose();
+  };
+
   const handleButtonClick = async () => {
     // 후원
     putAndRefetchDonations(id, creditAmount);
@@ -41,7 +46,7 @@ function DonateModal({ open, onClose, donationData, putAndRefetchDonations }) {
   };
 
   return (
-    <Modal title="후원하기" open={open} onClose={onClose}>
+    <Modal title="후원하기" open={open} onClose={handleModalClose}>
       <div className="flex flex-col items-center">
         <div className="flex flex-col">
           <img
