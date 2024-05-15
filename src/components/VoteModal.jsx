@@ -13,7 +13,6 @@ function VoteModal({
   handleVoteToggle,
   handleNoCreditToggle,
   setChartList,
-  chartList,
 }) {
   const { creditAmount, setCreditAmount } = useContext(CreditContext);
   const [voteList, setVoteList] = useState([]);
@@ -42,13 +41,9 @@ function VoteModal({
     if (creditAmount < 1000) {
       handleNoCreditToggle();
     } else {
-      const receivedVotes = await postVotes(selectedIdol);
-      const updatedVoteList = chartList.map((idol) =>
-        idol.id === receivedVotes.idol.id
-          ? { ...idol, ...receivedVotes.idol }
-          : idol,
-      );
-      setChartList(updatedVoteList);
+      await postVotes(selectedIdol);
+      const result = await getCharts(voteOption);
+      setChartList(result.idols);
       setCreditAmount((credit) => {
         const newCreditAmount = credit - 1000;
         localStorage.setItem('myCredit', newCreditAmount);
