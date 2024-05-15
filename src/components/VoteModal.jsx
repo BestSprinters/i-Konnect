@@ -13,6 +13,7 @@ function VoteModal({
   handleVoteToggle,
   handleNoCreditToggle,
   setChartList,
+  chartOption,
 }) {
   const { creditAmount, setCreditAmount } = useContext(CreditContext);
   const [voteList, setVoteList] = useState([]);
@@ -42,7 +43,7 @@ function VoteModal({
       handleNoCreditToggle();
     } else {
       await postVotes(selectedIdol);
-      const result = await getCharts(voteOption);
+      const result = await getCharts(chartOption);
       setChartList(result.idols);
       setCreditAmount((credit) => {
         const newCreditAmount = credit - 1000;

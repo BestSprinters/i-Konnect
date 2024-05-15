@@ -96,6 +96,7 @@ function Chart() {
         handleVoteToggle={handleVoteToggle}
         handleNoCreditToggle={handleNoCreditToggle}
         setChartList={setChartList}
+        chartOption={chartOption}
       />
       <NoCreditModal open={noCreditToggle} onClose={handleNoCreditToggle} />
     </div>
