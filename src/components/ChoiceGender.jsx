@@ -12,7 +12,7 @@ function ChoiceGender({ handleClickChangeGender }) {
     <>
       <button
         type="button"
-        className={`flex w-full items-center rounded-[3px] bg-blackSecondary ${gender === 'female' ? 'border-b bg-white/20' : ''} py-2 text-sm font-normal text-whitePrimary`}
+        className={`flex w-full items-center rounded-[3px] ${gender === 'female' ? 'border-b bg-white/20' : 'bg-white/10'} py-2 text-sm font-normal text-whitePrimary hover:bg-white/15`}
         onClick={() => handleClickChangeButtonStyle('female')}
         tabIndex="0"
         aria-label="Change to female"
@@ -23,7 +23,7 @@ function ChoiceGender({ handleClickChangeGender }) {
       </button>
       <button
         type="button"
-        className={`flex w-full items-center rounded-[3px] bg-blackSecondary ${gender === 'male' ? 'border-b bg-white/20' : ''} py-2 text-sm font-normal text-whitePrimary`}
+        className={`flex w-full items-center rounded-[3px] ${gender === 'male' ? 'border-b bg-white/20' : 'bg-white/10'} py-2 text-sm font-normal text-whitePrimary hover:bg-white/15`}
         onClick={() => handleClickChangeButtonStyle('male')}
         tabIndex="0"
         aria-label="Change to male"
