@@ -17,7 +17,6 @@ function VoteModal({
 }) {
   const { creditAmount, setCreditAmount } = useContext(CreditContext);
   const [voteList, setVoteList] = useState([]);
-  const { setCreditAmount: setmyCredit } = useContext(CreditContext);
   const [selectedIdol, setSelectedIdol] = useState();
   const [voteOption, setVoteOption] = useState({
     gender: 'female',
@@ -52,7 +51,6 @@ function VoteModal({
       setCreditAmount((credit) => {
         const newCreditAmount = credit - 1000;
         localStorage.setItem('myCredit', newCreditAmount);
-        setmyCredit(newCreditAmount);
         return newCreditAmount;
       });
     }
