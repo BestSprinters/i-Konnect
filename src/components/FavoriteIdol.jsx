@@ -15,7 +15,7 @@ function FavoriteIdol({ idols, onChange }) {
   const removeIdolById = (idToRemove) => {
     // 로컬스토리지에서 데이터 가져오기
 
-    const storedData = localStorage.getItem('MyPage_FavoriteIdol');
+    const storedData = localStorage.getItem('myPage_FavoriteIdol');
 
     if (!storedData) return; // 데이터가 없으면 함수 종료
 
@@ -29,7 +29,7 @@ function FavoriteIdol({ idols, onChange }) {
 
     // 수정된 데이터 다시 로컬스토리지에 저장
 
-    localStorage.setItem('MyPage_FavoriteIdol', JSON.stringify(favoriteIdols));
+    localStorage.setItem('myPage_FavoriteIdol', JSON.stringify(favoriteIdols));
 
     onChange(favoriteIdols);
   };
@@ -38,7 +38,7 @@ function FavoriteIdol({ idols, onChange }) {
 
   return (
     <div className="mt-6 mobile:mx-[24px] mobile:mt-[40px] tablet:mx-[24px]">
-      <h2 className="mb-[32px] text-2xl font-semibold mobile:hidden">
+      <h2 className="mb-[32px] text-2xl font-semibold mobile:hidden tablet:text-[20px]">
         내가 관심있는 아이돌
       </h2>
 
