@@ -60,7 +60,7 @@ function Chart() {
             value={debouncedSearchValue}
             onChange={(e) => setDebouncedSearchValue(e.target.value)}
             placeholder="이름 또는 그룹명을 입력해주세요."
-            className="border-whiteSecondary-500 font-regular h-[32px] w-[300px] rounded-[8px] border bg-blackSecondary px-9 py-2 focus:outline-none mobile:w-full"
+            className="border-whiteSecondary-500 font-regular h-[32px] w-[300px] rounded-[3px] border bg-blackSecondary px-9 py-2 focus:outline-none mobile:w-full"
           />
         </div>
         <Button type="fitSquarePrimary" onClick={handleVoteToggle}>
