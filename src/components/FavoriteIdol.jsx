@@ -7,7 +7,7 @@ import { Navigation } from 'swiper/modules';
 import { Swiper, SwiperSlide } from 'swiper/react';
 
 import deleteImg from '../assets/imgs/ic_delete.svg';
-import emptyItem from '../assets/imgs/ic_empty_item.svg';
+import icEmptyItem from '../assets/imgs/ic_empty_item.svg';
 import useMediaQuery from '../hooks/useMediaQuery';
 import IdolThumbnail from './IdolThumbnail';
 
@@ -45,7 +45,7 @@ function FavoriteIdol({ idols, onChange }) {
       {idols.length === 0 ? (
         <div className="flex min-h-[152px] flex-col justify-center mobile:min-h-[122px]">
           <img
-            src={emptyItem}
+            src={icEmptyItem}
             alt="아이템이 비어있는 아이콘"
             className="mx-auto mb-[15px]"
           />
