@@ -42,7 +42,7 @@ function FavoriteIdol({ idols, onChange }) {
       </h2>
 
       {idols.length === 0 ? (
-        <div>
+        <div className="min-h-[152px]">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             id="Layer_1"
