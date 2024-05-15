@@ -126,9 +126,9 @@ function AddSponsorPage() {
   return (
     <>
       <Header />
-      <div className="base-container my-[100px] flex items-center justify-between">
+      <div className="base-container my-[150px] flex items-center justify-between">
         <form className="w-full px-8" onSubmit={handleSubmit}>
-          <div className="flex items-center justify-between">
+          <div className="mb-4 flex items-center justify-between">
             <p className="font-bold">조공 추가하기</p>
             <div className="relative my-4">
               <img
@@ -203,7 +203,7 @@ function AddSponsorPage() {
               </p>
             )}
           </div>
-          <div className="col-span-full h-[100px]">
+          <div className="col-span-full h-[80px]">
             <div className="mt-2">
               <input
                 placeholder="제목"
@@ -222,7 +222,7 @@ function AddSponsorPage() {
             )}
           </div>
 
-          <div className="col-span-full h-[200px]">
+          <div className="col-span-full h-[210px]">
             <div className="mt-2">
               <textarea
                 placeholder="내용"
@@ -240,7 +240,7 @@ function AddSponsorPage() {
               )}
             </div>
           </div>
-          <div className="col-span-full h-[200px]">
+          <div className="col-span-full h-[180px]">
             <div className="flex items-center justify-between gap-8">
               <div>
                 <label
