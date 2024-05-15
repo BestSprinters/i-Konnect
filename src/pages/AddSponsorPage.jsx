@@ -126,7 +126,7 @@ function AddSponsorPage() {
   return (
     <>
       <Header />
-      <div className="base-container my-[150px] flex items-center justify-between">
+      <div className="base-container my-[100px] flex items-center justify-between">
         <form className="w-full px-8" onSubmit={handleSubmit}>
           <div className="mb-4 flex items-center justify-between">
             <p className="font-bold">조공 추가하기</p>
@@ -240,7 +240,7 @@ function AddSponsorPage() {
               )}
             </div>
           </div>
-          <div className="col-span-full h-[180px]">
+          <div className="col-span-full h-[160px]">
             <div className="flex items-center justify-between gap-8">
               <div>
                 <label
