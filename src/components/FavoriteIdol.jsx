@@ -20,7 +20,7 @@ function FavoriteIdol({ idols, onChange }) {
 
     // 수정된 데이터 다시 로컬스토리지에 저장
 
-    localStorage.setItem('MyPage_FavoriteIdol', JSON.stringify(favoriteIdols));
+    localStorage.setItem('myPage_FavoriteIdol', JSON.stringify(favoriteIdols));
 
     onChange(favoriteIdols);
   };
