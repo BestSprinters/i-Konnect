@@ -1,3 +1,4 @@
+import { motion } from 'framer-motion';
 import { useEffect, useRef } from 'react';
 import { createPortal } from 'react-dom';
 
@@ -58,13 +59,22 @@ function Modal({ title, type, open, onClose, children }) {
   return (
     <>
       {createPortal(
-        <div
-          className="fixed inset-0 z-50 flex h-full w-full items-center justify-center bg-blackPrimary/80"
+        <motion.div
+          initial={{ backgroundColor: 'rgba(2, 0, 4, 0)' }}
+          animate={{ backgroundColor: 'rgba(2, 0, 4, 0.8)' }}
+          transition={{ duration: 0.3 }}
+          className="fixed inset-0 z-50 flex h-full w-full items-center justify-center"
           ref={modalBackdropRef}
           onClick={(e) => handleModalBackdropClick(e)}
           aria-hidden="true"
         >
-          <div
+          <motion.div
+            initial={{ y: '10%', opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            transition={{
+              y: { duration: 0.2, ease: 'easeInOut' },
+              opacity: { duration: 0.4 },
+            }}
             className={`${type === 'wide' ? 'w-[524px]' : 'w-[344px]'} relative rounded-xl bg-blackSecondary p-5`}
           >
             <div>
@@ -84,8 +94,8 @@ function Modal({ title, type, open, onClose, children }) {
             <div className="flex flex-col items-center justify-center">
               {children}
             </div>
-          </div>
-        </div>,
+          </motion.div>
+        </motion.div>,
         document.getElementById('modal-root'),
       )}
     </>
