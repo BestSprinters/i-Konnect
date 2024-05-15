@@ -143,65 +143,67 @@ function AddSponsorPage() {
               />
             </div>
           </div>
-          <div
-            className={`rounded-[5px] py-4 ${!isIdolIdValid ? 'animate-vibration border border-red-600' : ''}`}
-          >
-            <Swiper
-              slidesPerView={8}
-              spaceBetween={1}
-              breakpoints={{
-                375: {
-                  slidesPerView: 4,
-                  spaceBetween: 1,
-                },
-                768: {
-                  slidesPerView: 6,
-                  spaceBetween: 1,
-                },
-                1280: {
-                  slidesPerView: 10,
-                  spaceBetween: 1,
-                },
-              }}
-              className="mySwiper cursor-pointer overflow-visible"
+          <div className="h-[200px]">
+            <div
+              className={`rounded-[5px] py-4 ${!isIdolIdValid ? 'animate-vibration border border-red-600' : ''}`}
             >
-              {idolsData.map((idol) => (
-                <SwiperSlide key={idol.id}>
-                  <div
-                    className="flex flex-col items-center justify-center gap-2"
-                    key={idol.id}
-                  >
-                    {datas.idolId === idol.id ? (
-                      <CheckedIdolAvatar
-                        src={idol.profilePicture}
-                        size="medium"
-                        value={idol.id}
-                      />
-                    ) : (
-                      <IdolAvatar
-                        src={idol.profilePicture}
-                        size="medium"
-                        value={idol.id}
-                        onClick={() => {
-                          setDatas((prevDatas) => ({
-                            ...prevDatas,
-                            idolId: idol.id,
-                          }));
-                        }}
-                      />
-                    )}
-                    <p>{idol.name}</p>
-                  </div>
-                </SwiperSlide>
-              ))}
-            </Swiper>
+              <Swiper
+                slidesPerView={8}
+                spaceBetween={1}
+                breakpoints={{
+                  375: {
+                    slidesPerView: 4,
+                    spaceBetween: 1,
+                  },
+                  768: {
+                    slidesPerView: 6,
+                    spaceBetween: 1,
+                  },
+                  1280: {
+                    slidesPerView: 10,
+                    spaceBetween: 1,
+                  },
+                }}
+                className="mySwiper cursor-pointer overflow-visible"
+              >
+                {idolsData.map((idol) => (
+                  <SwiperSlide key={idol.id}>
+                    <div
+                      className="flex flex-col items-center justify-center gap-2"
+                      key={idol.id}
+                    >
+                      {datas.idolId === idol.id ? (
+                        <CheckedIdolAvatar
+                          src={idol.profilePicture}
+                          size="medium"
+                          value={idol.id}
+                        />
+                      ) : (
+                        <IdolAvatar
+                          src={idol.profilePicture}
+                          size="medium"
+                          value={idol.id}
+                          onClick={() => {
+                            setDatas((prevDatas) => ({
+                              ...prevDatas,
+                              idolId: idol.id,
+                            }));
+                          }}
+                        />
+                      )}
+                      <p>{idol.name}</p>
+                    </div>
+                  </SwiperSlide>
+                ))}
+              </Swiper>
+            </div>
+            {isIdolIdValid || (
+              <p className="ml-2 mt-2 text-[12px] text-red-600">
+                아이돌을 선택해주세요
+              </p>
+            )}
           </div>
-          {isIdolIdValid || (
-            <p className="ml-2 mt-2 text-[12px] text-red-600">
-              아이돌을 선택해주세요
-            </p>
-          )}
-          <div className="col-span-full my-8">
+          <div className="col-span-full h-[100px]">
             <div className="mt-2">
               <input
                 placeholder="제목"
@@ -212,14 +214,15 @@ function AddSponsorPage() {
                 className={`font-regular block w-full rounded-md bg-blackSecondary px-4 py-2 text-white placeholder:text-grayLight focus:outline-none sm:text-sm sm:leading-6 ${!isTitleValid ? 'animate-vibration border border-red-600' : ''}`}
                 onChange={handleInputChange}
               />
-              {isTitleValid || (
-                <p className="ml-2 mt-2 text-[12px] text-red-600">
-                  제목을 입력해주세요
-                </p>
-              )}
             </div>
+            {isTitleValid || (
+              <p className="ml-2 mt-2 text-[12px] text-red-600">
+                제목을 입력해주세요
+              </p>
+            )}
           </div>
-          <div className="col-span-full my-8">
+
+          <div className="col-span-full h-[200px]">
             <div className="mt-2">
               <textarea
                 placeholder="내용"
@@ -237,7 +240,7 @@ function AddSponsorPage() {
               )}
             </div>
           </div>
-          <div className="col-span-full my-8">
+          <div className="col-span-full h-[200px]">
             <div className="flex items-center justify-between gap-8">
               <div>
                 <label
