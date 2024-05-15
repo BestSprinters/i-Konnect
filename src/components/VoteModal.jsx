@@ -12,6 +12,7 @@ function VoteModal({
   toggle,
   handleVoteToggle,
   handleNoCreditToggle,
+  handleVoteSuccessToggle,
   setChartList,
   chartList,
 }) {
@@ -42,6 +43,7 @@ function VoteModal({
     if (creditAmount < 1000) {
       handleNoCreditToggle();
     } else {
+      handleVoteSuccessToggle();
       const receivedVotes = await postVotes(selectedIdol);
       const updatedVoteList = chartList.map((idol) =>
         idol.id === receivedVotes.idol.id
