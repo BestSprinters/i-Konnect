@@ -33,19 +33,25 @@ function Header() {
     <div
       className={`transition-all duration-300 ${baseHeaderStyle} ${headerScrollValid}`}
     >
-      <div className="container flex h-[80px] items-center justify-center">
-        <Link to={PAGES.list.link}>
-          <img src={imgLogo} alt="로고" className="w-[200px] cursor-pointer" />
-        </Link>
-      </div>
-      <div>
-        <Link to={PAGES.myPage.link}>
-          <img
-            src={imgLoopy}
-            alt="프로필"
-            className="float-right mr-4 h-[32px] w-[32px] cursor-pointer rounded-full"
-          />
-        </Link>
+      <div className="base-container flex h-[80px] items-center justify-center">
+        <div className="flex flex-1 justify-center">
+          <Link to={PAGES.list.link}>
+            <img
+              src={imgLogo}
+              alt="로고"
+              className="w-[200px] cursor-pointer"
+            />
+          </Link>
+        </div>
+        <div>
+          <Link to={PAGES.myPage.link}>
+            <img
+              src={imgLoopy}
+              alt="프로필"
+              className="mr-6 h-[32px] w-[32px] cursor-pointer rounded-full desktop:mr-2"
+            />
+          </Link>
+        </div>
       </div>
     </div>
   );

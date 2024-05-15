@@ -12,12 +12,12 @@ function VoteModal({
   toggle,
   handleVoteToggle,
   handleNoCreditToggle,
+  handleVoteSuccessToggle,
   setChartList,
   chartOption,
 }) {
   const { creditAmount, setCreditAmount } = useContext(CreditContext);
   const [voteList, setVoteList] = useState([]);
-  const { setCreditAmount: setmyCredit } = useContext(CreditContext);
   const [selectedIdol, setSelectedIdol] = useState();
   const [voteOption, setVoteOption] = useState({
     gender: 'female',
@@ -48,12 +48,16 @@ function VoteModal({
       setCreditAmount((credit) => {
         const newCreditAmount = credit - 1000;
         localStorage.setItem('myCredit', newCreditAmount);
-        setmyCredit(newCreditAmount);
         return newCreditAmount;
       });
     }
 
     setSelectedIdol('');
+  };
+
+  const handleModalClose = () => {
+    setSelectedIdol();
+    handleVoteToggle();
   };
 
   useEffect(() => {
@@ -71,7 +75,7 @@ function VoteModal({
   return (
     <Modal
       open={toggle}
-      onClose={handleVoteToggle}
+      onClose={handleModalClose}
       type="wide"
       title={voteTitle}
     >
