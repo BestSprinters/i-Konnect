@@ -35,18 +35,19 @@ function ListPage() {
 
       const { list: donationList, nextCursor: donationNextCursor } =
         await getDonations(FetchOption);
-
       if (isOnlyFavorite) {
         const favoriteIdols =
-          JSON.parse(localStorage.getItem('MyPage_FavoriteIdol')) ?? [];
+          JSON.parse(localStorage.getItem('myPage_FavoriteIdol')) ?? [];
         const favoriteIdolIds = favoriteIdols.map(
           (favoriteIdol) => favoriteIdol.id,
         );
+
         const filteredDonations = donationList.filter((donation) =>
           favoriteIdolIds.includes(donation.idol.id),
         );
 
         setDonations(filteredDonations);
+        setNextCursor('');
       } else {
         setDonations(donationList);
         setNextCursor(donationNextCursor);
