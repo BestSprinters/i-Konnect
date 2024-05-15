@@ -24,7 +24,7 @@ function VoteRank({
     <button
       type="button"
       onClick={toggleCheck}
-      className="h-17 flex w-full  items-center  gap-2 border-b border-white/10 py-2"
+      className="h-17 flex w-full items-center gap-2 border-b border-white/10 p-2 hover:bg-whiteSecondary/5 focus:bg-whiteSecondary/10"
     >
       <div className="relative flex items-center gap-3">
         {selectedIdol === id ? (
