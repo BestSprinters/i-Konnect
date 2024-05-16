@@ -23,6 +23,7 @@ import CheckedIdolAvatar from '../components/CheckedIdolAvatar';
 import Header from '../components/Header';
 import IdolAvatar from '../components/IdolAvatar';
 import LinkButton from '../components/LinkButton';
+import useMediaQuery from '../hooks/useMediaQuery';
 import formattedNumber from '../utils/formattedNumber';
 
 function AddSponsorPage() {
@@ -123,13 +124,15 @@ function AddSponsorPage() {
     setIsDeadlineValid(true);
   };
 
+  const mobileSize = useMediaQuery('(max-width: 767px)');
+
   return (
     <>
       <Header />
-      <div className="base-container my-[150px] flex items-center justify-between">
+      <div className="base-container my-[100px] flex items-center justify-between">
         <form className="w-full px-8" onSubmit={handleSubmit}>
-          <div className="mb-4 flex items-center justify-between">
-            <p className="font-bold">조공 추가하기</p>
+          <div className="mb-4 flex items-center justify-between mobile:flex-col mobile:items-start">
+            <p className="font-bold mobile:block">조공 추가하기</p>
             <div className="relative my-4">
               <img
                 src={icSearch}
@@ -143,9 +146,9 @@ function AddSponsorPage() {
               />
             </div>
           </div>
-          <div className="h-[200px]">
+          <div className="h-[200px] mobile:h-[180px]">
             <div
-              className={`rounded-[5px] py-4 ${!isIdolIdValid ? 'animate-vibration border border-red-600' : ''}`}
+              className={`rounded-[5px] py-4 mobile:pt-4  ${!isIdolIdValid ? 'animate-vibration border border-red-600' : ''}`}
             >
               <Swiper
                 slidesPerView={8}
@@ -175,13 +178,13 @@ function AddSponsorPage() {
                       {datas.idolId === idol.id ? (
                         <CheckedIdolAvatar
                           src={idol.profilePicture}
-                          size="medium"
+                          size={mobileSize ? 'small' : 'medium'}
                           value={idol.id}
                         />
                       ) : (
                         <IdolAvatar
                           src={idol.profilePicture}
-                          size="medium"
+                          size={mobileSize ? 'small' : 'medium'}
                           value={idol.id}
                           onClick={() => {
                             setDatas((prevDatas) => ({
@@ -240,9 +243,9 @@ function AddSponsorPage() {
               )}
             </div>
           </div>
-          <div className="col-span-full h-[180px]">
-            <div className="flex items-center justify-between gap-8">
-              <div>
+          <div className="col-span-full h-[160px] mobile:h-[250px]">
+            <div className="flex items-center justify-between gap-8 mobile:flex-col mobile:items-start">
+              <div className="mobile:flex mobile:flex-col">
                 <label
                   htmlFor="content"
                   className="block text-sm font-medium leading-6 text-whitePrimary"
