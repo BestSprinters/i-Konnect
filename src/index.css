@@ -85,5 +85,5 @@ body:after {
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
-  z-index: 999;
+  z-index: -999;
 }
