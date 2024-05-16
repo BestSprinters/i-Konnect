@@ -42,6 +42,7 @@ function VoteModal({
     if (creditAmount < 1000) {
       handleNoCreditToggle();
     } else {
+      handleVoteSuccessToggle();
       await postVotes(selectedIdol);
       const result = await getCharts(chartOption);
       setChartList(result.idols);
